@@ -77,7 +77,7 @@ export default function Home() {
 
         {/* ── Centered split-avatar cluster ── */}
         <div
-          className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none"
+          className="fixed top-14 left-1/2 -translate-x-1/2 z-30 pointer-events-none"
           aria-hidden="true"
         >
           {/* Glow ring */}
