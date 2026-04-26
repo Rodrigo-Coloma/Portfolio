@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { JetBrains_Mono } from 'next/font/google'
+import Navbar from '@/components/Navbar'
 import './globals.css'
 
 const inter = Inter({
@@ -38,7 +39,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="font-sans antialiased bg-black">{children}</body>
+      <body className="font-sans antialiased bg-black">
+        <Navbar />
+        {children}
+      </body>
     </html>
   )
 }

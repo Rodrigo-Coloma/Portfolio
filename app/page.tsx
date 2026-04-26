@@ -25,7 +25,7 @@ export default function Home() {
     <>
       {/* ── Desktop: side-by-side split ── */}
       <main
-        className="hidden md:flex h-screen w-screen overflow-hidden bg-black"
+        className="hidden md:flex h-screen w-screen overflow-hidden bg-black pt-12"
         aria-label="Portfolio — Rodrigo Coloma"
       >
         {/* Professional side */}
@@ -76,7 +76,7 @@ export default function Home() {
       </main>
 
       {/* ── Mobile: stacked layout ── */}
-      <main className="md:hidden flex flex-col bg-black" aria-label="Portfolio — Rodrigo Coloma">
+      <main className="md:hidden flex flex-col bg-black pt-12" aria-label="Portfolio — Rodrigo Coloma">
         <section className="min-h-screen" aria-label="Professional profile">
           <ProfessionalSide shrunk={false} />
         </section>

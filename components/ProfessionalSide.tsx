@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 const SKILLS = [
   'Azure', 'Databricks', 'PySpark', 'Python', 'SQL',
   'PyTorch', 'XGBoost', 'Power BI', 'MLflow', 'Agentic AI',
@@ -34,6 +36,19 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
           transition: 'opacity 600ms ease, transform 600ms ease',
         }}
       >
+
+        {/* Avatar */}
+        <div className="mb-7">
+          <div className="relative w-16 h-16 rounded-full overflow-hidden ring-2 ring-blue-500/30 ring-offset-2 ring-offset-[#050e1f]">
+            <Image
+              src="/photo.png"
+              alt="Rodrigo Coloma"
+              fill
+              className="object-cover object-top"
+              priority
+            />
+          </div>
+        </div>
 
         {/* Eyebrow */}
         <p className="text-blue-400/70 text-[10px] font-medium tracking-[0.3em] uppercase mb-5 animate-fade-in">
