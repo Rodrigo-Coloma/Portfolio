@@ -1,3 +1,7 @@
+import StampLabel from '@/components/StampLabel'
+import RoughUnderline from '@/components/RoughUnderline'
+import Signature from '@/components/Signature'
+
 const ACTIONS: { label: string; sub: string; href: string; external?: boolean }[] = [
   { label: 'Email',    sub: 'rjcolgut@gmail.com',          href: 'mailto:rjcolgut@gmail.com'                    },
   { label: 'LinkedIn', sub: 'linkedin.com/in/rcoloma',     href: 'https://www.linkedin.com/in/rcoloma', external: true },
@@ -7,17 +11,17 @@ const ACTIONS: { label: string; sub: string; href: string; external?: boolean }[
 
 export default function FinalCTA() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-[#14B8A6]/30 py-24 lg:py-32">
+    <section className="bg-[#FFFCF6] border-t border-[#14B8A6]/30 py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-8 lg:px-12 text-center">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-5">
-          What&apos;s next
-        </p>
+        <div className="mb-5">
+          <StampLabel boxed>What&apos;s next</StampLabel>
+        </div>
 
         {/* Headline */}
         <h2 className="text-stone-900 text-5xl lg:text-6xl font-light tracking-[-0.02em] leading-[1.05] mb-6">
-          Let&apos;s <span className="text-[#0F8B7C]">build</span><br className="hidden sm:inline" /> something.
+          Let&apos;s <RoughUnderline>build</RoughUnderline><br className="hidden sm:inline" /> something.
         </h2>
 
         {/* Sub */}
@@ -48,10 +52,15 @@ export default function FinalCTA() {
           ))}
         </div>
 
+        {/* Signature — closing flourish, animates on scroll into view */}
+        <div className="mt-20 mb-4 flex justify-center">
+          <Signature className="text-[#1c1917] text-5xl lg:text-6xl" />
+        </div>
+
         {/* Footer mark */}
-        <p className="text-[10px] text-stone-400 tracking-[0.25em] uppercase mt-16">
-          Reply within 24 hours, usually faster
-        </p>
+        <div className="mt-6">
+          <StampLabel>Reply within 24 hours, usually faster</StampLabel>
+        </div>
 
       </div>
     </section>

@@ -1,3 +1,5 @@
+import StampLabel from '@/components/StampLabel'
+
 const EDUCATION: { year: string; title: string; org: string; note?: string }[] = [
   {
     year:  '2023–24',
@@ -20,16 +22,16 @@ const LANGUAGES: { name: string; level: string }[] = [
 
 export default function EduLanguages() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-[#14B8A6]/30 py-20 lg:py-28">
+    <section className="bg-[#FFFCF6] border-t border-[#14B8A6]/30 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
 
           {/* Education */}
           <div>
-            <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
-              Education
-            </p>
+            <div className="mb-6">
+              <StampLabel boxed>Education</StampLabel>
+            </div>
             <div className="space-y-5">
               {EDUCATION.map(edu => (
                 <div key={edu.title} className="flex items-baseline gap-6">
@@ -52,9 +54,9 @@ export default function EduLanguages() {
 
           {/* Languages */}
           <div>
-            <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
-              Languages
-            </p>
+            <div className="mb-6">
+              <StampLabel boxed>Languages</StampLabel>
+            </div>
             <div className="space-y-3">
               {LANGUAGES.map(lang => (
                 <div key={lang.name} className="flex items-baseline gap-6">

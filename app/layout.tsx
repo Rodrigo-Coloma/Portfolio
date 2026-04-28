@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { JetBrains_Mono } from 'next/font/google'
+import { Homemade_Apple } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import './globals.css'
 
@@ -13,6 +14,13 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--font-mono',
+  display: 'swap',
+})
+
+const homemadeApple = Homemade_Apple({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-signature',
   display: 'swap',
 })
 
@@ -38,7 +46,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${homemadeApple.variable}`}>
       <body className="font-sans antialiased bg-black">
         <Navbar />
         {children}

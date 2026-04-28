@@ -29,7 +29,7 @@ export default function Home() {
   const wTransition = `width 680ms ${EASING}`
 
   return (
-    <main className="bg-[#FCF9EE] pt-[58px]" aria-label="Portfolio — Rodrigo Coloma">
+    <main className="bg-[#FFFCF6] pt-[58px]" aria-label="Portfolio — Rodrigo Coloma">
 
       {/* ═════════ HERO ═════════ */}
 

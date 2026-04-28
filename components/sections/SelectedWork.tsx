@@ -1,4 +1,6 @@
 import { PROJECTS, type Project } from '@/lib/projects'
+import StampLabel from '@/components/StampLabel'
+import RoughUnderline from '@/components/RoughUnderline'
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -10,9 +12,9 @@ function ProjectCard({ project }: { project: Project }) {
       {/* Header */}
       <div className="flex items-baseline justify-between gap-4 mb-6 flex-wrap">
         <div>
-          <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-1.5">
-            {project.context}
-          </p>
+          <div className="mb-2">
+            <StampLabel>{project.context}</StampLabel>
+          </div>
           <h3 className="text-stone-900 text-2xl lg:text-[28px] font-light tracking-tight">
             {project.title}
           </h3>
@@ -92,15 +94,15 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function SelectedWork() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-[#14B8A6]/30 py-20 lg:py-28">
+    <section className="bg-[#FFFCF6] border-t border-[#14B8A6]/30 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-2">
-          Selected work
-        </p>
+        <div className="mb-3">
+          <StampLabel boxed>Selected work</StampLabel>
+        </div>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-2 max-w-xl">
-          Four projects, <span className="text-[#0F8B7C]">end-to-end</span>.
+          Four projects, <RoughUnderline>end-to-end</RoughUnderline>.
         </h2>
         <p className="text-stone-500 text-[14px] leading-[1.7] font-light max-w-xl mb-12">
           A live side project, a production ML lift, a corporate cloud platform,

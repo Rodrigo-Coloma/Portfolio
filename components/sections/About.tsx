@@ -1,14 +1,17 @@
+import StampLabel from '@/components/StampLabel'
+import RoughUnderline from '@/components/RoughUnderline'
+
 export default function About() {
   return (
     <section className="bg-[#F5F0DA] border-t border-[#14B8A6]/30 py-20 lg:py-28">
       <div className="max-w-3xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-2">
-          The story
-        </p>
+        <div className="mb-3">
+          <StampLabel boxed>The story</StampLabel>
+        </div>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-10 max-w-xl">
-          From clinical labs to data platforms — the <span className="text-[#0F8B7C]">same instinct</span>, different stack.
+          From clinical labs to data platforms — the <RoughUnderline>same instinct</RoughUnderline>, different stack.
         </h2>
 
         <div className="space-y-6 text-stone-700 text-[15px] leading-[1.8] font-light">
@@ -42,9 +45,9 @@ export default function About() {
 
         {/* Human element */}
         <div>
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-3">
-            Outside the editor
-          </p>
+          <div className="mb-4">
+            <StampLabel>Outside the editor</StampLabel>
+          </div>
           <p className="text-stone-700 text-[15px] leading-[1.8] font-light max-w-xl">
             Long-distance hiking in the sierras around Madrid, the occasional pickup football
             match, and a slow but real attempt to read more German than the duolingo streak

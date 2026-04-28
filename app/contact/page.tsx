@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import StampLabel from '@/components/StampLabel'
 
 export const metadata: Metadata = {
   title: 'Contact — Rodrigo Coloma',
@@ -21,7 +22,7 @@ const META: [string, string][] = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#FCF9EE] pt-[58px]">
+    <main className="min-h-screen bg-[#FFFCF6] pt-[58px]">
 
       {/* Subtle radial wash matching homepage pro side */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
@@ -29,9 +30,9 @@ export default function ContactPage() {
       <div className="relative max-w-2xl mx-auto px-8 lg:px-12 py-20 lg:py-28">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
-          Get in touch
-        </p>
+        <div className="mb-6">
+          <StampLabel boxed>Get in touch</StampLabel>
+        </div>
 
         {/* Title */}
         <h1 className="text-5xl xl:text-6xl font-light text-stone-900 leading-[1] tracking-[-0.02em] mb-6">
@@ -50,9 +51,9 @@ export default function ContactPage() {
 
         {/* Contact methods */}
         <div className="mb-16">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-6">
-            Direct
-          </p>
+          <div className="mb-6">
+            <StampLabel>Direct</StampLabel>
+          </div>
           <div className="space-y-4">
             {CONTACT.map(({ label, value, href }) => (
               <a
@@ -78,9 +79,9 @@ export default function ContactPage() {
 
         {/* Meta */}
         <div className="mb-12">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-6">
-            Details
-          </p>
+          <div className="mb-6">
+            <StampLabel>Details</StampLabel>
+          </div>
           <div className="space-y-3">
             {META.map(([label, value]) => (
               <div key={label} className="flex items-baseline gap-6">

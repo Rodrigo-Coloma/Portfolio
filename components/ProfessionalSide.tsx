@@ -1,5 +1,8 @@
 'use client'
 
+import StampLabel from '@/components/StampLabel'
+import RoughUnderline from '@/components/RoughUnderline'
+
 const EXPERIENCE = [
   { year: '2026',  role: 'Data Team Lead',              company: 'Grupo Ilunion'      },
   { year: '2024',  role: 'Senior Data Scientist',       company: 'Ilunion Hotels'     },
@@ -17,7 +20,7 @@ const EXPERTISE: [string, string][] = [
 
 export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
   return (
-    <div className="h-full bg-[#FCF9EE] relative overflow-hidden">
+    <div className="h-full bg-[#FFFCF6] relative overflow-hidden">
 
       {/* Subtle radial wash */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
@@ -36,9 +39,9 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
         <div className="absolute left-0 top-24 bottom-24 w-px bg-gradient-to-b from-transparent via-[#14B8A6]/40 to-transparent pointer-events-none" />
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
-          Madrid, Spain · Open to remote EU
-        </p>
+        <div className="mb-6">
+          <StampLabel boxed>Madrid, Spain · Open to remote EU</StampLabel>
+        </div>
 
         {/* Name */}
         <h1 className="text-5xl xl:text-[64px] font-light text-stone-900 leading-[1] tracking-[-0.02em] mb-3">
@@ -52,16 +55,16 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
         {/* Bio */}
         <p className="text-stone-700 text-[15px] leading-[1.7] font-light mb-14 max-w-[480px]">
-          I build data platforms and ML systems that <span className="text-[#0F8B7C] font-normal">ship — and stay shipped</span>.
+          I build data platforms and ML systems that <RoughUnderline>ship — and stay shipped</RoughUnderline>.
           Nine years across pharma, hospitality, and clinical research turning
           messy data into reliable products. Currently leading data + AI at Grupo Ilunion.
         </p>
 
         {/* Experience */}
         <div className="mb-14">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-5">
-            Experience
-          </p>
+          <div className="mb-5">
+            <StampLabel>Experience</StampLabel>
+          </div>
           <div className="space-y-3">
             {EXPERIENCE.map(job => (
               <div key={job.company} className="flex items-baseline gap-6">
@@ -79,9 +82,9 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
         {/* Expertise */}
         <div className="mb-14">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-5">
-            Expertise
-          </p>
+          <div className="mb-5">
+            <StampLabel>Expertise</StampLabel>
+          </div>
           <div className="space-y-2.5">
             {EXPERTISE.map(([area, stack]) => (
               <div key={area} className="flex items-baseline gap-6">
