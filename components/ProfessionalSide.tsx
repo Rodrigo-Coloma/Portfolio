@@ -52,9 +52,9 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
         {/* Bio */}
         <p className="text-stone-700 text-[15px] leading-[1.7] font-light mb-14 max-w-[480px]">
-          Currently leading data engineering and analytics at Grupo Ilunion.
-          Nine years building cloud data architecture, production ML systems,
-          and LLM applications shipped end-to-end.
+          I build data platforms and ML systems that ship — and stay shipped.
+          Nine years across pharma, hospitality, and clinical research turning
+          messy data into reliable products. Currently leading data + AI at Grupo Ilunion.
         </p>
 
         {/* Experience */}

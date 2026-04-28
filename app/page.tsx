@@ -3,6 +3,11 @@
 import { useState } from 'react'
 import ProfessionalSide from '@/components/ProfessionalSide'
 import VibeSide from '@/components/VibeSide'
+import ImpactStrip from '@/components/sections/ImpactStrip'
+import SelectedWork from '@/components/sections/SelectedWork'
+import About from '@/components/sections/About'
+import EduLanguages from '@/components/sections/EduLanguages'
+import FinalCTA from '@/components/sections/FinalCTA'
 
 type Hovered = 'pro' | 'vibe' | null
 
@@ -22,12 +27,13 @@ export default function Home() {
   const wTransition = `width 680ms ${EASING}`
 
   return (
-    <>
-      {/* ── Desktop ───────────────────────────────────────────── */}
-      <main
-        className="hidden md:flex h-screen w-screen overflow-hidden bg-black pt-12 relative"
-        aria-label="Portfolio — Rodrigo Coloma"
-      >
+    <main className="bg-[#fafaf7] pt-12" aria-label="Portfolio — Rodrigo Coloma">
+
+      {/* ═════════ HERO ═════════ */}
+
+      {/* Desktop: split-screen, exactly one viewport tall */}
+      <div className="hidden md:flex h-[calc(100vh-3rem)] w-full overflow-hidden bg-black relative">
+
         {/* Professional side */}
         <section
           aria-label="Professional profile"
@@ -57,26 +63,46 @@ export default function Home() {
 
         {/* Hover hint */}
         <div
-          className={`absolute bottom-5 inset-x-0 flex items-center justify-center
+          className={`absolute bottom-16 inset-x-0 flex items-center justify-center
                        text-[10px] uppercase tracking-[0.25em] pointer-events-none mix-blend-difference
                        text-white/40 transition-opacity duration-500 ${hovered ? 'opacity-0' : 'opacity-100'}`}
         >
           ← hover to explore →
         </div>
-      </main>
 
-      {/* ── Mobile: stacked ──────────────────────────────────── */}
-      <main className="md:hidden flex flex-col bg-black pt-12" aria-label="Portfolio — Rodrigo Coloma">
+        {/* Scroll indicator */}
+        <a
+          href="#below-the-fold"
+          aria-label="Scroll to content"
+          className="absolute bottom-4 inset-x-0 flex items-center justify-center
+                     text-[10px] uppercase tracking-[0.3em] mix-blend-difference text-white/60
+                     hover:text-white/90 transition-colors"
+        >
+          ↓ scroll
+        </a>
+      </div>
+
+      {/* Mobile: stacked split-screen */}
+      <div className="md:hidden flex flex-col bg-black">
         <section className="min-h-screen" aria-label="Professional profile">
           <ProfessionalSide shrunk={false} />
         </section>
-
         <div className="h-px bg-gradient-to-r from-transparent via-stone-400/40 to-transparent" />
-
         <section className="min-h-screen" aria-label="Developer profile">
           <VibeSide shrunk={false} />
         </section>
-      </main>
-    </>
+      </div>
+
+      {/* ═════════ BELOW THE FOLD ═════════ */}
+
+      <div id="below-the-fold" className="scroll-mt-12">
+        <ImpactStrip />
+        <SelectedWork />
+        <About />
+        <EduLanguages />
+        <FinalCTA />
+      </div>
+
+    </main>
   )
 }

@@ -19,10 +19,10 @@ export default function Navbar() {
         </Link>
 
         {/* Links */}
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-5 sm:gap-8">
           <Link
             href="/"
-            className="text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
+            className="hidden sm:inline-block text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
           >
             Homepage
           </Link>
@@ -33,6 +33,15 @@ export default function Navbar() {
           >
             Contact
           </Link>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-block text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
+          >
+            Resume ↓
+          </a>
 
           {/* Portfolio dropdown */}
           <div

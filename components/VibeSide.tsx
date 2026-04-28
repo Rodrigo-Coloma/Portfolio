@@ -15,8 +15,8 @@ const Op = ({ children }: { children: React.ReactNode }) => <span className="tex
 /* ─── Code lines (rendered as JSX with indentation) ────────────────────── */
 function CodeBody() {
   const lines = [
-    <><Cm>{'// rodrigo coloma — ai builder · vibe coder'}</Cm></>,
-    <><Cm>{'// madrid · open to remote EU'}</Cm></>,
+    <><Cm>{'// data platforms + ML systems that ship — and stay shipped'}</Cm></>,
+    <><Cm>{'// nine years across pharma · hospitality · research · LLM apps'}</Cm></>,
     null,
     <><Kw>import</Kw>{' '}<Op>{'{ Idea, Production }'}</Op>{' '}<Kw>from</Kw>{' '}<St>{`'@core/types'`}</St><Op>{';'}</Op></>,
     <><Kw>import</Kw>{' '}<Op>{'{ build, ship }'}</Op>{'      '}<Kw>from</Kw>{' '}<St>{`'@core/pipeline'`}</St><Op>{';'}</Op></>,
@@ -62,9 +62,10 @@ function CodeBody() {
 
 /* ─── File tabs ────────────────────────────────────────────────────────── */
 const TABS = [
-  { name: 'profile.ts',    icon: 'TS', iconBg: '#3178c6', iconFg: '#ffffff' },
-  { name: 'projects.json', icon: '{}', iconBg: '#cbcb41', iconFg: '#000000' },
-  { name: 'README.md',     icon: 'md', iconBg: '#519aba', iconFg: '#ffffff' },
+  { name: 'profile.ts',      icon: 'TS', iconBg: '#3178c6', iconFg: '#ffffff' },
+  { name: 'case-studies.ts', icon: 'TS', iconBg: '#3178c6', iconFg: '#ffffff' },
+  { name: 'projects.json',   icon: '{}', iconBg: '#cbcb41', iconFg: '#000000' },
+  { name: 'README.md',       icon: 'md', iconBg: '#519aba', iconFg: '#ffffff' },
 ]
 
 export default function VibeSide({ shrunk }: { shrunk: boolean }) {
@@ -121,8 +122,9 @@ export default function VibeSide({ shrunk }: { shrunk: boolean }) {
         {/* Code area */}
         <div className="flex-1 py-4 text-[12px] leading-[1.7] overflow-hidden whitespace-pre">
           {activeTab === 0 && <CodeBody />}
-          {activeTab === 1 && <ProjectsJSON />}
-          {activeTab === 2 && <ReadmeMD />}
+          {activeTab === 1 && <CaseStudiesTS />}
+          {activeTab === 2 && <ProjectsJSON />}
+          {activeTab === 3 && <ReadmeMD />}
         </div>
       </div>
 
@@ -148,6 +150,14 @@ export default function VibeSide({ shrunk }: { shrunk: boolean }) {
           >
             → cvmachine
           </a>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:bg-white/15 px-1.5 py-0.5 rounded-sm transition-colors"
+          >
+            → resume.pdf
+          </a>
           <span className="opacity-80">TypeScript</span>
           <span className="opacity-80">UTF-8</span>
           <span className="opacity-80">LF</span>
@@ -159,6 +169,40 @@ export default function VibeSide({ shrunk }: { shrunk: boolean }) {
 }
 
 /* ─── Alt tabs content ─────────────────────────────────────────────────── */
+function CaseStudiesTS() {
+  // Each row links to its anchor in the SelectedWork section below the hero.
+  const studies: { name: string; impact: string; anchor: string }[] = [
+    { name: 'CVMACHINE',         impact: 'live · full-stack · auth + AI parsing',     anchor: '#cvmachine'      },
+    { name: 'Forecasting',       impact: '+5% accuracy · XGBoost ensemble',           anchor: '#forecasting'    },
+    { name: 'Azure Platform',    impact: '2 LLM apps in prod · 4 BI products',        anchor: '#azure-platform' },
+    { name: 'Macrogen Stack',    impact: 'green-field · DW + ETL + reporting',        anchor: '#macrogen'       },
+  ]
+  return (
+    <>
+      <div className="px-3"><Cm>{'// scroll below the hero for the full write-ups'}</Cm></div>
+      <div className="px-3"><Cm>{'// each row jumps to a Problem / Solution / Impact / Stack card'}</Cm></div>
+      <div className="px-3">&nbsp;</div>
+      <div className="px-3">
+        <Kw>export const</Kw>{' '}<Va>caseStudies</Va>{' '}<Op>=</Op>{' '}<Op>{'['}</Op>
+      </div>
+      {studies.map(s => (
+        <a
+          key={s.anchor}
+          href={s.anchor}
+          className="block px-3 pl-6 hover:bg-[#094771]/40 transition-colors group"
+        >
+          <Op>{'{ '}</Op>
+          <Va>name</Va><Op>: </Op><St>{`'${s.name}'`}</St><Op>, </Op>
+          <Va>impact</Va><Op>: </Op><St>{`'${s.impact}'`}</St>
+          <Op>{' },'}</Op>
+          <span className="text-[#3794ff] opacity-0 group-hover:opacity-100 transition-opacity">  {' '}{s.anchor}</span>
+        </a>
+      ))}
+      <div className="px-3"><Op>{'];'}</Op></div>
+    </>
+  )
+}
+
 function ProjectsJSON() {
   return (
     <>
