@@ -4,13 +4,13 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <article
       id={project.slug}
-      className="scroll-mt-20 bg-white/60 border border-stone-200 rounded-sm p-8 lg:p-10
-                 hover:border-stone-300 hover:bg-white/80 transition-colors"
+      className="scroll-mt-20 bg-white/60 border border-[#584C25]/15 rounded-sm p-8 lg:p-10
+                 hover:border-[#584C25]/30 hover:bg-white/80 transition-colors"
     >
       {/* Header */}
       <div className="flex items-baseline justify-between gap-4 mb-6 flex-wrap">
         <div>
-          <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-1.5">
+          <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-1.5">
             {project.context}
           </p>
           <h3 className="text-stone-900 text-2xl lg:text-[28px] font-light tracking-tight">
@@ -40,7 +40,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Problem */}
         <div className="lg:col-span-6">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-2">Problem</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Problem</p>
           <p className="text-stone-700 text-[14px] leading-[1.7] font-light">
             {project.problem}
           </p>
@@ -48,7 +48,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Solution */}
         <div className="lg:col-span-6">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-2">Solution</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Solution</p>
           <p className="text-stone-700 text-[14px] leading-[1.7] font-light">
             {project.solution}
           </p>
@@ -56,7 +56,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Impact */}
         <div className="lg:col-span-7">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-2">Impact</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Impact</p>
           <ul className="space-y-1.5">
             {project.impact.map(point => (
               <li
@@ -72,7 +72,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Stack */}
         <div className="lg:col-span-5">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-2">Stack</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Stack</p>
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map(tech => (
               <span
@@ -92,11 +92,11 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function SelectedWork() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-stone-200/70 py-20 lg:py-28">
+    <section className="bg-[#FCF9EE] border-t border-[#584C25]/15 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-2">
+        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-2">
           Selected work
         </p>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-2 max-w-xl">

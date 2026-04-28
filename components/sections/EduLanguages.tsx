@@ -20,14 +20,14 @@ const LANGUAGES: { name: string; level: string }[] = [
 
 export default function EduLanguages() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-stone-200/70 py-20 lg:py-28">
+    <section className="bg-[#FCF9EE] border-t border-[#584C25]/15 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         <div className="grid md:grid-cols-2 gap-x-16 gap-y-12">
 
           {/* Education */}
           <div>
-            <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-6">
+            <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
               Education
             </p>
             <div className="space-y-5">
@@ -52,7 +52,7 @@ export default function EduLanguages() {
 
           {/* Languages */}
           <div>
-            <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-6">
+            <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
               Languages
             </p>
             <div className="space-y-3">

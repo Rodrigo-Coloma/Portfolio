@@ -19,13 +19,13 @@ export default function Navbar() {
   }, [])
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 h-12 bg-[#1e1e1e] border-b border-[#2d2d2d]">
+    <nav className="fixed top-0 inset-x-0 z-50 h-12 bg-[#584C25] border-b border-[#3d340f]">
       <div className="h-full flex items-center justify-between px-6 lg:px-10">
 
         {/* Logo */}
         <Link
           href="/"
-          className="font-mono text-sm text-[#9d9d9d] hover:text-white transition-colors duration-200"
+          className="font-mono text-sm text-[#dcd1aa] hover:text-white transition-colors duration-200"
         >
           rcoloma.dev
         </Link>
@@ -34,14 +34,14 @@ export default function Navbar() {
         <div className="flex items-center gap-5 sm:gap-8">
           <Link
             href="/"
-            className="hidden sm:inline-block text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
+            className="hidden sm:inline-block text-[11px] uppercase tracking-[0.18em] text-[#dcd1aa] hover:text-white transition-colors duration-200"
           >
             Homepage
           </Link>
 
           <Link
             href="/contact"
-            className="text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
+            className="text-[11px] uppercase tracking-[0.18em] text-[#dcd1aa] hover:text-white transition-colors duration-200"
           >
             Contact
           </Link>
@@ -50,7 +50,7 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-block text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
+            className="hidden sm:inline-block text-[11px] uppercase tracking-[0.18em] text-[#dcd1aa] hover:text-white transition-colors duration-200"
           >
             Resume ↓
           </a>
@@ -65,7 +65,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setOpen(prev => !prev)}
-              className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
+              className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#dcd1aa] hover:text-white transition-colors duration-200"
               aria-expanded={open}
             >
               Portfolio
@@ -84,15 +84,15 @@ export default function Navbar() {
               className={`absolute right-0 top-full pt-1 w-48 z-50 transition-all duration-200
                           ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
             >
-              <div className="bg-[#252526] border border-[#454545] rounded-[3px] overflow-hidden shadow-xl">
+              <div className="bg-[#3d340f] border border-[#584C25] rounded-[3px] overflow-hidden shadow-xl">
                 <a
                   href="/cvmachine"
-                  className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771]"
+                  className="flex items-center justify-between px-4 py-3 group hover:bg-[#584C25]"
                 >
-                  <span className="text-xs text-[#cccccc] group-hover:text-white transition-colors">
+                  <span className="text-xs text-[#e8dec0] group-hover:text-white transition-colors">
                     CVMACHINE
                   </span>
-                  <span className="text-[10px] text-[#858585] group-hover:text-[#cccccc] transition-colors">
+                  <span className="text-[10px] text-[#a89968] group-hover:text-[#e8dec0] transition-colors">
                     AI CV builder ↗
                   </span>
                 </a>

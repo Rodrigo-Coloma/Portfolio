@@ -7,11 +7,11 @@ const ACTIONS: { label: string; sub: string; href: string; external?: boolean }[
 
 export default function FinalCTA() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-stone-200/70 py-24 lg:py-32">
+    <section className="bg-[#FCF9EE] border-t border-[#584C25]/15 py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-8 lg:px-12 text-center">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-5">
+        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-5">
           What&apos;s next
         </p>
 
@@ -35,7 +35,7 @@ export default function FinalCTA() {
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
               className="group flex flex-col items-center justify-center gap-1
-                         border border-stone-200 hover:border-stone-400 bg-white/40 hover:bg-white
+                         border border-[#584C25]/20 hover:border-[#584C25]/60 bg-white/40 hover:bg-white
                          rounded-sm px-4 py-5 transition-colors"
             >
               <span className="text-stone-900 text-[13px] font-medium tracking-wide">

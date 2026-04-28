@@ -36,7 +36,7 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
       >
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-6">
+        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
           Madrid, Spain · Open to remote EU
         </p>
 
@@ -59,7 +59,7 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
         {/* Experience */}
         <div className="mb-14">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-5">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-5">
             Experience
           </p>
           <div className="space-y-3">
@@ -79,7 +79,7 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
         {/* Expertise */}
         <div className="mb-14">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-5">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-5">
             Expertise
           </p>
           <div className="space-y-2.5">

@@ -29,7 +29,7 @@ export default function ContactPage() {
       <div className="relative max-w-2xl mx-auto px-8 lg:px-12 py-20 lg:py-28">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-6">
+        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
           Get in touch
         </p>
 
@@ -46,11 +46,11 @@ export default function ContactPage() {
         </p>
 
         {/* Accent line */}
-        <div className="w-12 h-px bg-stone-300 mb-14" />
+        <div className="w-12 h-px bg-[#584C25]/40 mb-14" />
 
         {/* Contact methods */}
         <div className="mb-16">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-6">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-6">
             Direct
           </p>
           <div className="space-y-4">
@@ -60,7 +60,7 @@ export default function ContactPage() {
                 href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group flex items-baseline gap-6 -mx-3 px-3 py-2 rounded-sm hover:bg-stone-100/70 transition-colors"
+                className="group flex items-baseline gap-6 -mx-3 px-3 py-2 rounded-sm hover:bg-[#584C25]/10 transition-colors"
               >
                 <span className="text-stone-400 text-[11px] uppercase tracking-[0.18em] w-20 flex-shrink-0">
                   {label}
@@ -78,7 +78,7 @@ export default function ContactPage() {
 
         {/* Meta */}
         <div className="mb-12">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-6">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-6">
             Details
           </p>
           <div className="space-y-3">
@@ -96,7 +96,7 @@ export default function ContactPage() {
         </div>
 
         {/* Footer mark */}
-        <div className="pt-12 border-t border-stone-200">
+        <div className="pt-12 border-t border-[#584C25]/15">
           <p className="text-[10px] text-stone-400 tracking-widest">
             ⏤ Reply within 24 hours, usually faster
           </p>

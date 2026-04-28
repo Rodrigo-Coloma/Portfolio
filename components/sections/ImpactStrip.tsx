@@ -9,11 +9,11 @@ const METRICS: { value: string; label: string }[] = [
 
 export default function ImpactStrip() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-stone-200/70 py-20 lg:py-28">
+    <section className="bg-[#FCF9EE] border-t border-[#584C25]/15 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-2">
+        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-2">
           By the numbers
         </p>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-12 max-w-xl">

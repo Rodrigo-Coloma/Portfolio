@@ -1,10 +1,10 @@
 export default function About() {
   return (
-    <section className="bg-[#F5F0DA] border-t border-stone-200/70 py-20 lg:py-28">
+    <section className="bg-[#F5F0DA] border-t border-[#584C25]/15 py-20 lg:py-28">
       <div className="max-w-3xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
-        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-2">
+        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-2">
           The story
         </p>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-10 max-w-xl">
@@ -38,11 +38,11 @@ export default function About() {
         </div>
 
         {/* Accent line */}
-        <div className="w-12 h-px bg-stone-300 my-12" />
+        <div className="w-12 h-px bg-[#584C25]/40 my-12" />
 
         {/* Human element */}
         <div>
-          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-3">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-3">
             Outside the editor
           </p>
           <p className="text-stone-700 text-[15px] leading-[1.8] font-light max-w-xl">
