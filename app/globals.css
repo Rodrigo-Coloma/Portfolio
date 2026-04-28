@@ -4,14 +4,7 @@
 
 /* ─── Base ─────────────────────────────────────────────────── */
 html, body {
-  overflow: hidden;
   background: #1e1e1e;
-}
-
-@media (max-width: 767px) {
-  html, body {
-    overflow: auto;
-  }
 }
 
 /* ─── Smooth font rendering ─────────────────────────────────── */
