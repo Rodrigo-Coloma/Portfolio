@@ -1,10 +1,22 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close when clicking outside the dropdown
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <nav className="fixed top-0 inset-x-0 z-50 h-12 bg-[#1e1e1e] border-b border-[#2d2d2d]">
@@ -45,11 +57,14 @@ export default function Navbar() {
 
           {/* Portfolio dropdown */}
           <div
+            ref={dropdownRef}
             className="relative"
             onMouseEnter={() => setOpen(true)}
             onMouseLeave={() => setOpen(false)}
           >
             <button
+              type="button"
+              onClick={() => setOpen(prev => !prev)}
               className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
               aria-expanded={open}
             >
@@ -66,7 +81,7 @@ export default function Navbar() {
 
             {/* Dropdown wrapper — pt-1 keeps hover hit-area continuous with the button */}
             <div
-              className={`absolute right-0 top-full pt-1 w-48 transition-all duration-200
+              className={`absolute right-0 top-full pt-1 w-48 z-50 transition-all duration-200
                           ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
             >
               <div className="bg-[#252526] border border-[#454545] rounded-[3px] overflow-hidden shadow-xl">
