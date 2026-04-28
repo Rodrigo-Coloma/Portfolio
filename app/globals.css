@@ -49,3 +49,24 @@ nav, main {
 .animate-fade-in {
   animation: fadeIn 0.6s ease forwards;
 }
+
+/* ─── Typewriter caret ──────────────────────────────────────── */
+.typewriter-caret {
+  display: inline-block;
+  width: 0.06em;
+  height: 0.85em;
+  margin-left: 0.04em;
+  background: currentColor;
+  vertical-align: -0.08em;
+  animation: blink 0.75s step-end infinite;
+  transition: opacity 700ms ease;
+}
+
+.typewriter-caret--fade {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

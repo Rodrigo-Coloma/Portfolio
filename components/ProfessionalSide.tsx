@@ -2,6 +2,7 @@
 
 import StampLabel from '@/components/StampLabel'
 import RoughUnderline from '@/components/RoughUnderline'
+import Typewriter from '@/components/Typewriter'
 
 const EXPERIENCE = [
   { year: '2026',  role: 'Data Team Lead',              company: 'Grupo Ilunion'      },
@@ -45,7 +46,7 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
         {/* Name */}
         <h1 className="text-5xl xl:text-[64px] font-light text-stone-900 leading-[1] tracking-[-0.02em] mb-3">
-          Rodrigo Coloma
+          <Typewriter text="Rodrigo Coloma" />
         </h1>
 
         {/* Subtitle */}

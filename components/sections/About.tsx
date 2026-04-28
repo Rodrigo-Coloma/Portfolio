@@ -1,10 +1,20 @@
 import StampLabel from '@/components/StampLabel'
 import RoughUnderline from '@/components/RoughUnderline'
+import { SketchScatter, SketchBellCurve } from '@/components/Sketch'
 
 export default function About() {
   return (
-    <section className="bg-[#F5F0DA] border-t border-[#14B8A6]/30 py-20 lg:py-28">
-      <div className="max-w-3xl mx-auto px-8 lg:px-12">
+    <section className="bg-[#F5F0DA] border-t border-[#14B8A6]/30 py-20 lg:py-28 relative overflow-hidden">
+
+      {/* Lab-notebook doodles in the margins */}
+      <div className="absolute top-12 right-8 lg:right-16 opacity-60 pointer-events-none hidden md:block" aria-hidden="true">
+        <SketchScatter width={130} />
+      </div>
+      <div className="absolute bottom-14 left-6 lg:left-12 opacity-50 pointer-events-none hidden lg:block" aria-hidden="true">
+        <SketchBellCurve width={110} />
+      </div>
+
+      <div className="relative max-w-3xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
         <div className="mb-3">

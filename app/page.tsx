@@ -8,6 +8,7 @@ import SelectedWork from '@/components/sections/SelectedWork'
 import About from '@/components/sections/About'
 import EduLanguages from '@/components/sections/EduLanguages'
 import FinalCTA from '@/components/sections/FinalCTA'
+import { SketchArrow } from '@/components/Sketch'
 
 type Hovered = 'pro' | 'vibe' | null
 
@@ -65,11 +66,12 @@ export default function Home() {
 
         {/* Hover hint — pointing to the slim dev sidebar on the right */}
         <div
-          className={`absolute bottom-16 right-20 flex items-center gap-2
+          className={`absolute bottom-16 right-20 flex items-center gap-3
                        text-[10px] uppercase tracking-[0.25em] pointer-events-none
-                       text-[#14B8A6]/70 transition-opacity duration-500 ${vibeExpanded ? 'opacity-0' : 'opacity-100'}`}
+                       text-[#14B8A6]/80 transition-opacity duration-500 ${vibeExpanded ? 'opacity-0' : 'opacity-100'}`}
         >
-          hover developer mode →
+          <span>hover developer mode</span>
+          <SketchArrow color="#14B8A6" width={64} className="-mb-1 opacity-90" />
         </div>
 
         {/* Scroll indicator */}
