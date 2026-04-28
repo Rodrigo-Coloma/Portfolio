@@ -17,7 +17,7 @@ const EXPERTISE: [string, string][] = [
 
 export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
   return (
-    <div className="h-full bg-[#fafaf7] relative overflow-hidden">
+    <div className="h-full bg-[#FCF9EE] relative overflow-hidden">
 
       {/* Subtle radial wash */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />

@@ -21,7 +21,7 @@ const META: [string, string][] = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#fafaf7] pt-12">
+    <main className="min-h-screen bg-[#FCF9EE] pt-12">
 
       {/* Subtle radial wash matching homepage pro side */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />

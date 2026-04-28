@@ -7,7 +7,7 @@ const ACTIONS: { label: string; sub: string; href: string; external?: boolean }[
 
 export default function FinalCTA() {
   return (
-    <section className="bg-[#fafaf7] border-t border-stone-200/70 py-24 lg:py-32">
+    <section className="bg-[#FCF9EE] border-t border-stone-200/70 py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-8 lg:px-12 text-center">
 
         {/* Eyebrow */}

@@ -92,7 +92,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function SelectedWork() {
   return (
-    <section className="bg-[#fafaf7] border-t border-stone-200/70 py-20 lg:py-28">
+    <section className="bg-[#FCF9EE] border-t border-stone-200/70 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}

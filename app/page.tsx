@@ -27,7 +27,7 @@ export default function Home() {
   const wTransition = `width 680ms ${EASING}`
 
   return (
-    <main className="bg-[#fafaf7] pt-12" aria-label="Portfolio — Rodrigo Coloma">
+    <main className="bg-[#FCF9EE] pt-12" aria-label="Portfolio — Rodrigo Coloma">
 
       {/* ═════════ HERO ═════════ */}
 
@@ -82,14 +82,10 @@ export default function Home() {
         </a>
       </div>
 
-      {/* Mobile: stacked split-screen */}
-      <div className="md:hidden flex flex-col bg-black">
+      {/* Mobile: professional side only — IDE side hidden for readability */}
+      <div className="md:hidden flex flex-col">
         <section className="min-h-screen" aria-label="Professional profile">
           <ProfessionalSide shrunk={false} />
-        </section>
-        <div className="h-px bg-gradient-to-r from-transparent via-stone-400/40 to-transparent" />
-        <section className="min-h-screen" aria-label="Developer profile">
-          <VibeSide shrunk={false} />
         </section>
       </div>
 

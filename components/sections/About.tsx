@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="bg-[#f3f1ec] border-t border-stone-200/70 py-20 lg:py-28">
+    <section className="bg-[#F5F0DA] border-t border-stone-200/70 py-20 lg:py-28">
       <div className="max-w-3xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
