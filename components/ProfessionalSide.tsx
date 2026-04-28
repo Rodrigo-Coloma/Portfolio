@@ -1,130 +1,122 @@
 'use client'
 
-const SKILLS = [
-  'Azure', 'Databricks', 'PySpark', 'Python', 'SQL',
-  'PyTorch', 'XGBoost', 'Power BI', 'MLflow', 'Agentic AI',
+const EXPERIENCE = [
+  { year: '2026',  role: 'Data Team Lead',              company: 'Grupo Ilunion'      },
+  { year: '2024',  role: 'Senior Data Scientist',       company: 'Ilunion Hotels'     },
+  { year: '2022',  role: 'Data Analyst & Lab Director', company: 'Macrogen'           },
+  { year: '2018',  role: 'Clinical Data Specialist',    company: '12 Octubre Hospital'},
 ]
 
-const EXPERIENCE = [
-  { role: 'Data Team Lead',              company: 'Grupo Ilunion',        period: '2026 – Now'  },
-  { role: 'Senior Data Scientist',       company: 'Ilunion Hotels',        period: '2024 – 2025' },
-  { role: 'Data Analyst & Lab Director', company: 'Macrogen',              period: '2022 – 2024' },
-  { role: 'Clinical Data Specialist',    company: '12 Octubre Hospital',   period: '2018 – 2022' },
+const EXPERTISE: [string, string][] = [
+  ['Cloud Architecture',     'Azure · Databricks · PySpark'],
+  ['Machine Learning',       'PyTorch · XGBoost · Scikit-Learn · MLflow'],
+  ['Data Engineering',       'Python · SQL · ETL · Data Modeling'],
+  ['Business Intelligence',  'Power BI · Advanced DAX · Power Query'],
+  ['LLM Applications',       'Claude · Anthropic SDK · Agentic AI'],
 ]
 
 export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
   return (
-    <div className="h-full bg-[#050e1f] relative overflow-hidden group">
+    <div className="h-full bg-[#fafaf7] relative overflow-hidden">
 
-      {/* Dot grid */}
-      <div className="absolute inset-0 bg-dot-grid opacity-100 pointer-events-none" />
+      {/* Subtle radial wash */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
 
-      {/* Radial blue glow — top-left */}
-      <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
+      {/* Vertical accent line */}
+      <div className="absolute left-12 lg:left-16 xl:left-20 top-24 bottom-24 w-px bg-stone-200 pointer-events-none" />
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#050e1f] to-transparent pointer-events-none" />
-
-      {/* ── Main content ── */}
+      {/* Content */}
       <div
-        className="relative z-10 h-full flex flex-col justify-center px-12 lg:px-16 xl:px-20"
+        className="relative h-full flex flex-col justify-center pl-16 lg:pl-24 xl:pl-32 pr-12 max-w-[640px]"
         style={{
-          opacity:    shrunk ? 0.35 : 1,
-          transform:  shrunk ? 'scale(0.96)' : 'scale(1)',
+          opacity:    shrunk ? 0.4 : 1,
+          transform:  shrunk ? 'scale(0.97)' : 'scale(1)',
           transition: 'opacity 600ms ease, transform 600ms ease',
         }}
       >
 
         {/* Eyebrow */}
-        <p className="text-blue-400/70 text-[10px] font-medium tracking-[0.3em] uppercase mb-5 animate-fade-in">
-          Data Engineer · ML Practitioner · Madrid
+        <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-stone-400 mb-6">
+          Madrid, Spain · Open to remote EU
         </p>
 
         {/* Name */}
-        <h1 className="text-5xl xl:text-6xl font-bold text-white leading-[1.05] tracking-tight mb-3">
-          Rodrigo<br />Coloma
+        <h1 className="text-5xl xl:text-[64px] font-light text-stone-900 leading-[1] tracking-[-0.02em] mb-3">
+          Rodrigo Coloma
         </h1>
 
         {/* Subtitle */}
-        <p className="text-slate-500 text-sm mb-8">
-          Senior Data Scientist · Open to remote EU roles
+        <p className="text-stone-500 text-base font-light tracking-wide mb-12">
+          Data Engineer · Senior Data Scientist · ML Practitioner
         </p>
-
-        {/* Blue accent line */}
-        <div className="w-10 h-[2px] bg-blue-500 mb-8 rounded-full" />
 
         {/* Bio */}
-        <p className="text-slate-400 text-sm leading-relaxed mb-9 max-w-[340px]">
-          Nine years building data systems and ML solutions across cloud
-          architecture, production models, and LLM applications —
-          shipped end-to-end.
+        <p className="text-stone-700 text-[15px] leading-[1.7] font-light mb-14 max-w-[480px]">
+          Currently leading data engineering and analytics at Grupo Ilunion.
+          Nine years building cloud data architecture, production ML systems,
+          and LLM applications shipped end-to-end.
         </p>
 
-        {/* Skills */}
-        <div className="mb-9">
-          <p className="text-[10px] text-slate-600 uppercase tracking-[0.2em] mb-3">Core stack</p>
-          <div className="flex flex-wrap gap-1.5 stagger">
-            {SKILLS.map(skill => (
-              <span
-                key={skill}
-                className="px-2.5 py-1 text-[11px] border border-slate-700/70 text-slate-500
-                           hover:border-blue-500/50 hover:text-blue-400/80 transition-colors duration-200
-                           rounded-[3px] cursor-default"
-              >
-                {skill}
-              </span>
+        {/* Experience */}
+        <div className="mb-14">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-5">
+            Experience
+          </p>
+          <div className="space-y-3">
+            {EXPERIENCE.map(job => (
+              <div key={job.company} className="flex items-baseline gap-6">
+                <span className="text-stone-400 text-xs font-mono tabular-nums w-12 flex-shrink-0">
+                  {job.year}
+                </span>
+                <div className="text-[14px] leading-tight">
+                  <span className="text-stone-800 font-medium">{job.role}</span>
+                  <span className="text-stone-400 font-light"> · {job.company}</span>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Experience */}
-        <div className="mb-10">
-          <p className="text-[10px] text-slate-600 uppercase tracking-[0.2em] mb-4">Experience</p>
-          <div className="space-y-3 stagger">
-            {EXPERIENCE.map(job => (
-              <div key={job.company} className="flex items-baseline justify-between gap-4">
-                <div className="min-w-0">
-                  <span className="text-slate-200 text-sm font-medium">{job.role}</span>
-                  <span className="text-slate-600 text-xs"> · {job.company}</span>
-                </div>
-                <span className="text-slate-700 text-[11px] flex-shrink-0 tabular-nums">{job.period}</span>
+        {/* Expertise */}
+        <div className="mb-14">
+          <p className="text-[10px] tracking-[0.25em] uppercase text-stone-400 mb-5">
+            Expertise
+          </p>
+          <div className="space-y-2.5">
+            {EXPERTISE.map(([area, stack]) => (
+              <div key={area} className="flex items-baseline gap-6">
+                <span className="text-stone-700 text-[13px] font-medium w-44 flex-shrink-0">
+                  {area}
+                </span>
+                <span className="text-stone-500 text-[13px] font-light tracking-wide">
+                  {stack}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
         {/* CTAs */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex items-center gap-7 text-[13px]">
           <a
             href="https://www.linkedin.com/in/rcoloma"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500
-                       text-white text-xs font-medium transition-colors duration-200 rounded-[3px]"
+            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-stone-300 hover:decoration-stone-600 hover:underline transition-all"
           >
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
             LinkedIn ↗
           </a>
           <a
             href="https://github.com/Rodrigo-Coloma"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 border border-slate-700
-                       hover:border-slate-500 text-slate-400 hover:text-slate-200
-                       text-xs font-medium transition-colors duration-200 rounded-[3px]"
+            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-stone-300 hover:decoration-stone-600 hover:underline transition-all"
           >
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
             GitHub ↗
           </a>
           <a
             href="mailto:rjcolgut@gmail.com"
-            className="flex items-center gap-1.5 px-4 py-2 border border-slate-700/60
-                       hover:border-slate-600 text-slate-500 hover:text-slate-300
-                       text-xs font-medium transition-colors duration-200 rounded-[3px]"
+            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-stone-300 hover:decoration-stone-600 hover:underline transition-all"
           >
             rjcolgut@gmail.com
           </a>
@@ -132,12 +124,12 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
       </div>
 
-      {/* Side label hint */}
+      {/* Side label */}
       <div
-        className="absolute bottom-6 left-12 lg:left-16 xl:left-20 text-[10px] text-slate-700 uppercase tracking-widest"
+        className="absolute bottom-6 left-12 lg:left-16 xl:left-20 text-[10px] text-stone-300 uppercase tracking-[0.3em]"
         style={{ opacity: shrunk ? 0 : 1, transition: 'opacity 400ms ease' }}
       >
-        Professional
+        ⏤ The Professional
       </div>
     </div>
   )

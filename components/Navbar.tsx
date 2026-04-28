@@ -7,13 +7,13 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 h-12 bg-black/75 backdrop-blur-md border-b border-white/[0.06]">
+    <nav className="fixed top-0 inset-x-0 z-50 h-12 bg-[#1e1e1e] border-b border-[#2d2d2d]">
       <div className="h-full flex items-center justify-between px-6 lg:px-10">
 
         {/* Logo */}
         <Link
           href="/"
-          className="font-mono text-sm text-slate-500 hover:text-white transition-colors duration-200"
+          className="font-mono text-sm text-[#9d9d9d] hover:text-white transition-colors duration-200"
         >
           rcoloma.dev
         </Link>
@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="flex items-center gap-8">
           <Link
             href="/"
-            className="text-[11px] uppercase tracking-[0.18em] text-slate-500 hover:text-white transition-colors duration-200"
+            className="text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
           >
             Homepage
           </Link>
@@ -34,7 +34,7 @@ export default function Navbar() {
             onMouseLeave={() => setOpen(false)}
           >
             <button
-              className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-slate-500 hover:text-white transition-colors duration-200"
+              className="flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-[#9d9d9d] hover:text-white transition-colors duration-200"
               aria-expanded={open}
             >
               Portfolio
@@ -50,18 +50,18 @@ export default function Navbar() {
 
             {/* Dropdown */}
             <div
-              className={`absolute right-0 top-full mt-2 w-48 bg-[#0e0e0e] border border-white/10
+              className={`absolute right-0 top-full mt-1 w-48 bg-[#252526] border border-[#454545]
                           rounded-[3px] overflow-hidden shadow-xl transition-all duration-200
                           ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
             >
               <a
                 href="/cvmachine"
-                className="flex items-center justify-between px-4 py-3 group"
+                className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771]"
               >
-                <span className="text-xs text-slate-300 group-hover:text-white transition-colors">
+                <span className="text-xs text-[#cccccc] group-hover:text-white transition-colors">
                   CVMACHINE
                 </span>
-                <span className="text-[10px] text-slate-600 group-hover:text-slate-400 transition-colors">
+                <span className="text-[10px] text-[#858585] group-hover:text-[#cccccc] transition-colors">
                   AI CV builder ↗
                 </span>
               </a>
