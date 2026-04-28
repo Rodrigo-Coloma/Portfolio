@@ -68,15 +68,54 @@ const TABS = [
   { name: 'README.md',       icon: 'md', iconBg: '#519aba', iconFg: '#ffffff' },
 ]
 
-export default function VibeSide({ shrunk }: { shrunk: boolean }) {
+export default function VibeSide({ collapsed = false }: { collapsed?: boolean }) {
   const [activeTab, setActiveTab] = useState(0)
 
+  // ── Collapsed sidebar mode ──────────────────────────────────────
+  if (collapsed) {
+    return (
+      <div className="h-full bg-[#1e1e1e] relative overflow-hidden flex flex-col items-center pt-5 pb-4 select-none">
+        {/* Top turquoise accent stripe */}
+        <div className="absolute top-0 inset-x-2 h-px bg-[#14B8A6]/70" />
+
+        {/* Code icon */}
+        <div className="font-mono text-[#14B8A6] text-base mb-6">{'</>'}</div>
+
+        {/* Stacked tab icons (vertical activity bar style) */}
+        <div className="flex flex-col items-center gap-2.5 mb-8">
+          {TABS.map(t => (
+            <span
+              key={t.name}
+              className="text-[8px] font-bold w-5 h-5 rounded-sm flex items-center justify-center"
+              style={{ background: t.iconBg, color: t.iconFg }}
+              title={t.name}
+            >
+              {t.icon}
+            </span>
+          ))}
+        </div>
+
+        {/* Vertical "DEVELOPER" label */}
+        <div
+          className="font-mono text-[10px] tracking-[0.4em] text-[#dcdcaa]/80 mt-auto mb-4"
+          style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+        >
+          DEVELOPER · HOVER
+        </div>
+
+        {/* Bottom expand arrow */}
+        <div className="font-mono text-[#14B8A6] text-xs">←</div>
+      </div>
+    )
+  }
+
+  // ── Expanded full IDE mode ──────────────────────────────────────
   return (
     <div
       className="h-full bg-[#1e1e1e] relative overflow-hidden font-mono flex flex-col"
       style={{
-        opacity:    shrunk ? 0.4 : 1,
-        transform:  shrunk ? 'scale(0.97)' : 'scale(1)',
+        opacity: 1,
+        transform: 'scale(1)',
         transition: 'opacity 600ms ease, transform 600ms ease',
         transformOrigin: 'top right',
       }}

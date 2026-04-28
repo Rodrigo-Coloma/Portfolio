@@ -7,7 +7,7 @@ const ACTIONS: { label: string; sub: string; href: string; external?: boolean }[
 
 export default function FinalCTA() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-[#584C25]/15 py-24 lg:py-32">
+    <section className="bg-[#FCF9EE] border-t border-[#14B8A6]/30 py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-8 lg:px-12 text-center">
 
         {/* Eyebrow */}
@@ -17,7 +17,7 @@ export default function FinalCTA() {
 
         {/* Headline */}
         <h2 className="text-stone-900 text-5xl lg:text-6xl font-light tracking-[-0.02em] leading-[1.05] mb-6">
-          Let&apos;s build<br className="hidden sm:inline" /> something.
+          Let&apos;s <span className="text-[#0F8B7C]">build</span><br className="hidden sm:inline" /> something.
         </h2>
 
         {/* Sub */}

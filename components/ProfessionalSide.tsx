@@ -20,20 +20,20 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
     <div className="h-full bg-[#FCF9EE] relative overflow-hidden">
 
       {/* Subtle radial wash */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_30%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
 
-      {/* Vertical accent line */}
-      <div className="absolute left-12 lg:left-16 xl:left-20 top-24 bottom-24 w-px bg-stone-200 pointer-events-none" />
-
-      {/* Content */}
+      {/* Centered content column */}
       <div
-        className="relative h-full flex flex-col justify-center pl-16 lg:pl-24 xl:pl-32 pr-12 max-w-[640px]"
+        className="relative h-full max-w-[640px] mx-auto px-12 lg:px-16 flex flex-col justify-center"
         style={{
           opacity:    shrunk ? 0.4 : 1,
           transform:  shrunk ? 'scale(0.97)' : 'scale(1)',
           transition: 'opacity 600ms ease, transform 600ms ease',
         }}
       >
+
+        {/* Vertical accent line on left edge of centered column */}
+        <div className="absolute left-0 top-24 bottom-24 w-px bg-gradient-to-b from-transparent via-[#14B8A6]/40 to-transparent pointer-events-none" />
 
         {/* Eyebrow */}
         <p className="text-[10px] font-medium tracking-[0.3em] uppercase text-[#584C25]/70 mb-6">
@@ -52,7 +52,7 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
         {/* Bio */}
         <p className="text-stone-700 text-[15px] leading-[1.7] font-light mb-14 max-w-[480px]">
-          I build data platforms and ML systems that ship — and stay shipped.
+          I build data platforms and ML systems that <span className="text-[#0F8B7C] font-normal">ship — and stay shipped</span>.
           Nine years across pharma, hospitality, and clinical research turning
           messy data into reliable products. Currently leading data + AI at Grupo Ilunion.
         </p>
@@ -124,9 +124,9 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
 
       </div>
 
-      {/* Side label */}
+      {/* Side label — centered */}
       <div
-        className="absolute bottom-6 left-12 lg:left-16 xl:left-20 text-[10px] text-stone-300 uppercase tracking-[0.3em]"
+        className="absolute bottom-6 inset-x-0 text-center text-[10px] text-stone-300 uppercase tracking-[0.3em]"
         style={{ opacity: shrunk ? 0 : 1, transition: 'opacity 400ms ease' }}
       >
         ⏤ The Professional

@@ -22,17 +22,19 @@ function dividerStyle(hovered: Hovered) {
 export default function Home() {
   const [hovered, setHovered] = useState<Hovered>(null)
 
-  const proWidth  = hovered === 'vibe' ? '30%' : hovered === 'pro' ? '70%' : '50%'
-  const vibeWidth = hovered === 'pro'  ? '30%' : hovered === 'vibe' ? '70%' : '50%'
+  // Dev side acts as a hidden sidebar: slim 56px column at rest, expands on hover
+  const vibeExpanded = hovered === 'vibe'
+  const proWidth  = vibeExpanded ? '50%'   : 'calc(100% - 56px)'
+  const vibeWidth = vibeExpanded ? '50%'   : '56px'
   const wTransition = `width 680ms ${EASING}`
 
   return (
-    <main className="bg-[#FCF9EE] pt-12" aria-label="Portfolio — Rodrigo Coloma">
+    <main className="bg-[#FCF9EE] pt-[58px]" aria-label="Portfolio — Rodrigo Coloma">
 
       {/* ═════════ HERO ═════════ */}
 
       {/* Desktop: split-screen, exactly one viewport tall */}
-      <div className="hidden md:flex h-[calc(100vh-3rem)] w-full overflow-hidden bg-black relative">
+      <div className="hidden md:flex h-[calc(100vh-58px)] w-full overflow-hidden bg-black relative">
 
         {/* Professional side */}
         <section
@@ -42,7 +44,7 @@ export default function Home() {
           onMouseEnter={() => setHovered('pro')}
           onMouseLeave={() => setHovered(null)}
         >
-          <ProfessionalSide shrunk={hovered === 'vibe'} />
+          <ProfessionalSide shrunk={vibeExpanded} />
         </section>
 
         {/* Divider */}
@@ -58,16 +60,16 @@ export default function Home() {
           onMouseEnter={() => setHovered('vibe')}
           onMouseLeave={() => setHovered(null)}
         >
-          <VibeSide shrunk={hovered === 'pro'} />
+          <VibeSide collapsed={!vibeExpanded} />
         </section>
 
-        {/* Hover hint */}
+        {/* Hover hint — pointing to the slim dev sidebar on the right */}
         <div
-          className={`absolute bottom-16 inset-x-0 flex items-center justify-center
-                       text-[10px] uppercase tracking-[0.25em] pointer-events-none mix-blend-difference
-                       text-white/40 transition-opacity duration-500 ${hovered ? 'opacity-0' : 'opacity-100'}`}
+          className={`absolute bottom-16 right-20 flex items-center gap-2
+                       text-[10px] uppercase tracking-[0.25em] pointer-events-none
+                       text-[#14B8A6]/70 transition-opacity duration-500 ${vibeExpanded ? 'opacity-0' : 'opacity-100'}`}
         >
-          ← hover to explore →
+          hover developer mode →
         </div>
 
         {/* Scroll indicator */}
@@ -91,7 +93,7 @@ export default function Home() {
 
       {/* ═════════ BELOW THE FOLD ═════════ */}
 
-      <div id="below-the-fold" className="scroll-mt-12">
+      <div id="below-the-fold" className="scroll-mt-[58px]">
         <ImpactStrip />
         <SelectedWork />
         <About />

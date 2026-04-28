@@ -21,7 +21,7 @@ const META: [string, string][] = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#FCF9EE] pt-12">
+    <main className="min-h-screen bg-[#FCF9EE] pt-[58px]">
 
       {/* Subtle radial wash matching homepage pro side */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
@@ -46,7 +46,7 @@ export default function ContactPage() {
         </p>
 
         {/* Accent line */}
-        <div className="w-12 h-px bg-[#584C25]/40 mb-14" />
+        <div className="w-12 h-px bg-[#14B8A6] mb-14" />
 
         {/* Contact methods */}
         <div className="mb-16">

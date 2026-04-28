@@ -5,7 +5,7 @@ function ProjectCard({ project }: { project: Project }) {
     <article
       id={project.slug}
       className="scroll-mt-20 bg-white/60 border border-[#584C25]/15 rounded-sm p-8 lg:p-10
-                 hover:border-[#584C25]/30 hover:bg-white/80 transition-colors"
+                 hover:border-[#14B8A6]/50 hover:bg-white/80 transition-colors"
     >
       {/* Header */}
       <div className="flex items-baseline justify-between gap-4 mb-6 flex-wrap">
@@ -63,7 +63,7 @@ function ProjectCard({ project }: { project: Project }) {
                 key={point}
                 className="text-stone-700 text-[14px] leading-[1.6] font-light flex gap-3"
               >
-                <span className="text-stone-400 mt-1 text-[10px] flex-shrink-0">▸</span>
+                <span className="text-[#14B8A6] mt-1 text-[10px] flex-shrink-0">▸</span>
                 <span>{point}</span>
               </li>
             ))}
@@ -92,7 +92,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function SelectedWork() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-[#584C25]/15 py-20 lg:py-28">
+    <section className="bg-[#FCF9EE] border-t border-[#14B8A6]/30 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
@@ -100,7 +100,7 @@ export default function SelectedWork() {
           Selected work
         </p>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-2 max-w-xl">
-          Four projects, end-to-end.
+          Four projects, <span className="text-[#0F8B7C]">end-to-end</span>.
         </h2>
         <p className="text-stone-500 text-[14px] leading-[1.7] font-light max-w-xl mb-12">
           A live side project, a production ML lift, a corporate cloud platform,

@@ -9,7 +9,7 @@ const METRICS: { value: string; label: string }[] = [
 
 export default function ImpactStrip() {
   return (
-    <section className="bg-[#FCF9EE] border-t border-[#584C25]/15 py-20 lg:py-28">
+    <section className="bg-[#FCF9EE] border-t border-[#14B8A6]/30 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
@@ -17,7 +17,7 @@ export default function ImpactStrip() {
           By the numbers
         </p>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-12 max-w-xl">
-          Nine years, shipped — measured where it counts.
+          Nine years, <span className="text-[#0F8B7C]">shipped</span> — measured where it counts.
         </h2>
 
         {/* Metrics grid */}

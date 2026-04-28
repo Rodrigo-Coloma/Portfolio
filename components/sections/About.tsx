@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="bg-[#F5F0DA] border-t border-[#584C25]/15 py-20 lg:py-28">
+    <section className="bg-[#F5F0DA] border-t border-[#14B8A6]/30 py-20 lg:py-28">
       <div className="max-w-3xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}
@@ -8,7 +8,7 @@ export default function About() {
           The story
         </p>
         <h2 className="text-stone-900 text-3xl font-light tracking-[-0.01em] mb-10 max-w-xl">
-          From clinical labs to data platforms — the same instinct, different stack.
+          From clinical labs to data platforms — the <span className="text-[#0F8B7C]">same instinct</span>, different stack.
         </h2>
 
         <div className="space-y-6 text-stone-700 text-[15px] leading-[1.8] font-light">
@@ -38,7 +38,7 @@ export default function About() {
         </div>
 
         {/* Accent line */}
-        <div className="w-12 h-px bg-[#584C25]/40 my-12" />
+        <div className="w-12 h-px bg-[#14B8A6] my-12" />
 
         {/* Human element */}
         <div>
