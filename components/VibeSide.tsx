@@ -1,154 +1,207 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 
-type LineType = 'cmd' | 'output' | 'data' | 'success' | 'blank' | 'prompt'
+/* ─── VS Code Dark+ token colors ──────────────────────────────────────── */
+const Cm = ({ children }: { children: React.ReactNode }) => <span className="text-[#6a9955] italic">{children}</span>  // comment
+const Kw = ({ children }: { children: React.ReactNode }) => <span className="text-[#c586c0]">{children}</span>          // keyword
+const St = ({ children }: { children: React.ReactNode }) => <span className="text-[#ce9178]">{children}</span>          // string
+const Nm = ({ children }: { children: React.ReactNode }) => <span className="text-[#b5cea8]">{children}</span>          // number
+const Fn = ({ children }: { children: React.ReactNode }) => <span className="text-[#dcdcaa]">{children}</span>          // function
+const Ty = ({ children }: { children: React.ReactNode }) => <span className="text-[#4ec9b0]">{children}</span>          // type
+const Va = ({ children }: { children: React.ReactNode }) => <span className="text-[#9cdcfe]">{children}</span>          // variable / property
+const Op = ({ children }: { children: React.ReactNode }) => <span className="text-[#d4d4d4]">{children}</span>          // plain / operator
 
-interface TermLine {
-  delay: number
-  text:  string
-  type:  LineType
-}
-
-const LINES: TermLine[] = [
-  { delay: 300,  text: '$ whoami',                                      type: 'cmd'     },
-  { delay: 750,  text: '  rodrigo — builder · ai dev · vibe coder',     type: 'output'  },
-  { delay: 1150, text: '',                                               type: 'blank'   },
-  { delay: 1250, text: '$ ls ~/projects',                               type: 'cmd'     },
-  { delay: 1650, text: '  CVMACHINE/     # AI-powered CV optimizer',    type: 'output'  },
-  { delay: 1950, text: '  LINKEDIN-MGR/  # AI content engine',          type: 'output'  },
-  { delay: 2250, text: "  rcoloma.dev/   # you're here",                type: 'output'  },
-  { delay: 2750, text: '',                                               type: 'blank'   },
-  { delay: 2850, text: '$ cat stack.json',                              type: 'cmd'     },
-  { delay: 3250, text: '  "llm"   → ["claude", "anthropic-sdk"]',       type: 'data'    },
-  { delay: 3450, text: '  "web"   → ["typescript", "react", "next"]',   type: 'data'    },
-  { delay: 3650, text: '  "data"  → ["python", "databricks", "azure"]', type: 'data'    },
-  { delay: 3850, text: '  "ml"    → ["pytorch", "xgboost", "mlflow"]',  type: 'data'    },
-  { delay: 4150, text: '',                                               type: 'blank'   },
-  { delay: 4250, text: '$ git log --oneline',                           type: 'cmd'     },
-  { delay: 4650, text: '  ✓ shipped 2 LLM apps to production',          type: 'success' },
-  { delay: 4950, text: '  ✓ built cvmachine end-to-end',                type: 'success' },
-  { delay: 5250, text: '  ✓ 9 years of commits, still going',           type: 'success' },
-  { delay: 5650, text: '',                                               type: 'blank'   },
-  { delay: 5750, text: '',                                               type: 'prompt'  },
-]
-
-const LINE_COLORS: Record<LineType, string> = {
-  cmd:     'text-green-400 glow-green',
-  output:  'text-green-700',
-  data:    'text-cyan-800',
-  success: 'text-emerald-500',
-  blank:   '',
-  prompt:  '',
-}
-
-export default function VibeSide({ shrunk }: { shrunk: boolean }) {
-  const [visibleCount, setVisibleCount] = useState(0)
-  const initialized = useRef(false)
-
-  useEffect(() => {
-    if (initialized.current) return
-    initialized.current = true
-
-    LINES.forEach((line, i) => {
-      setTimeout(() => setVisibleCount(c => Math.max(c, i + 1)), line.delay)
-    })
-  }, [])
+/* ─── Code lines (rendered as JSX with indentation) ────────────────────── */
+function CodeBody() {
+  const lines = [
+    <><Cm>{'// rodrigo coloma — ai builder · vibe coder'}</Cm></>,
+    <><Cm>{'// madrid · open to remote EU'}</Cm></>,
+    null,
+    <><Kw>import</Kw>{' '}<Op>{'{ Idea, Production }'}</Op>{' '}<Kw>from</Kw>{' '}<St>{`'@core/types'`}</St><Op>{';'}</Op></>,
+    <><Kw>import</Kw>{' '}<Op>{'{ build, ship }'}</Op>{'      '}<Kw>from</Kw>{' '}<St>{`'@core/pipeline'`}</St><Op>{';'}</Op></>,
+    null,
+    <><Kw>const</Kw>{' '}<Va>me</Va>{' '}<Op>=</Op>{' '}<Op>{'{'}</Op></>,
+    <><span className="pl-6"><Va>name</Va><Op>:</Op>{'       '}<St>{`'Rodrigo Coloma'`}</St><Op>,</Op></span></>,
+    <><span className="pl-6"><Va>role</Va><Op>:</Op>{'       '}<St>{`'AI Engineer · Builder'`}</St><Op>,</Op></span></>,
+    <><span className="pl-6"><Va>location</Va><Op>:</Op>{'   '}<St>{`'Madrid, ES'`}</St><Op>,</Op></span></>,
+    <><span className="pl-6"><Va>experience</Va><Op>:</Op>{' '}<Nm>9</Nm><Op>,</Op>{'  '}<Cm>{'// years shipping data + ML'}</Cm></span></>,
+    <><Op>{'}'}</Op>{' '}<Kw>as</Kw>{' '}<Ty>Developer</Ty><Op>;</Op></>,
+    null,
+    <><Kw>const</Kw>{' '}<Va>stack</Va>{' '}<Op>=</Op>{' '}<Op>{'{'}</Op></>,
+    <><span className="pl-6"><Va>llm</Va><Op>:</Op>{'   ['}<St>{`'claude-4.6'`}</St><Op>, </Op><St>{`'anthropic-sdk'`}</St><Op>{'],'}</Op></span></>,
+    <><span className="pl-6"><Va>web</Va><Op>:</Op>{'   ['}<St>{`'next.js'`}</St><Op>, </Op><St>{`'react'`}</St><Op>, </Op><St>{`'typescript'`}</St><Op>{'],'}</Op></span></>,
+    <><span className="pl-6"><Va>data</Va><Op>:</Op>{'  ['}<St>{`'python'`}</St><Op>, </Op><St>{`'databricks'`}</St><Op>, </Op><St>{`'azure'`}</St><Op>{'],'}</Op></span></>,
+    <><span className="pl-6"><Va>ml</Va><Op>:</Op>{'    ['}<St>{`'pytorch'`}</St><Op>, </Op><St>{`'xgboost'`}</St><Op>, </Op><St>{`'mlflow'`}</St><Op>{'],'}</Op></span></>,
+    <><Op>{'};'}</Op></>,
+    null,
+    <><Kw>const</Kw>{' '}<Va>projects</Va>{' '}<Op>=</Op>{' '}<Op>{'['}</Op></>,
+    <><span className="pl-6"><Op>{'{ '}</Op><Va>name</Va><Op>: </Op><St>{`'CVMACHINE'`}</St><Op>,   </Op><Va>kind</Va><Op>: </Op><St>{`'AI CV optimizer'`}</St><Op>{' },'}</Op></span></>,
+    <><span className="pl-6"><Op>{'{ '}</Op><Va>name</Va><Op>: </Op><St>{`'LinkedinMgr'`}</St><Op>, </Op><Va>kind</Va><Op>: </Op><St>{`'AI content engine'`}</St><Op>{' },'}</Op></span></>,
+    <><span className="pl-6"><Op>{'{ '}</Op><Va>name</Va><Op>: </Op><St>{`'rcoloma.dev'`}</St><Op>, </Op><Va>kind</Va><Op>: </Op><St>{`'this site'`}</St><Op>{'         },'}</Op></span></>,
+    <><Op>{'];'}</Op></>,
+    null,
+    <><Kw>function</Kw>{' '}<Fn>ship</Fn><Op>{'('}</Op><Va>idea</Va><Op>: </Op><Ty>Idea</Ty><Op>{'): '}</Op><Ty>Production</Ty>{' '}<Op>{'{'}</Op></>,
+    <><span className="pl-6"><Kw>return</Kw>{' '}<Fn>build</Fn><Op>{'('}</Op><Va>idea</Va><Op>{').'}</Op><Fn>iterate</Fn><Op>{'().'}</Op><Fn>deploy</Fn><Op>{'();'}</Op></span></>,
+    <><Op>{'}'}</Op></>,
+  ]
 
   return (
-    <div className="h-full bg-[#060606] relative overflow-hidden font-mono scanlines">
-
-      {/* Top glow line */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-green-500/25 to-transparent pointer-events-none" />
-
-      {/* Centre radial green glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_50%,rgba(0,255,80,0.04),transparent)] pointer-events-none" />
-
-      {/* ── Main content ── */}
-      <div
-        className="relative z-10 h-full flex flex-col justify-center px-12 lg:px-16 xl:px-20"
-        style={{
-          opacity:    shrunk ? 0.35 : 1,
-          transform:  shrunk ? 'scale(0.96)' : 'scale(1)',
-          transition: 'opacity 600ms ease, transform 600ms ease',
-        }}
-      >
-
-        {/* macOS-style title bar */}
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-          <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
-          <div className="w-3 h-3 rounded-full bg-[#28c840]" />
-          <span className="ml-3 text-[#2a2a2a] text-[11px] tracking-wide">rodrigo@dev — zsh</span>
+    <>
+      {lines.map((line, i) => (
+        <div
+          key={i}
+          className="hover:bg-[#2a2d2e]/40 transition-colors min-h-[1.7em] px-3"
+        >
+          {line ?? ' '}
         </div>
+      ))}
+    </>
+  )
+}
 
-        {/* Terminal output */}
-        <div className="space-y-[3px] mb-10">
-          {LINES.slice(0, visibleCount).map((line, i) => {
-            if (line.type === 'blank') return <div key={i} className="h-2" />
+/* ─── File tabs ────────────────────────────────────────────────────────── */
+const TABS = [
+  { name: 'profile.ts',    icon: 'TS', iconBg: '#3178c6', iconFg: '#ffffff' },
+  { name: 'projects.json', icon: '{}', iconBg: '#cbcb41', iconFg: '#000000' },
+  { name: 'README.md',     icon: 'md', iconBg: '#519aba', iconFg: '#ffffff' },
+]
 
-            if (line.type === 'prompt') {
-              return (
-                <div key={i} className="flex items-center gap-1 text-xs text-green-500">
-                  <span>$</span>
-                  <span className="w-[7px] h-[14px] bg-green-500 cursor-blink rounded-[1px]" />
-                </div>
-              )
-            }
+export default function VibeSide({ shrunk }: { shrunk: boolean }) {
+  const [activeTab, setActiveTab] = useState(0)
 
-            return (
-              <div
-                key={i}
-                className={`text-[12px] leading-5 ${LINE_COLORS[line.type]}`}
+  return (
+    <div
+      className="h-full bg-[#1e1e1e] relative overflow-hidden font-mono flex flex-col"
+      style={{
+        opacity:    shrunk ? 0.4 : 1,
+        transform:  shrunk ? 'scale(0.97)' : 'scale(1)',
+        transition: 'opacity 600ms ease, transform 600ms ease',
+        transformOrigin: 'top right',
+      }}
+    >
+
+      {/* ── Tab bar ─────────────────────────────────────────────── */}
+      <div className="flex items-end bg-[#252526] flex-shrink-0">
+        {TABS.map((tab, i) => {
+          const active = i === activeTab
+          return (
+            <button
+              key={tab.name}
+              onClick={() => setActiveTab(i)}
+              className={`flex items-center gap-2 px-4 py-2 text-[12px] border-r border-[#1e1e1e] transition-colors ${
+                active
+                  ? 'bg-[#1e1e1e] text-[#ffffff] border-t border-t-[#0e639c]'
+                  : 'text-[#969696] hover:text-[#cccccc]'
+              }`}
+            >
+              <span
+                className="text-[9px] font-bold w-4 h-4 rounded-sm flex items-center justify-center"
+                style={{ background: tab.iconBg, color: tab.iconFg }}
               >
-                {line.text}
-              </div>
-            )
-          })}
+                {tab.icon}
+              </span>
+              {tab.name}
+              {active && <span className="text-[#cccccc] text-[8px]">●</span>}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* ── Body ────────────────────────────────────────────────── */}
+      <div className="flex-1 flex overflow-hidden">
+
+        {/* Line numbers gutter */}
+        <div className="flex-shrink-0 py-4 pl-4 pr-3 text-right text-[#858585] text-[12px] leading-[1.7] select-none font-mono tabular-nums">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div key={i}>{i + 1}</div>
+          ))}
         </div>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-3">
+        {/* Code area */}
+        <div className="flex-1 py-4 text-[12px] leading-[1.7] overflow-hidden whitespace-pre">
+          {activeTab === 0 && <CodeBody />}
+          {activeTab === 1 && <ProjectsJSON />}
+          {activeTab === 2 && <ReadmeMD />}
+        </div>
+      </div>
+
+      {/* ── Status bar ──────────────────────────────────────────── */}
+      <div className="flex-shrink-0 flex items-center justify-between bg-[#007acc] text-white text-[11px] px-3 py-1 font-sans">
+        <div className="flex items-center gap-3">
+          <span className="flex items-center gap-1">⎇ main</span>
+          <span>↑ 0 ↓ 0</span>
+          <span className="flex items-center gap-1">⊘ 0 ⚠ 0</span>
+        </div>
+        <div className="flex items-center gap-3">
           <a
             href="https://github.com/Rodrigo-Coloma"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2 border border-green-700/40
-                       text-green-600 hover:text-green-400 hover:border-green-500/60
-                       hover:bg-green-500/5 text-xs transition-all duration-200 rounded-[3px]"
+            className="hover:bg-white/15 px-1.5 py-0.5 rounded-sm transition-colors"
           >
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-            </svg>
-            ~/github ↗
+            → github
           </a>
           <a
-            href="https://rcoloma.dev/cvmachine"
-            className="flex items-center gap-1.5 px-4 py-2 bg-green-500/10 border border-green-600/30
-                       text-green-500 hover:bg-green-500/15 hover:border-green-500/50
-                       text-xs transition-all duration-200 rounded-[3px]"
+            href="/cvmachine"
+            className="hover:bg-white/15 px-1.5 py-0.5 rounded-sm transition-colors"
           >
-            try cvmachine →
+            → cvmachine
           </a>
-          <a
-            href="mailto:rjcolgut@gmail.com"
-            className="flex items-center gap-1.5 px-4 py-2 border border-[#1a1a1a]
-                       text-[#2e2e2e] hover:text-green-700 hover:border-green-900/40
-                       text-xs transition-all duration-200 rounded-[3px]"
-          >
-            ./contact
-          </a>
+          <span className="opacity-80">TypeScript</span>
+          <span className="opacity-80">UTF-8</span>
+          <span className="opacity-80">LF</span>
+          <span className="opacity-80">Ln 28, Col 1</span>
         </div>
-
-      </div>
-
-      {/* Side label hint */}
-      <div
-        className="absolute bottom-6 right-12 lg:right-16 xl:right-20 text-[10px] text-[#1c1c1c] uppercase tracking-widest"
-        style={{ opacity: shrunk ? 0 : 1, transition: 'opacity 400ms ease' }}
-      >
-        Builder
       </div>
     </div>
+  )
+}
+
+/* ─── Alt tabs content ─────────────────────────────────────────────────── */
+function ProjectsJSON() {
+  return (
+    <>
+      <div className="px-3"><Op>{'['}</Op></div>
+      <div className="px-3 pl-6">
+        <Op>{'{ '}</Op><Va>&quot;name&quot;</Va><Op>: </Op><St>&quot;CVMACHINE&quot;</St><Op>, </Op>
+        <Va>&quot;type&quot;</Va><Op>: </Op><St>&quot;AI CV optimizer&quot;</St><Op>, </Op>
+        <Va>&quot;url&quot;</Va><Op>: </Op><St>&quot;/cvmachine&quot;</St><Op>{' },'}</Op>
+      </div>
+      <div className="px-3 pl-6">
+        <Op>{'{ '}</Op><Va>&quot;name&quot;</Va><Op>: </Op><St>&quot;LinkedinMgr&quot;</St><Op>, </Op>
+        <Va>&quot;type&quot;</Va><Op>: </Op><St>&quot;AI LinkedIn engine&quot;</St><Op>{' },'}</Op>
+      </div>
+      <div className="px-3 pl-6">
+        <Op>{'{ '}</Op><Va>&quot;name&quot;</Va><Op>: </Op><St>&quot;rcoloma.dev&quot;</St><Op>, </Op>
+        <Va>&quot;type&quot;</Va><Op>: </Op><St>&quot;portfolio&quot;</St><Op>, </Op>
+        <Va>&quot;current&quot;</Va><Op>: </Op><Kw>true</Kw><Op>{' }'}</Op>
+      </div>
+      <div className="px-3"><Op>{']'}</Op></div>
+    </>
+  )
+}
+
+function ReadmeMD() {
+  const Md  = ({ children }: { children: React.ReactNode }) => <span className="text-[#d4d4d4]">{children}</span>
+  const H   = ({ children }: { children: React.ReactNode }) => <span className="text-[#569cd6] font-semibold">{children}</span>
+  const Lk  = ({ children }: { children: React.ReactNode }) => <span className="text-[#3794ff] underline">{children}</span>
+  return (
+    <>
+      <div className="px-3"><H># rcoloma.dev</H></div>
+      <div className="px-3"><Md>&nbsp;</Md></div>
+      <div className="px-3"><Md>Portfolio of Rodrigo Coloma — data engineer,</Md></div>
+      <div className="px-3"><Md>ML practitioner, AI builder. Madrid, ES.</Md></div>
+      <div className="px-3"><Md>&nbsp;</Md></div>
+      <div className="px-3"><H>## Stack</H></div>
+      <div className="px-3"><Md>- TypeScript · Next.js · Tailwind</Md></div>
+      <div className="px-3"><Md>- Claude API · Anthropic SDK</Md></div>
+      <div className="px-3"><Md>- Python · Databricks · Azure</Md></div>
+      <div className="px-3"><Md>&nbsp;</Md></div>
+      <div className="px-3"><H>## Links</H></div>
+      <div className="px-3"><Md>- <Lk>github.com/Rodrigo-Coloma</Lk></Md></div>
+      <div className="px-3"><Md>- <Lk>linkedin.com/in/rcoloma</Lk></Md></div>
+      <div className="px-3"><Md>- <Lk>rcoloma.dev/cvmachine</Lk></Md></div>
+    </>
   )
 }
