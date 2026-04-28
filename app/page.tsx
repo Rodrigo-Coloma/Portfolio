@@ -8,101 +8,77 @@ import SelectedWork from '@/components/sections/SelectedWork'
 import About from '@/components/sections/About'
 import EduLanguages from '@/components/sections/EduLanguages'
 import FinalCTA from '@/components/sections/FinalCTA'
-import { SketchArrow } from '@/components/Sketch'
-
-type Hovered = 'pro' | 'vibe' | null
 
 const EASING = 'cubic-bezier(0.4, 0, 0.2, 1)'
 
-function dividerStyle(hovered: Hovered) {
-  if (hovered === 'pro')  return 'bg-gradient-to-b from-transparent via-stone-400/60 to-transparent'
-  if (hovered === 'vibe') return 'bg-gradient-to-b from-transparent via-[#0e639c]/70 to-transparent'
-  return 'bg-gradient-to-b from-transparent via-stone-300/70 to-transparent'
-}
-
 export default function Home() {
-  const [hovered, setHovered] = useState<Hovered>(null)
-
-  // Dev side acts as a hidden sidebar: slim 56px column at rest, expands on hover
-  const vibeExpanded = hovered === 'vibe'
-  const proWidth  = vibeExpanded ? '50%'   : 'calc(100% - 56px)'
-  const vibeWidth = vibeExpanded ? '50%'   : '56px'
+  const [vibeExpanded, setVibeExpanded] = useState(false)
   const wTransition = `width 680ms ${EASING}`
 
   return (
-    <main className="bg-[#FFFCF6] pt-[58px]" aria-label="Portfolio — Rodrigo Coloma">
-
-      {/* ═════════ HERO ═════════ */}
-
-      {/* Desktop: split-screen, exactly one viewport tall */}
-      <div className="hidden md:flex h-[calc(100vh-58px)] w-full overflow-hidden bg-black relative">
-
-        {/* Professional side */}
-        <section
-          aria-label="Professional profile"
-          style={{ width: proWidth, transition: wTransition, flexShrink: 0 }}
-          className="relative overflow-hidden cursor-default"
-          onMouseEnter={() => setHovered('pro')}
-          onMouseLeave={() => setHovered(null)}
-        >
-          <ProfessionalSide shrunk={vibeExpanded} />
-        </section>
-
-        {/* Divider */}
-        <div className="relative w-px flex-shrink-0 z-20">
-          <div className={`absolute inset-0 transition-all duration-700 ${dividerStyle(hovered)}`} />
-        </div>
-
-        {/* Developer / IDE side */}
-        <section
-          aria-label="Developer profile"
-          style={{ width: vibeWidth, transition: wTransition, flexShrink: 0 }}
-          className="relative overflow-hidden cursor-default"
-          onMouseEnter={() => setHovered('vibe')}
-          onMouseLeave={() => setHovered(null)}
-        >
-          <VibeSide collapsed={!vibeExpanded} />
-        </section>
-
-        {/* Hover hint — pointing to the slim dev sidebar on the right */}
+    <>
+      {/* ════════ FIXED DEV SIDEBAR — desktop only, persists across scroll ════════ */}
+      <aside
+        className="hidden md:block fixed top-[58px] right-0 bottom-0 z-30 cursor-default"
+        style={{
+          width: vibeExpanded ? '50%' : '56px',
+          transition: wTransition,
+        }}
+        onMouseEnter={() => setVibeExpanded(true)}
+        onMouseLeave={() => setVibeExpanded(false)}
+        aria-label="Developer profile sidebar"
+      >
+        {/* Divider on the left edge of the sidebar */}
         <div
-          className={`absolute bottom-16 right-20 flex items-center gap-3
-                       text-[10px] uppercase tracking-[0.25em] pointer-events-none
-                       text-[#14B8A6]/80 transition-opacity duration-500 ${vibeExpanded ? 'opacity-0' : 'opacity-100'}`}
-        >
-          <span>hover developer mode</span>
-          <SketchArrow color="#14B8A6" width={64} className="-mb-1 opacity-90" />
+          className={`absolute left-0 inset-y-0 w-px z-10 transition-all duration-700 ${
+            vibeExpanded
+              ? 'bg-gradient-to-b from-transparent via-[#0e639c]/70 to-transparent'
+              : 'bg-gradient-to-b from-transparent via-stone-400/40 to-transparent'
+          }`}
+        />
+        <VibeSide collapsed={!vibeExpanded} />
+      </aside>
+
+      {/* ════════ MAIN ════════ */}
+      <main
+        className="bg-[#FFFCF6] pt-[58px] md:pr-[56px] transition-opacity duration-700"
+        style={{ opacity: vibeExpanded ? 0.45 : 1 }}
+        aria-label="Portfolio — Rodrigo Coloma"
+      >
+
+        {/* ── Desktop hero — pro side, full width minus sidebar ── */}
+        <div className="hidden md:block h-[calc(100vh-58px)] w-full overflow-hidden relative">
+          <ProfessionalSide shrunk={vibeExpanded} />
+
+          {/* Scroll indicator */}
+          <a
+            href="#below-the-fold"
+            aria-label="Scroll to content"
+            className="absolute bottom-4 inset-x-0 flex items-center justify-center
+                       text-[10px] uppercase tracking-[0.3em] text-stone-500/60
+                       hover:text-stone-700 transition-colors"
+          >
+            ↓ scroll
+          </a>
         </div>
 
-        {/* Scroll indicator */}
-        <a
-          href="#below-the-fold"
-          aria-label="Scroll to content"
-          className="absolute bottom-4 inset-x-0 flex items-center justify-center
-                     text-[10px] uppercase tracking-[0.3em] mix-blend-difference text-white/60
-                     hover:text-white/90 transition-colors"
-        >
-          ↓ scroll
-        </a>
-      </div>
+        {/* ── Mobile hero ── */}
+        <div className="md:hidden flex flex-col">
+          <section className="min-h-screen" aria-label="Professional profile">
+            <ProfessionalSide shrunk={false} />
+          </section>
+        </div>
 
-      {/* Mobile: professional side only — IDE side hidden for readability */}
-      <div className="md:hidden flex flex-col">
-        <section className="min-h-screen" aria-label="Professional profile">
-          <ProfessionalSide shrunk={false} />
-        </section>
-      </div>
+        {/* ── Below the fold ── */}
+        <div id="below-the-fold" className="scroll-mt-[58px]">
+          <ImpactStrip />
+          <SelectedWork />
+          <About />
+          <EduLanguages />
+          <FinalCTA />
+        </div>
 
-      {/* ═════════ BELOW THE FOLD ═════════ */}
-
-      <div id="below-the-fold" className="scroll-mt-[58px]">
-        <ImpactStrip />
-        <SelectedWork />
-        <About />
-        <EduLanguages />
-        <FinalCTA />
-      </div>
-
-    </main>
+      </main>
+    </>
   )
 }
