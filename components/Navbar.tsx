@@ -25,7 +25,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="font-mono text-[17px] text-[#00C2FF] hover:text-white transition-colors duration-200"
+          className="font-mono text-[17px] text-[#57C8F5] hover:text-white transition-colors duration-200"
         >
           rcoloma.dev
         </Link>
@@ -34,14 +34,14 @@ export default function Navbar() {
         <div className="flex items-center gap-5 sm:gap-8">
           <Link
             href="/"
-            className="hidden sm:inline-block text-[13px] uppercase tracking-[0.18em] text-[#00C2FF] hover:text-white transition-colors duration-200"
+            className="hidden sm:inline-block text-[13px] uppercase tracking-[0.18em] text-[#57C8F5] hover:text-white transition-colors duration-200"
           >
             Homepage
           </Link>
 
           <Link
             href="/contact"
-            className="text-[13px] uppercase tracking-[0.18em] text-[#00C2FF] hover:text-white transition-colors duration-200"
+            className="text-[13px] uppercase tracking-[0.18em] text-[#57C8F5] hover:text-white transition-colors duration-200"
           >
             Contact
           </Link>
@@ -50,7 +50,7 @@ export default function Navbar() {
             href="/resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-block text-[13px] uppercase tracking-[0.18em] text-[#00C2FF] hover:text-white transition-colors duration-200"
+            className="hidden sm:inline-block text-[13px] uppercase tracking-[0.18em] text-[#57C8F5] hover:text-white transition-colors duration-200"
           >
             Resume ↓
           </a>
@@ -65,7 +65,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setOpen(prev => !prev)}
-              className="flex items-center gap-1.5 text-[13px] uppercase tracking-[0.18em] text-[#00C2FF] hover:text-white transition-colors duration-200"
+              className="flex items-center gap-1.5 text-[13px] uppercase tracking-[0.18em] text-[#57C8F5] hover:text-white transition-colors duration-200"
               aria-expanded={open}
             >
               Portfolio
