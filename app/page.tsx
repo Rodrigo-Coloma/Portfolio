@@ -13,22 +13,21 @@ const EASING = 'cubic-bezier(0.4, 0, 0.2, 1)'
 
 export default function Home() {
   const [vibeExpanded, setVibeExpanded] = useState(false)
-  const wTransition = `width 680ms ${EASING}`
+  const transition = `all 600ms ${EASING}`
 
   return (
     <>
-      {/* ════════ FIXED DEV SIDEBAR — desktop only, persists across scroll ════════ */}
+      {/* ════════ DESKTOP — fixed right sidebar (hover) ════════ */}
       <aside
         className="hidden md:block fixed top-[58px] right-0 bottom-0 z-30 cursor-default"
         style={{
-          width: vibeExpanded ? '50%' : '56px',
-          transition: wTransition,
+          width:      vibeExpanded ? '50%' : '56px',
+          transition: `width 680ms ${EASING}`,
         }}
         onMouseEnter={() => setVibeExpanded(true)}
         onMouseLeave={() => setVibeExpanded(false)}
         aria-label="Developer profile sidebar"
       >
-        {/* Divider on the left edge of the sidebar */}
         <div
           className={`absolute left-0 inset-y-0 w-px z-10 transition-all duration-700 ${
             vibeExpanded
@@ -36,12 +35,48 @@ export default function Home() {
               : 'bg-gradient-to-b from-transparent via-stone-400/40 to-transparent'
           }`}
         />
-        <VibeSide collapsed={!vibeExpanded} />
+        <VibeSide collapsed={!vibeExpanded} orientation="vertical" />
+      </aside>
+
+      {/* ════════ MOBILE — fixed bottom bar (tap to expand) ════════ */}
+      <aside
+        className={`md:hidden fixed inset-x-0 bottom-0 z-30 overflow-hidden ${!vibeExpanded ? 'cursor-pointer' : ''}`}
+        style={{
+          height:     vibeExpanded ? '70vh' : '52px',
+          transition,
+        }}
+        onClick={!vibeExpanded ? () => setVibeExpanded(true) : undefined}
+        role={!vibeExpanded ? 'button' : undefined}
+        tabIndex={!vibeExpanded ? 0 : -1}
+        aria-label={!vibeExpanded ? 'Expand developer profile' : 'Developer profile'}
+      >
+        {/* Top accent line at the panel boundary */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#0e639c]/60 to-transparent z-30" />
+
+        {/* Drag-handle / collapse button — only visible when expanded */}
+        {vibeExpanded && (
+          <button
+            type="button"
+            onClick={e => { e.stopPropagation(); setVibeExpanded(false) }}
+            className="absolute top-0 inset-x-0 h-7 flex items-center justify-center bg-[#1e1e1e] z-40 border-b border-[#2d2d2d]"
+            aria-label="Collapse developer profile"
+          >
+            <span className="w-12 h-1 bg-[#454545] rounded-full" />
+          </button>
+        )}
+
+        {/* The IDE itself — collapsed = horizontal bar, expanded = full IDE */}
+        <div className={vibeExpanded ? 'absolute inset-0 pt-7' : 'h-full'}>
+          <VibeSide
+            collapsed={!vibeExpanded}
+            orientation={vibeExpanded ? 'vertical' : 'horizontal'}
+          />
+        </div>
       </aside>
 
       {/* ════════ MAIN ════════ */}
       <main
-        className="bg-[#FFFCF6] pt-[58px] md:pr-[56px] transition-opacity duration-700"
+        className="bg-[#FFFCF6] pt-[58px] pb-[52px] md:pb-0 md:pr-[56px] transition-opacity duration-700"
         style={{ opacity: vibeExpanded ? 0.45 : 1 }}
         aria-label="Portfolio — Rodrigo Coloma"
       >

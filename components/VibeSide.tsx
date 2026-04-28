@@ -68,10 +68,46 @@ const TABS = [
   { name: 'README.md',       icon: 'md', iconBg: '#519aba', iconFg: '#ffffff' },
 ]
 
-export default function VibeSide({ collapsed = false }: { collapsed?: boolean }) {
+export default function VibeSide({
+  collapsed   = false,
+  orientation = 'vertical',
+}: {
+  collapsed?:   boolean
+  orientation?: 'vertical' | 'horizontal'
+}) {
   const [activeTab, setActiveTab] = useState(0)
 
-  // ── Collapsed sidebar mode ──────────────────────────────────────
+  // ── Collapsed: horizontal bar mode (mobile bottom bar) ──────────
+  if (collapsed && orientation === 'horizontal') {
+    return (
+      <div className="h-full bg-[#1e1e1e] relative overflow-hidden flex items-center justify-between px-5 select-none">
+        {/* Top turquoise accent stripe */}
+        <div className="absolute top-0 inset-x-3 h-px bg-[#14B8A6]/70" />
+
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-[#14B8A6] text-base">{'</>'}</span>
+          <div className="flex items-center gap-1.5">
+            {TABS.map(t => (
+              <span
+                key={t.name}
+                className="text-[8px] font-bold w-5 h-5 rounded-sm flex items-center justify-center"
+                style={{ background: t.iconBg, color: t.iconFg }}
+              >
+                {t.icon}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 font-mono text-[10px] tracking-[0.3em]">
+          <span className="text-[#dcdcaa]/80">DEVELOPER · TAP</span>
+          <span className="text-[#14B8A6] text-sm">↑</span>
+        </div>
+      </div>
+    )
+  }
+
+  // ── Collapsed: vertical sidebar mode (desktop right edge) ───────
   if (collapsed) {
     return (
       <div className="h-full bg-[#1e1e1e] relative overflow-hidden flex flex-col items-center pt-5 pb-4 select-none">
