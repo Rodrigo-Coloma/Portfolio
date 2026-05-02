@@ -96,6 +96,17 @@ export default function Navbar() {
                     AI CV builder ↗
                   </span>
                 </a>
+                <a
+                  href="/edc"
+                  className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771] border-t border-[#454545]"
+                >
+                  <span className="text-xs text-[#cccccc] group-hover:text-white transition-colors">
+                    EDC
+                  </span>
+                  <span className="text-[10px] text-[#858585] group-hover:text-[#cccccc] transition-colors">
+                    Side project ↗
+                  </span>
+                </a>
               </div>
             </div>
           </div>

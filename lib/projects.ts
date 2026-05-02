@@ -11,6 +11,25 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    slug:    'edc',
+    title:   'EDC',
+    context: 'Side project · 2026',
+    problem:
+      'TODO: describe the problem EDC solves.',
+    solution:
+      'TODO: describe how EDC solves it — architecture, key decisions, what you owned end-to-end.',
+    impact: [
+      'TODO: quantified outcome #1',
+      'TODO: quantified outcome #2',
+      'TODO: quantified outcome #3',
+    ],
+    stack: ['TODO'],
+    links: [
+      { label: 'Live demo',  href: '/edc' },
+      { label: 'Source',     href: 'https://github.com/Rodrigo-Coloma', external: true },
+    ],
+  },
+  {
     slug:    'cvmachine',
     title:   'CVMACHINE',
     context: 'Side project · Live · 2026',
