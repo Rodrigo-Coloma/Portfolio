@@ -12,21 +12,20 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     slug:    'edc',
-    title:   'EDC',
-    context: 'Side project · 2026',
+    title:   'EDC MVP',
+    context: 'Side project · Live · 2026',
     problem:
-      'TODO: describe the problem EDC solves.',
+      'A technical test asked for a Power BI dashboard over dummy clinical data. A static report can show the data, but it can’t capture it, query it, or audit how it changed — which is what an actual Electronic Data Capture system has to do.',
     solution:
-      'TODO: describe how EDC solves it — architecture, key decisions, what you owned end-to-end.',
+      'Full-stack EDC built around the same dummy data: metadata-driven CRFs (forms, fields, rules stored as data), role-scoped auth (Data Manager / Site Coordinator), threaded query workflow with an Open → Answered → Closed state machine, and a discrepancy engine with cross-field predicates evaluated through a whitelisted AST. An EDA workbench mirrors the original PBI layout (violin + box, correlation heatmap, scatter + R², σ outliers) computed client-side on per-subject aggregates. CRF design is AI-assisted: a Claude tool-use agent reads an uploaded protocol and proposes CRFs over an SSE stream with keepalive-aware retry. Append-only audit log, per-field history popovers, and a global audit explorer. Deployed end-to-end on a Linux VPS via Docker Compose behind nginx and Cloudflare.',
     impact: [
-      'TODO: quantified outcome #1',
-      'TODO: quantified outcome #2',
-      'TODO: quantified outcome #3',
+      'Live at rcoloma.dev/edc — 15 subjects, 30 form instances, 210 field values, 16 discrepancy rules, full query + audit flow',
+      'AI-assisted CRF design: Claude Sonnet 4.6 agent with tool use + SSE streaming proposes ready-to-activate CRFs from a protocol upload',
+      'Auto-discrepancy engine with safe cross-field AST evaluator (no eval / attribute access) — auto-opens and auto-closes queries on save',
     ],
-    stack: ['TODO'],
+    stack: ['TypeScript', 'React', 'Vite', 'Tailwind', 'shadcn/ui', 'Plotly.js', 'FastAPI', 'SQLAlchemy', 'Alembic', 'Pydantic v2', 'PostgreSQL', 'Claude API', 'Docker', 'nginx', 'Cloudflare'],
     links: [
-      { label: 'Live demo',  href: '/edc' },
-      { label: 'Source',     href: 'https://github.com/Rodrigo-Coloma', external: true },
+      { label: 'Live demo', href: 'https://rcoloma.dev/edc', external: true },
     ],
   },
   {

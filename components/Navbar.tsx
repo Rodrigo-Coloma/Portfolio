@@ -97,14 +97,16 @@ export default function Navbar() {
                   </span>
                 </a>
                 <a
-                  href="/edc"
+                  href="https://rcoloma.dev/edc"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771] border-t border-[#454545]"
                 >
                   <span className="text-xs text-[#cccccc] group-hover:text-white transition-colors">
-                    EDC
+                    EDC MVP
                   </span>
                   <span className="text-[10px] text-[#858585] group-hover:text-[#cccccc] transition-colors">
-                    Side project ↗
+                    Clinical data capture ↗
                   </span>
                 </a>
               </div>
