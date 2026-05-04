@@ -36,6 +36,7 @@ function CodeBody() {
     <><Op>{'};'}</Op></>,
     null,
     <><Kw>const</Kw>{' '}<Va>projects</Va>{' '}<Op>=</Op>{' '}<Op>{'['}</Op></>,
+    <><span className="pl-6"><Op>{'{ '}</Op><Va>name</Va><Op>: </Op><St>{`'medlit'`}</St><Op>,      </Op><Va>kind</Va><Op>: </Op><St>{`'biomedical RAG'`}</St><Op>{'   },'}</Op></span></>,
     <><span className="pl-6"><Op>{'{ '}</Op><Va>name</Va><Op>: </Op><St>{`'CVMACHINE'`}</St><Op>,   </Op><Va>kind</Va><Op>: </Op><St>{`'AI CV optimizer'`}</St><Op>{' },'}</Op></span></>,
     <><span className="pl-6"><Op>{'{ '}</Op><Va>name</Va><Op>: </Op><St>{`'LinkedinMgr'`}</St><Op>, </Op><Va>kind</Va><Op>: </Op><St>{`'AI content engine'`}</St><Op>{' },'}</Op></span></>,
     <><span className="pl-6"><Op>{'{ '}</Op><Va>name</Va><Op>: </Op><St>{`'rcoloma.dev'`}</St><Op>, </Op><Va>kind</Va><Op>: </Op><St>{`'this site'`}</St><Op>{'         },'}</Op></span></>,
@@ -247,10 +248,11 @@ export default function VibeSide({
 function CaseStudiesTS() {
   // Each row links to its anchor in the SelectedWork section below the hero.
   const studies: { name: string; impact: string; anchor: string }[] = [
-    { name: 'CVMACHINE',         impact: 'live · full-stack · auth + AI parsing',     anchor: '#cvmachine'      },
-    { name: 'Forecasting',       impact: '+5% accuracy · XGBoost ensemble',           anchor: '#forecasting'    },
-    { name: 'Azure Platform',    impact: '2 LLM apps in prod · 4 BI products',        anchor: '#azure-platform' },
-    { name: 'Macrogen Stack',    impact: 'green-field · DW + ETL + reporting',        anchor: '#macrogen'       },
+    { name: 'medlit',            impact: 'biomedical RAG · hybrid retrieval · cited Claude',  anchor: '#medlit'         },
+    { name: 'CVMACHINE',         impact: 'live · full-stack · auth + AI parsing',             anchor: '#cvmachine'      },
+    { name: 'Forecasting',       impact: '+5% accuracy · XGBoost ensemble',                   anchor: '#forecasting'    },
+    { name: 'Azure Platform',    impact: '2 LLM apps in prod · 4 BI products',                anchor: '#azure-platform' },
+    { name: 'Macrogen Stack',    impact: 'green-field · DW + ETL + reporting',                anchor: '#macrogen'       },
   ]
   return (
     <>
@@ -282,6 +284,11 @@ function ProjectsJSON() {
   return (
     <>
       <div className="px-3"><Op>{'['}</Op></div>
+      <div className="px-3 pl-6">
+        <Op>{'{ '}</Op><Va>&quot;name&quot;</Va><Op>: </Op><St>&quot;medlit&quot;</St><Op>, </Op>
+        <Va>&quot;type&quot;</Va><Op>: </Op><St>&quot;biomedical RAG&quot;</St><Op>, </Op>
+        <Va>&quot;url&quot;</Va><Op>: </Op><St>&quot;https://github.com/Rodrigo-Coloma/sagebase&quot;</St><Op>{' },'}</Op>
+      </div>
       <div className="px-3 pl-6">
         <Op>{'{ '}</Op><Va>&quot;name&quot;</Va><Op>: </Op><St>&quot;CVMACHINE&quot;</St><Op>, </Op>
         <Va>&quot;type&quot;</Va><Op>: </Op><St>&quot;AI CV optimizer&quot;</St><Op>, </Op>

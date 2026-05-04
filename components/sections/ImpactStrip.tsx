@@ -25,7 +25,7 @@ const METRICS: Metric[] = [
 
 export default function ImpactStrip() {
   return (
-    <section className="bg-[#FFFCF6] border-t border-[#14B8A6]/30 py-20 lg:py-28">
+    <section className="bg-[#FCFAF3] border-t border-[#0D9488]/25 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}

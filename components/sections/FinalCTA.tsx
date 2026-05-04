@@ -11,7 +11,7 @@ const ACTIONS: { label: string; sub: string; href: string; external?: boolean }[
 
 export default function FinalCTA() {
   return (
-    <section className="bg-[#FFFCF6] border-t border-[#14B8A6]/30 py-24 lg:py-32">
+    <section className="bg-[#FCFAF3] border-t border-[#0D9488]/25 py-24 lg:py-32">
       <div className="max-w-3xl mx-auto px-8 lg:px-12 text-center">
 
         {/* Eyebrow */}
@@ -39,8 +39,9 @@ export default function FinalCTA() {
               target={external ? '_blank' : undefined}
               rel={external ? 'noopener noreferrer' : undefined}
               className="group flex flex-col items-center justify-center gap-1
-                         border border-[#584C25]/20 hover:border-[#584C25]/60 bg-white/40 hover:bg-white
-                         rounded-sm px-4 py-5 transition-colors"
+                         border border-[#574726]/20 hover:border-[#0D9488]/55 bg-[#FFFDF7]/55 hover:bg-[#FFFDF7]
+                         rounded-sm px-4 py-5 transition-all duration-300
+                         hover:shadow-[0_1px_2px_rgba(87,71,38,0.04),0_8px_20px_-12px_rgba(13,148,136,0.18)]"
             >
               <span className="text-stone-900 text-[13px] font-medium tracking-wide">
                 {label} {external ? '↗' : '→'}

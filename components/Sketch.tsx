@@ -26,7 +26,7 @@ const ARROW_ROTATIONS: Record<Direction, number> = {
 
 export function SketchArrow({
   direction = 'right',
-  color     = '#584C25',
+  color     = '#574726',
   className = '',
   width     = 90,
 }: CommonProps & { direction?: Direction }) {
@@ -74,7 +74,7 @@ export function SketchArrow({
 
 /* ─── Hand-sketched line chart (improvement curve) ──────────── */
 export function SketchLineChart({
-  color     = '#584C25',
+  color     = '#574726',
   className = '',
   width     = 90,
   label     = '+5%',
@@ -145,7 +145,7 @@ const SCATTER_DOTS: [number, number][] = [
 ]
 
 export function SketchScatter({
-  color     = '#584C25',
+  color     = '#574726',
   className = '',
   width     = 110,
 }: CommonProps) {
@@ -194,7 +194,7 @@ export function SketchScatter({
 
 /* ─── Hand-sketched bell curve (normal distribution) ──────────── */
 export function SketchBellCurve({
-  color     = '#584C25',
+  color     = '#574726',
   className = '',
   width     = 100,
 }: CommonProps) {

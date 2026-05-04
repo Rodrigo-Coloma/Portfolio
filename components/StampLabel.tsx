@@ -20,17 +20,17 @@ export default function StampLabel({
 }) {
   const base =
     'inline-block font-medium text-[10px] tracking-[0.3em] uppercase ' +
-    'text-[#584C25]/70'
+    'text-[#574726]/70'
 
   const stampStyle: React.CSSProperties = {
     transform: `rotate(${rotate}deg)`,
-    textShadow: '0 0 1px rgba(88, 76, 37, 0.35)',
+    textShadow: '0 0 1px rgba(87, 71, 38, 0.35)',
   }
 
   if (boxed) {
     return (
       <span
-        className={`${base} ${className} border border-[#584C25]/30 rounded-[1px] px-2 py-0.5`}
+        className={`${base} ${className} border border-[#574726]/30 rounded-[1px] px-2 py-0.5`}
         style={stampStyle}
       >
         {children}

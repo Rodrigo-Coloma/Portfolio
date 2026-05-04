@@ -11,6 +11,25 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    slug:    'medlit',
+    title:   'medlit — Medical Literature RAG',
+    context: 'Side project · 2026',
+    problem:
+      'Researchers need biomedical answers traceable back to a specific PMID, DOI, or arXiv ID — and where evidence quality (RCT vs cohort vs case report) actually matters. Generic LLM chat hallucinates citations and flattens that hierarchy.',
+    solution:
+      'Built medlit, a vectorized biomedical RAG: ingests papers from PubMed/PMC, arXiv, bioRxiv/medRxiv, Crossref+Unpaywall, and local PDFs/XML; section-aware chunking; embeddings via swappable backends (BGE / PubMedBERT / OpenAI / Voyage); hybrid retrieval (dense + BM25 with RRF fusion + cross-encoder reranker + MMR diversity); generation via Claude with a citation-enforcing prompt that cites every claim inline. Pluggable storage (Qdrant / Chroma / pgvector) and generation (Anthropic / OpenAI / Ollama) behind common ABCs.',
+    impact: [
+      'End-to-end pipeline: 5 ingestion sources → section-aware chunker → biomedical embeddings → hybrid retrieval → cross-encoder rerank → Claude with inline citations',
+      'Three surfaces from one codebase: Typer CLI, FastAPI service with SSE-streamed /ask endpoint, and a Streamlit app tuned for the 1 GB free tier',
+      'Scheduled re-ingestion via APScheduler watches (cron / daily / weekly) with automatic dedup by DOI/PMID',
+      'Respects open-access terms: PMC OA, bioRxiv/medRxiv, arXiv, Unpaywall green/gold only — closed-access papers store abstract + publisher URL',
+    ],
+    stack: ['Python', 'FastAPI', 'Typer', 'Qdrant', 'Chroma', 'pgvector', 'sentence-transformers', 'BGE / PubMedBERT', 'Claude API', 'PyMuPDF', 'lxml', 'APScheduler', 'Streamlit', 'pydantic', 'pytest'],
+    links: [
+      { label: 'Source', href: 'https://github.com/Rodrigo-Coloma/sagebase', external: true },
+    ],
+  },
+  {
     slug:    'cvmachine',
     title:   'CVMACHINE',
     context: 'Side project · Live · 2026',

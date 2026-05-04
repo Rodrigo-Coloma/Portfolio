@@ -22,10 +22,10 @@ const META: [string, string][] = [
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#FFFCF6] pt-[58px]">
+    <main className="min-h-screen bg-[#FCFAF3] pt-[58px]">
 
-      {/* Subtle radial wash matching homepage pro side */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
+      {/* Subtle radial wash matching homepage pro side — warm sepia */}
+      <div className="fixed inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(87,71,38,0.05),transparent)] pointer-events-none" />
 
       <div className="relative max-w-2xl mx-auto px-8 lg:px-12 py-20 lg:py-28">
 
@@ -47,7 +47,7 @@ export default function ContactPage() {
         </p>
 
         {/* Accent line */}
-        <div className="w-12 h-px bg-[#14B8A6] mb-14" />
+        <div className="w-12 h-px bg-[#0D9488] mb-14" />
 
         {/* Contact methods */}
         <div className="mb-16">
@@ -61,7 +61,7 @@ export default function ContactPage() {
                 href={href}
                 target={href.startsWith('http') ? '_blank' : undefined}
                 rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group flex items-baseline gap-6 -mx-3 px-3 py-2 rounded-sm hover:bg-[#584C25]/10 transition-colors"
+                className="group flex items-baseline gap-6 -mx-3 px-3 py-2 rounded-sm hover:bg-[#574726]/8 transition-colors"
               >
                 <span className="text-stone-400 text-[11px] uppercase tracking-[0.18em] w-20 flex-shrink-0">
                   {label}
@@ -97,7 +97,7 @@ export default function ContactPage() {
         </div>
 
         {/* Footer mark */}
-        <div className="pt-12 border-t border-[#584C25]/15">
+        <div className="pt-12 border-t border-[#574726]/15">
           <p className="text-[10px] text-stone-400 tracking-widest">
             ⏤ Reply within 24 hours, usually faster
           </p>

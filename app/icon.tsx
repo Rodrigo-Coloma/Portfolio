@@ -22,11 +22,11 @@ export default function Icon() {
           style={{
             width: '50%',
             height: '100%',
-            background: '#FFFCF6',
+            background: '#FCFAF3',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#0f172a',
+            color: '#1C1814',
             fontSize: 22,
             fontWeight: 400,
             fontFamily: 'serif',

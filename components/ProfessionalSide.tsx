@@ -21,10 +21,10 @@ const EXPERTISE: [string, string][] = [
 
 export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
   return (
-    <div className="h-full bg-[#FFFCF6] relative overflow-hidden">
+    <div className="h-full bg-[#FCFAF3] relative overflow-hidden">
 
-      {/* Subtle radial wash */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(15,23,42,0.04),transparent)] pointer-events-none" />
+      {/* Subtle radial wash — warm sepia, not cool slate */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(87,71,38,0.05),transparent)] pointer-events-none" />
 
       {/* Centered content column */}
       <div
@@ -37,7 +37,7 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
       >
 
         {/* Vertical accent line on left edge of centered column */}
-        <div className="absolute left-0 top-24 bottom-24 w-px bg-gradient-to-b from-transparent via-[#14B8A6]/40 to-transparent pointer-events-none" />
+        <div className="absolute left-0 top-24 bottom-24 w-px bg-gradient-to-b from-transparent via-[#0D9488]/45 to-transparent pointer-events-none" />
 
         {/* Eyebrow */}
         <div className="mb-6">
@@ -106,7 +106,7 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
             href="https://www.linkedin.com/in/rcoloma"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-stone-300 hover:decoration-stone-600 hover:underline transition-all"
+            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-[#574726]/30 hover:decoration-[#0D9488] hover:underline transition-all"
           >
             LinkedIn ↗
           </a>
@@ -114,13 +114,13 @@ export default function ProfessionalSide({ shrunk }: { shrunk: boolean }) {
             href="https://github.com/Rodrigo-Coloma"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-stone-300 hover:decoration-stone-600 hover:underline transition-all"
+            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-[#574726]/30 hover:decoration-[#0D9488] hover:underline transition-all"
           >
             GitHub ↗
           </a>
           <a
             href="mailto:rjcolgut@gmail.com"
-            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-stone-300 hover:decoration-stone-600 hover:underline transition-all"
+            className="text-stone-700 hover:text-stone-900 underline-offset-[6px] decoration-[#574726]/30 hover:decoration-[#0D9488] hover:underline transition-all"
           >
             rjcolgut@gmail.com
           </a>

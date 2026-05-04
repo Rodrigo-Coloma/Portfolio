@@ -4,7 +4,7 @@ import { SketchScatter, SketchBellCurve } from '@/components/Sketch'
 
 export default function About() {
   return (
-    <section className="bg-[#F5F0DA] border-t border-[#14B8A6]/30 py-20 lg:py-28 relative overflow-hidden">
+    <section className="bg-[#F6F0E1] border-t border-[#0D9488]/25 py-20 lg:py-28 relative overflow-hidden">
 
       {/* Lab-notebook doodles in the margins */}
       <div className="absolute top-12 right-8 lg:right-16 opacity-60 pointer-events-none hidden md:block" aria-hidden="true">
@@ -51,7 +51,7 @@ export default function About() {
         </div>
 
         {/* Accent line */}
-        <div className="w-12 h-px bg-[#14B8A6] my-12" />
+        <div className="w-12 h-px bg-[#0D9488] my-12" />
 
         {/* Human element */}
         <div>

@@ -76,7 +76,7 @@ export default function Home() {
 
       {/* ════════ MAIN ════════ */}
       <main
-        className="bg-[#FFFCF6] pt-[58px] pb-[52px] md:pb-0 md:pr-[56px] transition-opacity duration-700"
+        className="bg-[#FCFAF3] pt-[58px] pb-[52px] md:pb-0 md:pr-[56px] transition-opacity duration-700"
         style={{ opacity: vibeExpanded ? 0.45 : 1 }}
         aria-label="Portfolio — Rodrigo Coloma"
       >

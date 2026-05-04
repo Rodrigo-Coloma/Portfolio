@@ -6,8 +6,9 @@ function ProjectCard({ project }: { project: Project }) {
   return (
     <article
       id={project.slug}
-      className="scroll-mt-20 bg-white/60 border border-[#584C25]/15 rounded-sm p-8 lg:p-10
-                 hover:border-[#14B8A6]/50 hover:bg-white/80 transition-colors"
+      className="scroll-mt-20 bg-[#FFFDF7]/70 border border-[#574726]/15 rounded-sm p-8 lg:p-10
+                 hover:border-[#0D9488]/50 hover:bg-[#FFFDF7] hover:shadow-[0_1px_2px_rgba(87,71,38,0.04),0_8px_24px_-12px_rgba(87,71,38,0.12)]
+                 transition-all duration-300"
     >
       {/* Header */}
       <div className="flex items-baseline justify-between gap-4 mb-6 flex-wrap">
@@ -28,7 +29,7 @@ function ProjectCard({ project }: { project: Project }) {
                 href={link.href}
                 target={link.external ? '_blank' : undefined}
                 rel={link.external ? 'noopener noreferrer' : undefined}
-                className="text-stone-700 hover:text-stone-900 underline-offset-[5px] decoration-stone-300 hover:decoration-stone-700 hover:underline transition-all"
+                className="text-stone-700 hover:text-stone-900 underline-offset-[5px] decoration-[#574726]/30 hover:decoration-[#0D9488] hover:underline transition-all"
               >
                 {link.label} {link.external ? '↗' : '→'}
               </a>
@@ -42,7 +43,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Problem */}
         <div className="lg:col-span-6">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Problem</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#574726]/70 mb-2">Problem</p>
           <p className="text-stone-700 text-[14px] leading-[1.7] font-light">
             {project.problem}
           </p>
@@ -50,7 +51,7 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Solution */}
         <div className="lg:col-span-6">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Solution</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#574726]/70 mb-2">Solution</p>
           <p className="text-stone-700 text-[14px] leading-[1.7] font-light">
             {project.solution}
           </p>
@@ -58,14 +59,14 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Impact */}
         <div className="lg:col-span-7">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Impact</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#574726]/70 mb-2">Impact</p>
           <ul className="space-y-1.5">
             {project.impact.map(point => (
               <li
                 key={point}
                 className="text-stone-700 text-[14px] leading-[1.6] font-light flex gap-3"
               >
-                <span className="text-[#14B8A6] mt-1 text-[10px] flex-shrink-0">▸</span>
+                <span className="text-[#0D9488] mt-1 text-[10px] flex-shrink-0">▸</span>
                 <span>{point}</span>
               </li>
             ))}
@@ -74,12 +75,12 @@ function ProjectCard({ project }: { project: Project }) {
 
         {/* Stack */}
         <div className="lg:col-span-5">
-          <p className="text-[10px] tracking-[0.25em] uppercase text-[#584C25]/70 mb-2">Stack</p>
+          <p className="text-[10px] tracking-[0.25em] uppercase text-[#574726]/70 mb-2">Stack</p>
           <div className="flex flex-wrap gap-1.5">
             {project.stack.map(tech => (
               <span
                 key={tech}
-                className="font-mono text-[11px] text-stone-600 bg-stone-100 border border-stone-200 px-2 py-0.5 rounded-sm"
+                className="font-mono text-[11px] text-stone-700 bg-[#F6F0E1] border border-[#574726]/15 px-2 py-0.5 rounded-sm"
               >
                 {tech}
               </span>
@@ -94,7 +95,7 @@ function ProjectCard({ project }: { project: Project }) {
 
 export default function SelectedWork() {
   return (
-    <section className="bg-[#FFFCF6] border-t border-[#14B8A6]/30 py-20 lg:py-28">
+    <section className="bg-[#FCFAF3] border-t border-[#0D9488]/25 py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-8 lg:px-12">
 
         {/* Eyebrow */}

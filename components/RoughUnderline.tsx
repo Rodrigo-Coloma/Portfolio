@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from 'react'
  */
 export default function RoughUnderline({
   children,
-  color  = '#14B8A6',
+  color  = '#0D9488',
   animate = true,
   thickness = 2,
 }: {
