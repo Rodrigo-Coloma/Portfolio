@@ -26,6 +26,7 @@ export default function About() {
 
         <div className="space-y-6 text-stone-700 text-[15px] leading-[1.8] font-light">
           <p>
+            I&apos;m <span className="text-stone-900 font-normal">Rodrigo Coloma Gutiérrez</span>.
             I started inside hospital and pharma labs. Four years at Hospital 12 de Octubre running
             haematology, biochemistry, and microbiology assays — work where a misplaced decimal can
             change a diagnosis. Along the way I co-authored statistical analysis for{' '}

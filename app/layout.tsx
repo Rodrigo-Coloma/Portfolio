@@ -25,28 +25,107 @@ const homemadeApple = Homemade_Apple({
 })
 
 export const metadata: Metadata = {
-  title: 'Rodrigo Coloma — Data Engineer · ML Practitioner · Builder',
+  metadataBase: new URL('https://rcoloma.dev'),
+  title: {
+    default: 'Rodrigo Coloma Gutiérrez — Data Engineer · ML Practitioner · AI Builder',
+    template: '%s — Rodrigo Coloma Gutiérrez',
+  },
   description:
-    'Portfolio of Rodrigo Coloma: Data Engineer, Senior Data Scientist, and AI builder based in Madrid. Nine years shipping data systems, ML models, and LLM applications.',
-  keywords: ['Data Engineer', 'ML Practitioner', 'AI Developer', 'Databricks', 'Azure', 'Python', 'LLM'],
-  authors: [{ name: 'Rodrigo Coloma', url: 'https://rcoloma.dev' }],
+    'Rodrigo Coloma Gutiérrez — Data Engineer, Senior Data Scientist, and AI builder based in Madrid. Nine years shipping data platforms, ML systems, and LLM applications across pharma, hospitality, and clinical research.',
+  keywords: [
+    'Rodrigo Coloma',
+    'Rodrigo Coloma Gutiérrez',
+    'Rodrigo Coloma Gutierrez',
+    'rcoloma',
+    'rcoloma.dev',
+    'Data Engineer Madrid',
+    'Senior Data Scientist',
+    'ML Engineer',
+    'AI Engineer',
+    'LLM Applications',
+    'Databricks',
+    'Azure',
+    'Python',
+    'Anthropic Claude',
+  ],
+  authors: [{ name: 'Rodrigo Coloma Gutiérrez', url: 'https://rcoloma.dev' }],
+  creator: 'Rodrigo Coloma Gutiérrez',
+  publisher: 'Rodrigo Coloma Gutiérrez',
+  alternates: {
+    canonical: 'https://rcoloma.dev',
+  },
   openGraph: {
-    title: 'Rodrigo Coloma',
-    description: 'Data Engineer · ML Practitioner · Builder',
+    title: 'Rodrigo Coloma Gutiérrez — Data Engineer · ML Practitioner · AI Builder',
+    description:
+      'Portfolio of Rodrigo Coloma Gutiérrez — data platforms, ML systems, and LLM applications. Madrid, Spain.',
     url: 'https://rcoloma.dev',
     siteName: 'rcoloma.dev',
-    type: 'website',
+    type: 'profile',
+    locale: 'en_US',
+    alternateLocale: ['es_ES'],
   },
   twitter: {
     card: 'summary',
-    title: 'Rodrigo Coloma — rcoloma.dev',
-    description: 'Data Engineer · ML Practitioner · Builder',
+    title: 'Rodrigo Coloma Gutiérrez — rcoloma.dev',
+    description: 'Data Engineer · ML Practitioner · AI Builder · Madrid',
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+    },
+  },
+}
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Rodrigo Coloma Gutiérrez',
+  alternateName: ['Rodrigo Coloma', 'Rodrigo Coloma Gutierrez', 'rcoloma'],
+  givenName: 'Rodrigo',
+  familyName: 'Coloma Gutiérrez',
+  url: 'https://rcoloma.dev',
+  email: 'mailto:rjcolgut@gmail.com',
+  jobTitle: 'Data Team Lead · Senior Data Scientist · AI Engineer',
+  worksFor: { '@type': 'Organization', name: 'Grupo Ilunion' },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Madrid',
+    addressCountry: 'ES',
+  },
+  knowsAbout: [
+    'Data Engineering',
+    'Machine Learning',
+    'LLM Applications',
+    'Databricks',
+    'Azure',
+    'Python',
+    'Anthropic Claude',
+    'Power BI',
+  ],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'Complutense University of Madrid' },
+    { '@type': 'EducationalOrganization', name: 'Ironhack' },
+  ],
+  sameAs: [
+    'https://www.linkedin.com/in/rcoloma',
+    'https://github.com/Rodrigo-Coloma',
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${homemadeApple.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body className="font-sans antialiased bg-paper text-stone-900">
         <Navbar />
         {children}
