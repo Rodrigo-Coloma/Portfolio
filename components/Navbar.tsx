@@ -86,14 +86,40 @@ export default function Navbar() {
             >
               <div className="bg-[#252526] border border-[#454545] rounded-[3px] overflow-hidden shadow-xl">
                 <a
-                  href="/cvmachine"
+                  href="https://github.com/Rodrigo-Coloma/sagebase"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771]"
+                >
+                  <span className="text-xs text-[#cccccc] group-hover:text-white transition-colors">
+                    medlit
+                  </span>
+                  <span className="text-[10px] text-[#858585] group-hover:text-[#cccccc] transition-colors">
+                    Biomedical RAG ↗
+                  </span>
+                </a>
+                <a
+                  href="/cvmachine"
+                  className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771] border-t border-[#454545]"
                 >
                   <span className="text-xs text-[#cccccc] group-hover:text-white transition-colors">
                     CVMACHINE
                   </span>
                   <span className="text-[10px] text-[#858585] group-hover:text-[#cccccc] transition-colors">
                     AI CV builder ↗
+                  </span>
+                </a>
+                <a
+                  href="https://rcoloma.dev/edc"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771] border-t border-[#454545]"
+                >
+                  <span className="text-xs text-[#cccccc] group-hover:text-white transition-colors">
+                    EDC MVP
+                  </span>
+                  <span className="text-[10px] text-[#858585] group-hover:text-[#cccccc] transition-colors">
+                    Clinical data capture ↗
                   </span>
                 </a>
               </div>

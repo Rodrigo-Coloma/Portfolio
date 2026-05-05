@@ -1,10 +1,10 @@
 export type Project = {
   slug:     string
   title:    string
-  context:  string                     // e.g. "Side project · 2026" or "Ilunion Hotels · 2024–2025"
+  context:  string
   problem:  string
   solution: string
-  impact:   string[]                   // bullet points, prefer numbers
+  impact:   string[]
   stack:    string[]
   links?:   { label: string; href: string; external?: boolean }[]
 }
@@ -27,6 +27,24 @@ export const PROJECTS: Project[] = [
     stack: ['Python', 'FastAPI', 'Typer', 'Qdrant', 'Chroma', 'pgvector', 'sentence-transformers', 'BGE / PubMedBERT', 'Claude API', 'PyMuPDF', 'lxml', 'APScheduler', 'Streamlit', 'pydantic', 'pytest'],
     links: [
       { label: 'Source', href: 'https://github.com/Rodrigo-Coloma/sagebase', external: true },
+    ],
+  },
+  {
+    slug:    'edc',
+    title:   'EDC MVP',
+    context: 'Side project · Live · 2026',
+    problem:
+      'A technical test asked for a Power BI dashboard over dummy clinical data. A static report can show the data, but it cannot capture it, query it, or audit how it changed — which is what an actual Electronic Data Capture system has to do.',
+    solution:
+      'Full-stack EDC built around the same dummy data: metadata-driven CRFs (forms, fields, rules stored as data), role-scoped auth (Data Manager / Site Coordinator), threaded query workflow with an Open → Answered → Closed state machine, and a discrepancy engine with cross-field predicates evaluated through a whitelisted AST. An EDA workbench mirrors the original PBI layout (violin + box, correlation heatmap, scatter + R², σ outliers) computed client-side on per-subject aggregates. CRF design is AI-assisted: a Claude tool-use agent reads an uploaded protocol and proposes CRFs over an SSE stream with keepalive-aware retry. Append-only audit log, per-field history popovers, and a global audit explorer. Deployed end-to-end on a Linux VPS via Docker Compose behind nginx and Cloudflare.',
+    impact: [
+      'Live at rcoloma.dev/edc — 15 subjects, 30 form instances, 210 field values, 16 discrepancy rules, full query + audit flow',
+      'AI-assisted CRF design: Claude Sonnet 4.6 agent with tool use + SSE streaming proposes ready-to-activate CRFs from a protocol upload',
+      'Auto-discrepancy engine with safe cross-field AST evaluator (no eval / attribute access) — auto-opens and auto-closes queries on save',
+    ],
+    stack: ['TypeScript', 'React', 'Vite', 'Tailwind', 'shadcn/ui', 'Plotly.js', 'FastAPI', 'SQLAlchemy', 'Alembic', 'Pydantic v2', 'PostgreSQL', 'Claude API', 'Docker', 'nginx', 'Cloudflare'],
+    links: [
+      { label: 'Live demo', href: 'https://rcoloma.dev/edc', external: true },
     ],
   },
   {
@@ -68,7 +86,7 @@ export const PROJECTS: Project[] = [
     title:   'Azure + Databricks Data Platform',
     context: 'Grupo Ilunion · 2026 – present',
     problem:
-      'Corporate analytics needed a unified, governed cloud data layer to scale across business units and host the company’s first LLM-based applications, replacing scattered ad-hoc reporting.',
+      'Corporate analytics needed a unified, governed cloud data layer to scale across business units and host the first LLM-based applications, replacing scattered ad-hoc reporting.',
     solution:
       'Designed and built the platform end-to-end on Azure Data Factory and Databricks: ingestion contracts, Delta Lake medallion architecture, semantic layer for BI, and the deployment / monitoring pieces for two LLM apps. Set the engineering standards (testing, code review, env separation) the team now ships against.',
     impact: [
@@ -83,7 +101,7 @@ export const PROJECTS: Project[] = [
     title:   'Data Stack from Scratch',
     context: 'Macrogen · 2022–2024',
     problem:
-      'A pharmaceutical / lab-services company with no data infrastructure: reporting was manual, inconsistent across business units, and didn’t reconcile against the underlying scientific data.',
+      'A pharmaceutical / lab-services company with no data infrastructure: reporting was manual, inconsistent across business units, and did not reconcile against the underlying scientific data.',
     solution:
       'Owned the build end-to-end while running lab operations: warehouse design, ETL pipelines from operational + lab systems, modeling layer that respected scientific data standards, and the reporting tier on Power BI. Picked tooling against constraints (small team, no platform team) and documented it for the next engineer.',
     impact: [
