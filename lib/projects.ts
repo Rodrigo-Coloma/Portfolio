@@ -26,7 +26,8 @@ export const PROJECTS: Project[] = [
     ],
     stack: ['Python', 'FastAPI', 'Typer', 'Qdrant', 'Chroma', 'pgvector', 'sentence-transformers', 'BGE / PubMedBERT', 'Claude API', 'PyMuPDF', 'lxml', 'APScheduler', 'Streamlit', 'pydantic', 'pytest'],
     links: [
-      { label: 'Source', href: 'https://github.com/Rodrigo-Coloma/sagebase', external: true },
+      { label: 'Live demo', href: 'https://rcoloma.dev/medlit',          external: true },
+      { label: 'Source',    href: 'https://github.com/Rodrigo-Coloma/sagebase', external: true },
     ],
   },
   {
@@ -109,6 +110,10 @@ export const PROJECTS: Project[] = [
       'Single source of truth reconciling business KPIs and lab-side scientific data',
       'Stack handed off cleanly when transitioning out of the role',
     ],
+    stack: ['SQL Server', 'ETL', 'Power BI', 'Power Query', 'DAX', 'Data Modeling'],
+  },
+]
+,
     stack: ['SQL Server', 'ETL', 'Power BI', 'Power Query', 'DAX', 'Data Modeling'],
   },
 ]

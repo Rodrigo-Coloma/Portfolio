@@ -287,7 +287,7 @@ function ProjectsJSON() {
       <div className="px-3 pl-6">
         <Op>{'{ '}</Op><Va>&quot;name&quot;</Va><Op>: </Op><St>&quot;medlit&quot;</St><Op>, </Op>
         <Va>&quot;type&quot;</Va><Op>: </Op><St>&quot;biomedical RAG&quot;</St><Op>, </Op>
-        <Va>&quot;url&quot;</Va><Op>: </Op><St>&quot;https://github.com/Rodrigo-Coloma/sagebase&quot;</St><Op>{' },'}</Op>
+        <Va>&quot;url&quot;</Va><Op>: </Op><St>&quot;https://rcoloma.dev/medlit&quot;</St><Op>{' },'}</Op>
       </div>
       <div className="px-3 pl-6">
         <Op>{'{ '}</Op><Va>&quot;name&quot;</Va><Op>: </Op><St>&quot;CVMACHINE&quot;</St><Op>, </Op>

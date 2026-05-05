@@ -86,7 +86,7 @@ export default function Navbar() {
             >
               <div className="bg-[#252526] border border-[#454545] rounded-[3px] overflow-hidden shadow-xl">
                 <a
-                  href="https://github.com/Rodrigo-Coloma/sagebase"
+                  href="https://rcoloma.dev/medlit"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-between px-4 py-3 group hover:bg-[#094771]"
