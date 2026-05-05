@@ -113,7 +113,3 @@ export const PROJECTS: Project[] = [
     stack: ['SQL Server', 'ETL', 'Power BI', 'Power Query', 'DAX', 'Data Modeling'],
   },
 ]
-,
-    stack: ['SQL Server', 'ETL', 'Power BI', 'Power Query', 'DAX', 'Data Modeling'],
-  },
-]
