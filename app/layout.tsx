@@ -21,11 +21,11 @@ const serif = Fraunces({
 export const metadata: Metadata = {
   metadataBase: new URL('https://rcoloma.dev'),
   title: {
-    default: 'Rodrigo Coloma Gutiérrez — Data Team Lead · Semantic models people trust',
+    default: 'Rodrigo Coloma Gutiérrez — Data Team Lead · Internal data product development',
     template: '%s — Rodrigo Coloma Gutiérrez',
   },
   description:
-    'Rodrigo Coloma Gutiérrez — Data Team Lead in Madrid. Semantic layers, Power BI and DAX, Databricks and Azure data engineering, GxP clinical reporting, and LLM applications on top of governed data.',
+    'Rodrigo Coloma Gutiérrez — leads the internal data product development team at Grupo Ilunion, Madrid. Governance and a coherent stack from Azure and Databricks to the semantic layer, Power BI and LLM agents; validated clinical reporting under GxP.',
   keywords: [
     'Rodrigo Coloma',
     'Rodrigo Coloma Gutiérrez',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Rodrigo Coloma Gutiérrez — Data Team Lead · Madrid',
     description:
-      'Semantic models, Power BI governance, Databricks and Azure, GxP clinical reporting, LLM applications. Portfolio of Rodrigo Coloma Gutiérrez.',
+      'Data leadership: strategy, governance and technical coherence across Azure, Databricks, Power BI and LLM agents. Portfolio of Rodrigo Coloma Gutiérrez.',
     url: 'https://rcoloma.dev',
     siteName: 'rcoloma.dev',
     type: 'profile',
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Rodrigo Coloma Gutiérrez — rcoloma.dev',
-    description: 'Data Team Lead · Semantic models people trust · Madrid',
+    description: 'Data Team Lead · Internal data product development · Madrid',
   },
   robots: {
     index: true,
@@ -84,7 +84,7 @@ const personJsonLd = {
   familyName: 'Coloma Gutiérrez',
   url: 'https://rcoloma.dev',
   email: 'mailto:rjcolgut@gmail.com',
-  jobTitle: 'Data Team Lead',
+  jobTitle: 'Data Team Lead, Internal Data Product Development',
   worksFor: { '@type': 'Organization', name: 'Grupo Ilunion' },
   address: {
     '@type': 'PostalAddress',

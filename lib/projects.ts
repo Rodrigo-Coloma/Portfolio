@@ -13,22 +13,49 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    slug:    'data-platform',
+    title:   'Internal data product development team',
+    org:     'Grupo Ilunion',
+    tags:    ['Azure Data Factory', 'Databricks', 'Delta Lake', 'Power BI'],
+    summary:
+      'The team inside the corporate data office that builds the group\'s data products, which I lead under the CDO. The governed cloud data layer — ingestion contracts, medallion architecture under Unity Catalog, a semantic layer for BI — plus the deployment and monitoring pieces for the group\'s first LLM applications, and the engineering standards the team ships against.',
+    problem:
+      'Corporate analytics ran on scattered, ad-hoc reporting. Scaling it across business units, and hosting the first LLM-based applications, needed a unified, governed foundation and a team with a shared way of working.',
+    solution:
+      'Designed and built the platform end to end on Azure Data Factory and Databricks, and set the team\'s standards (testing, code review, environment separation, Dev → Test → Prod) and rituals (demo days, short pitches to the CDO, write-ups in tickets) that keep the products coherent as more businesses join.',
+    impact: [
+      'Two LLM-based applications in production, owned across their full lifecycle from architecture to monitoring',
+      'Foundation for four high-priority Power BI data products delivered by the team',
+      'One set of engineering standards across the data product team',
+    ],
+    stack: ['Azure Data Factory', 'Databricks', 'Unity Catalog', 'PySpark', 'Delta Lake', 'Power BI', 'Azure DevOps', 'Claude / Anthropic SDK'],
+  },
+  {
     slug:    'people-model',
     title:   'Corporate People model',
     org:     'Grupo Ilunion',
     tags:    ['TMDL', 'DAX', 'Fabric', 'RLS'],
     summary:
-      'Single source of truth for people analytics across a multi-business group: ~50 analysts building on it, 2,500–3,000 consumers, businesses extending it through chained composite models on a Fabric capacity.',
+      'The governance decision made concrete: one People domain model owned by corporate, extended by every business through chained composite models on a Fabric capacity. Around 50 analysts build on it and 2,500–3,000 people consume it, with one definition of headcount, absenteeism and compensation across the group.',
     problem:
       'Six report-specific models (headcount, compensation, training, accidents…) disagreed with each other, and every business unit rebuilt the same measures with slightly different definitions.',
     solution:
-      'One governed People domain model owned by corporate: metric definitions live in the model, row-level security encodes both organisational scope and KPI-family visibility, and businesses extend it through composite DirectQuery models they own. Versioned in Azure DevOps and promoted through Dev → Test → Prod pipelines.',
+      'Metric definitions live in the model. Row-level security encodes both organisational scope and KPI-family visibility, so one user can read salaries for their unit and headcount for all of them. Businesses extend the model through composite DirectQuery models they own; changes upstream propagate downstream without forks.',
     impact: [
-      'One definition of headcount, absenteeism and compensation across the group',
-      'Businesses add their own tables and RLS without forking the corporate model',
+      'One definition of every people KPI across the group, from corporate to each business',
+      'Businesses add their own tables and RLS without a copy of the corporate model',
       'Refresh-time precomputation replaced click-time SWITCH logic in the heaviest reports',
     ],
     stack: ['Power BI', 'TMDL', 'DAX', 'Fabric', 'Databricks', 'Azure DevOps'],
+  },
+  {
+    slug:    'agents',
+    title:   'Agents on the governed model',
+    org:     'Grupo Ilunion',
+    tags:    ['Databricks Genie', 'Copilot Studio', 'Teams'],
+    summary:
+      'Conversational access without a second source of truth. A Databricks Genie space compressed from a 12,000-line TMDL model — instructions, metric glossary, table dictionary and example queries — and a Copilot Studio agent in Teams answering people-analytics questions from the same definitions as the reports. A companion agent turns data-incident emails into Dataverse tickets for a Power App.',
+    stack: ['Databricks Genie', 'SQL', 'Copilot Studio', 'Dataverse', 'Power Apps'],
   },
   {
     slug:    'clinical-reporting',
@@ -36,7 +63,7 @@ export const PROJECTS: Project[] = [
     org:     'US trial sponsor',
     tags:    ['Power BI', 'Dataverse', 'R', 'GxP'],
     summary:
-      'Enrollment, dosing, follow-up and adverse-event reporting for a Phase 3 surgical-imaging trial. EDC → Dataverse → Power BI, three-stage deployment pipeline, requirements spec with 26 requirements, statistical endpoint analysis in R run from a Fabric notebook.',
+      'Validated status reporting for a Phase 3 surgical-imaging trial, delivered as the sole data person under GxP. Enrollment, dosing, follow-up and adverse events, EDC → Dataverse → Power BI, a three-stage deployment pipeline, a requirements specification with 26 requirements, and endpoint statistics in R run from a Fabric notebook.',
     problem:
       'The sponsor needed trial-status reporting that could be validated: every number traceable to the EDC, every change auditable, and the analysis code acceptable to a regulator.',
     solution:
@@ -49,13 +76,40 @@ export const PROJECTS: Project[] = [
     stack: ['Power BI', 'Dataverse', 'Power Automate', 'R', 'Fabric'],
   },
   {
-    slug:    'agents',
-    title:   'Agents on the governed model',
-    org:     'Grupo Ilunion',
-    tags:    ['Databricks Genie', 'Copilot Studio', 'Teams'],
+    slug:    'macrogen',
+    title:   'A data function from nothing',
+    org:     'Macrogen',
+    tags:    ['SQL Server', 'ETL', 'Power BI'],
     summary:
-      'A Databricks Genie space compressed from a 12,000-line TMDL model — instructions, metric glossary, table dictionary and example queries — and a Copilot Studio agent in Teams that answers people-analytics questions from the same definitions as the reports. A companion agent turns data-incident emails into Dataverse tickets for a Power App.',
-    stack: ['Databricks Genie', 'SQL', 'Copilot Studio', 'Dataverse', 'Power Apps'],
+      'A lab-services company with no data infrastructure. Chose the tooling against real constraints (small team, no platform team), built the warehouse, the ETL from operational and lab systems, a modeling layer that respected scientific data standards and the reporting tier — while running lab operations — and documented it for the next engineer.',
+    impact: [
+      'Reporting time from days of manual exports to minutes of refreshed dashboards',
+      'Single source of truth reconciling business KPIs and lab-side scientific data',
+      'Handed off cleanly when leaving the role',
+    ],
+    stack: ['SQL Server', 'ETL', 'Power BI', 'Power Query', 'DAX'],
+  },
+  {
+    slug:    'forecasting',
+    title:   'Hotel revenue forecasting',
+    org:     'Ilunion Hotels',
+    tags:    ['XGBoost', 'MLflow', 'Power BI'],
+    summary:
+      'Production ML inside the BI refresh, not beside it. Audited the chain\'s core revenue forecasting pipeline, re-engineered seasonality, lead-time and market features, and tuned an XGBoost ensemble against rolling cross-validation windows.',
+    impact: [
+      '+5% accuracy on the core forecasting model, measured on held-out seasonal periods',
+      'Shipped alongside four other production models (demand, segmentation, churn, propensity)',
+      'Wired into 50+ Power BI reports refreshed automatically',
+    ],
+    stack: ['Python', 'scikit-learn', 'XGBoost', 'MLflow', 'Power BI', 'Azure SQL'],
+  },
+  {
+    slug:    'rate-calculator',
+    title:   'Rate identification calculator',
+    org:     'Hotels',
+    tags:    ['Python', 'pricing'],
+    summary:
+      'From a price observed on an OTA, infer by probability which tariff, room type and conditions produced it. Piloted on one hotel.',
   },
   {
     slug:    'medlit',
@@ -110,41 +164,5 @@ export const PROJECTS: Project[] = [
     ],
     stack: ['TypeScript', 'React', 'Vite', 'Express', 'Prisma', 'PostgreSQL', 'Claude API', 'pdfkit', 'docx'],
     links: [{ label: 'Live demo', href: '/cvmachine' }],
-  },
-  {
-    slug:    'rate-calculator',
-    title:   'Rate identification calculator',
-    org:     'Hotels',
-    tags:    ['Python', 'pricing'],
-    summary:
-      'From a price observed on an OTA, infer by probability which tariff, room type and conditions produced it. Piloted on one hotel.',
-  },
-  {
-    slug:    'forecasting',
-    title:   'Hotel revenue forecasting',
-    org:     'Ilunion Hotels',
-    tags:    ['XGBoost', 'MLflow', 'Power BI'],
-    summary:
-      'Audited the chain\'s core revenue forecasting pipeline, re-engineered seasonality, lead-time and market features, and tuned an XGBoost ensemble against rolling cross-validation windows.',
-    impact: [
-      '+5% accuracy on the core forecasting model, measured on held-out seasonal periods',
-      'Shipped alongside four other production models (demand, segmentation, churn, propensity)',
-      'Wired into 50+ Power BI reports refreshed automatically',
-    ],
-    stack: ['Python', 'scikit-learn', 'XGBoost', 'MLflow', 'Power BI', 'Azure SQL'],
-  },
-  {
-    slug:    'macrogen',
-    title:   'Data stack from scratch',
-    org:     'Macrogen',
-    tags:    ['SQL Server', 'ETL', 'Power BI'],
-    summary:
-      'A lab-services company with no data infrastructure. Built the warehouse, the ETL from operational and lab systems, a modeling layer that respected scientific data standards, and the reporting tier — while running lab operations.',
-    impact: [
-      'Reporting time from days of manual exports to minutes of refreshed dashboards',
-      'Single source of truth reconciling business KPIs and lab-side scientific data',
-      'Documented and handed off cleanly when leaving the role',
-    ],
-    stack: ['SQL Server', 'ETL', 'Power BI', 'Power Query', 'DAX'],
   },
 ]
