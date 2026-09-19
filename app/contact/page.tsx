@@ -1,109 +1,68 @@
 import type { Metadata } from 'next'
-import StampLabel from '@/components/StampLabel'
+import TabBar from '@/components/editor/TabBar'
+import StatusBar from '@/components/editor/StatusBar'
+import { PROFILE, CONTACT_BLURB } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Contact — Rodrigo Coloma',
-  description: 'Get in touch with Rodrigo Coloma — data engineer, ML practitioner, and AI builder based in Madrid.',
+  title: 'Contact',
+  description: 'Get in touch with Rodrigo Coloma — Data Team Lead in Madrid. Semantic models, Power BI governance, data engineering.',
 }
 
 const CONTACT: { label: string; value: string; href: string }[] = [
-  { label: 'Email',    value: 'rjcolgut@gmail.com',                href: 'mailto:rjcolgut@gmail.com'                  },
-  { label: 'LinkedIn', value: 'linkedin.com/in/rcoloma',           href: 'https://www.linkedin.com/in/rcoloma'        },
-  { label: 'GitHub',   value: 'github.com/Rodrigo-Coloma',         href: 'https://github.com/Rodrigo-Coloma'          },
-  { label: 'Phone',    value: '+34 691 668 700',                   href: 'tel:+34691668700'                           },
+  { label: 'email',    value: PROFILE.email,             href: `mailto:${PROFILE.email}` },
+  { label: 'linkedin', value: 'linkedin.com/in/rcoloma', href: PROFILE.linkedin },
+  { label: 'github',   value: 'github.com/Rodrigo-Coloma', href: PROFILE.github },
+  { label: 'phone',    value: '+34 691 668 700',         href: 'tel:+34691668700' },
 ]
 
 const META: [string, string][] = [
-  ['Location',  'Madrid, ES · Open to remote EU'],
-  ['Languages', 'Spanish (Native) · English (C2) · German (A1)'],
-  ['Timezone',  'CET (UTC+1) · CEST in summer'],
-  ['Best for',  'Data engineering · ML · LLM apps · Consulting'],
+  ['location',  'Madrid, ES · open to remote EU'],
+  ['languages', 'Spanish (native) · English (C2) · German (A1)'],
+  ['timezone',  'CET (UTC+1) · CEST in summer'],
+  ['best for',  'semantic models · Power BI governance · data engineering · LLM apps'],
 ]
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#FCFAF3] pt-[58px]">
+    <>
+      <TabBar active="contact.md" home={false} />
+      <main className="min-h-screen pt-[var(--chrome-top)] pb-[var(--chrome-bottom)] bg-paper-preview font-serif prose-preview">
+        <div className="max-w-[720px] px-6 py-12 sm:px-10 sm:py-16 lg:px-[72px]">
+          <p className="font-mono text-[12px] tracking-[0.08em] text-ink-faint uppercase mb-6">contact.md</p>
+          <h1 className="text-[44px] sm:text-[56px] leading-[1.02] font-normal tracking-[-0.02em] mb-7">
+            Let&apos;s talk.
+          </h1>
+          <p className="text-[17px] leading-[1.5] text-ink-body max-w-[560px] mb-12">{CONTACT_BLURB}</p>
 
-      {/* Subtle radial wash matching homepage pro side — warm sepia */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_30%,rgba(87,71,38,0.05),transparent)] pointer-events-none" />
-
-      <div className="relative max-w-2xl mx-auto px-8 lg:px-12 py-20 lg:py-28">
-
-        {/* Eyebrow */}
-        <div className="mb-6">
-          <StampLabel boxed>Get in touch</StampLabel>
-        </div>
-
-        {/* Title */}
-        <h1 className="text-5xl xl:text-6xl font-light text-stone-900 leading-[1] tracking-[-0.02em] mb-6">
-          Let&apos;s build something.
-        </h1>
-
-        {/* Bio */}
-        <p className="text-stone-600 text-[15px] leading-[1.7] font-light max-w-md mb-14">
-          Building data systems and AI applications out of Madrid.
-          Open to remote EU roles, technical consulting, and interesting collaborations.
-          The fastest way to reach me is email.
-        </p>
-
-        {/* Accent line */}
-        <div className="w-12 h-px bg-[#0D9488] mb-14" />
-
-        {/* Contact methods */}
-        <div className="mb-16">
-          <div className="mb-6">
-            <StampLabel>Direct</StampLabel>
-          </div>
-          <div className="space-y-4">
-            {CONTACT.map(({ label, value, href }) => (
+          <div className="border-t border-rule-soft mb-12">
+            {CONTACT.map(c => (
               <a
-                key={label}
-                href={href}
-                target={href.startsWith('http') ? '_blank' : undefined}
-                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="group flex items-baseline gap-6 -mx-3 px-3 py-2 rounded-sm hover:bg-[#574726]/8 transition-colors"
+                key={c.label}
+                href={c.href}
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="grid grid-cols-[88px_minmax(0,1fr)_auto] items-baseline gap-4 py-3 plain border-b border-rule-soft hover:bg-paper transition-colors"
               >
-                <span className="text-stone-400 text-[11px] uppercase tracking-[0.18em] w-20 flex-shrink-0">
-                  {label}
-                </span>
-                <span className="text-stone-800 text-[15px] font-light flex-1">
-                  {value}
-                </span>
-                <span className="text-stone-400 group-hover:text-stone-700 group-hover:translate-x-1 transition-all text-sm">
-                  →
-                </span>
+                <span className="font-mono text-[12px] text-ink-faint">{c.label}</span>
+                <span className="text-[16px] text-ink">{c.value}</span>
+                <span className="text-ink-faint">→</span>
               </a>
             ))}
           </div>
-        </div>
 
-        {/* Meta */}
-        <div className="mb-12">
-          <div className="mb-6">
-            <StampLabel>Details</StampLabel>
-          </div>
-          <div className="space-y-3">
-            {META.map(([label, value]) => (
-              <div key={label} className="flex items-baseline gap-6">
-                <span className="text-stone-400 text-[11px] uppercase tracking-[0.18em] w-20 flex-shrink-0">
-                  {label}
-                </span>
-                <span className="text-stone-600 text-[14px] font-light">
-                  {value}
-                </span>
+          <div className="font-mono text-[12.5px] leading-[1.9] text-ink-body">
+            {META.map(([k, v]) => (
+              <div key={k} className="grid grid-cols-[88px_minmax(0,1fr)] gap-4">
+                <span className="text-ink-faint">{k}</span>
+                <span>{v}</span>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Footer mark */}
-        <div className="pt-12 border-t border-[#574726]/15">
-          <p className="text-[10px] text-stone-400 tracking-widest">
-            ⏤ Reply within 24 hours, usually faster
-          </p>
+          <p className="mt-12 font-mono text-[11.5px] text-ink-faint">Reply within 24 hours, usually faster.</p>
         </div>
-
-      </div>
-    </main>
+      </main>
+      <StatusBar />
+    </>
   )
 }

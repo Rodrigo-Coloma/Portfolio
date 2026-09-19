@@ -1,63 +1,57 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { JetBrains_Mono } from 'next/font/google'
-import { Homemade_Apple } from 'next/font/google'
-import Navbar from '@/components/Navbar'
+import { JetBrains_Mono, Fraunces } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
+const mono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-})
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
+  weight: ['400', '500'],
   variable: '--font-mono',
   display: 'swap',
 })
 
-const homemadeApple = Homemade_Apple({
+const serif = Fraunces({
   subsets: ['latin'],
-  weight: '400',
-  variable: '--font-signature',
+  weight: 'variable',
+  style: ['normal', 'italic'],
+  axes: ['opsz'],
+  variable: '--font-serif',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://rcoloma.dev'),
   title: {
-    default: 'Rodrigo Coloma Gutiérrez — Data Engineer · ML Practitioner · AI Builder',
+    default: 'Rodrigo Coloma Gutiérrez — Data Team Lead · Semantic models people trust',
     template: '%s — Rodrigo Coloma Gutiérrez',
   },
   description:
-    'Rodrigo Coloma Gutiérrez — Data Engineer, Senior Data Scientist, and AI builder based in Madrid. Nine years shipping data platforms, ML systems, and LLM applications across pharma, hospitality, and clinical research.',
+    'Rodrigo Coloma Gutiérrez — Data Team Lead in Madrid. Semantic layers, Power BI and DAX, Databricks and Azure data engineering, GxP clinical reporting, and LLM applications on top of governed data.',
   keywords: [
     'Rodrigo Coloma',
     'Rodrigo Coloma Gutiérrez',
     'Rodrigo Coloma Gutierrez',
     'rcoloma',
     'rcoloma.dev',
-    'Data Engineer Madrid',
-    'Senior Data Scientist',
-    'ML Engineer',
-    'AI Engineer',
-    'LLM Applications',
+    'Data Team Lead Madrid',
+    'Power BI',
+    'DAX',
+    'TMDL',
+    'Semantic model',
     'Databricks',
-    'Azure',
-    'Python',
+    'Azure Data Factory',
+    'Clinical data',
+    'GxP',
+    'LLM Applications',
     'Anthropic Claude',
   ],
   authors: [{ name: 'Rodrigo Coloma Gutiérrez', url: 'https://rcoloma.dev' }],
   creator: 'Rodrigo Coloma Gutiérrez',
   publisher: 'Rodrigo Coloma Gutiérrez',
-  alternates: {
-    canonical: 'https://rcoloma.dev',
-  },
+  alternates: { canonical: 'https://rcoloma.dev' },
   openGraph: {
-    title: 'Rodrigo Coloma Gutiérrez — Data Engineer · ML Practitioner · AI Builder',
+    title: 'Rodrigo Coloma Gutiérrez — Data Team Lead · Madrid',
     description:
-      'Portfolio of Rodrigo Coloma Gutiérrez — data platforms, ML systems, and LLM applications. Madrid, Spain.',
+      'Semantic models, Power BI governance, Databricks and Azure, GxP clinical reporting, LLM applications. Portfolio of Rodrigo Coloma Gutiérrez.',
     url: 'https://rcoloma.dev',
     siteName: 'rcoloma.dev',
     type: 'profile',
@@ -67,7 +61,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary',
     title: 'Rodrigo Coloma Gutiérrez — rcoloma.dev',
-    description: 'Data Engineer · ML Practitioner · AI Builder · Madrid',
+    description: 'Data Team Lead · Semantic models people trust · Madrid',
   },
   robots: {
     index: true,
@@ -90,7 +84,7 @@ const personJsonLd = {
   familyName: 'Coloma Gutiérrez',
   url: 'https://rcoloma.dev',
   email: 'mailto:rjcolgut@gmail.com',
-  jobTitle: 'Data Team Lead · Senior Data Scientist · AI Engineer',
+  jobTitle: 'Data Team Lead',
   worksFor: { '@type': 'Organization', name: 'Grupo Ilunion' },
   address: {
     '@type': 'PostalAddress',
@@ -98,14 +92,16 @@ const personJsonLd = {
     addressCountry: 'ES',
   },
   knowsAbout: [
+    'Semantic modeling',
+    'Power BI',
+    'DAX',
     'Data Engineering',
-    'Machine Learning',
-    'LLM Applications',
     'Databricks',
     'Azure',
+    'Clinical data',
+    'Machine Learning',
+    'LLM Applications',
     'Python',
-    'Anthropic Claude',
-    'Power BI',
   ],
   alumniOf: [
     { '@type': 'CollegeOrUniversity', name: 'Complutense University of Madrid' },
@@ -119,15 +115,14 @@ const personJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} ${homemadeApple.variable}`}>
+    <html lang="en" className={`${mono.variable} ${serif.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className="font-sans antialiased bg-paper text-stone-900">
-        <Navbar />
+      <body className="font-mono antialiased bg-paper text-ink">
         {children}
       </body>
     </html>

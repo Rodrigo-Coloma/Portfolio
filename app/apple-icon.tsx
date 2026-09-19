@@ -21,14 +21,14 @@ export default function AppleIcon() {
           style={{
             width: '50%',
             height: '100%',
-            background: '#FCFAF3',
+            background: '#f4f1ea',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#1C1814',
+            color: '#2a2723',
             fontSize: 120,
             fontWeight: 300,
-            fontFamily: 'serif',
+            fontFamily: 'monospace',
             letterSpacing: '-0.04em',
           }}
         >
@@ -40,11 +40,11 @@ export default function AppleIcon() {
           style={{
             width: '50%',
             height: '100%',
-            background: '#1e1e1e',
+            background: '#b45309',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#dcdcaa',
+            color: '#faf8f3',
             fontSize: 120,
             fontWeight: 800,
             fontFamily: 'monospace',

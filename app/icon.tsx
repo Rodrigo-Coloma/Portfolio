@@ -4,8 +4,8 @@ export const size = { width: 32, height: 32 }
 export const contentType = 'image/png'
 
 /**
- * Browser tab favicon — split design mirroring the homepage.
- * Left half: light professional. Right half: dark IDE.
+ * Browser tab favicon — split design mirroring the Source / Preview homepage.
+ * Left half: source pane (paper). Right half: preview pane (amber accent).
  */
 export default function Icon() {
   return new ImageResponse(
@@ -22,14 +22,14 @@ export default function Icon() {
           style={{
             width: '50%',
             height: '100%',
-            background: '#FCFAF3',
+            background: '#f4f1ea',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#1C1814',
+            color: '#2a2723',
             fontSize: 22,
             fontWeight: 400,
-            fontFamily: 'serif',
+            fontFamily: 'monospace',
             letterSpacing: '-0.04em',
           }}
         >
@@ -41,11 +41,11 @@ export default function Icon() {
           style={{
             width: '50%',
             height: '100%',
-            background: '#1e1e1e',
+            background: '#b45309',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#dcdcaa',
+            color: '#faf8f3',
             fontSize: 22,
             fontWeight: 800,
             fontFamily: 'monospace',
