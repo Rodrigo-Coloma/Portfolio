@@ -1,7 +1,12 @@
+'use client'
+
 import Image from 'next/image'
-import { PROFILE, FOCUS, EDUCATION } from '@/lib/site'
+import { useFilters, VIEW_COLOR } from '@/components/dash/filters'
+import { PROFILE, FOCUS, EDUCATION, VIEWS } from '@/lib/site'
 
 export default function ProfileCard({ className = '' }: { className?: string }) {
+  const { view } = useFilters()
+  const job = VIEWS[view].job
   return (
     <section id="overview" aria-label="Profile" className={`relative overflow-hidden rounded-xl border border-hairline bg-surface ${className}`}>
       {/* soft mint glow behind the photo */}
@@ -13,20 +18,28 @@ export default function ProfileCard({ className = '' }: { className?: string }) 
           </div>
           <div className="min-w-0">
             <h1 className="text-[22px] font-semibold leading-tight tracking-[-0.015em]">{PROFILE.name}</h1>
-            <p className="mt-1 text-[14px] text-accent">{PROFILE.role}</p>
-            <p className="text-[13px] text-ink-2">{PROFILE.team}</p>
+            <p className="mt-1 text-[13px] text-ink-2">{PROFILE.location} · CET</p>
           </div>
         </div>
 
-        <dl className="grid grid-cols-[88px_1fr] gap-y-1.5 text-[13px]">
-          <dt className="text-ink-muted">Org</dt><dd className="text-ink-2">{PROFILE.org}</dd>
-          <dt className="text-ink-muted">Reports to</dt><dd className="text-ink-2">Chief Data Officer</dd>
-          <dt className="text-ink-muted">Based in</dt><dd className="text-ink-2">{PROFILE.location} · CET</dd>
-          <dt className="text-ink-muted">Languages</dt><dd className="text-ink-2">Spanish · English C2 · German A1</dd>
-        </dl>
+        <div key={view} aria-live="polite" className="animate-[fadein_.35s_ease-out] rounded-lg border border-hairline bg-surface-2/50 p-4">
+          <div className="flex items-baseline justify-between gap-3">
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.1em] text-ink-muted">
+              <span className="h-2 w-2 rounded-full" style={{ background: VIEW_COLOR[view] }} />
+              {view === 'Education' ? 'Latest training' : `Latest role · ${view}`}
+            </span>
+            <span className="tabular text-[12px] text-ink-muted">{job.years}</span>
+          </div>
+          <p className="mt-2 text-[16px] font-medium text-accent">{job.title}</p>
+          <p className="text-[13px] text-ink-2">{job.org}</p>
+          <dl className="mt-3 grid grid-cols-[88px_1fr] gap-y-1.5 text-[13px]">
+            {job.facts.map(([k, v]) => (
+              <div key={k} className="contents"><dt className="text-ink-muted">{k}</dt><dd className="text-ink-2">{v}</dd></div>
+            ))}
+          </dl>
+          <p className="mt-3 text-[13.5px] leading-relaxed text-ink-2">{job.description}</p>
+        </div>
 
-        <p className="text-[14px] leading-relaxed text-ink-2">{PROFILE.intro}</p>
-        <p className="text-[13px] leading-relaxed text-ink-muted">{PROFILE.background}</p>
 
         <div>
           <h2 className="mb-2 text-[11px] font-medium uppercase tracking-[0.1em] text-ink-muted">Focus</h2>

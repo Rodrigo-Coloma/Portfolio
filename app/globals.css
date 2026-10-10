@@ -64,3 +64,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 /* Thin scrollbars inside cards */
 .thin-scroll { scrollbar-width: thin; scrollbar-color: var(--axis) transparent; }
+
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: none; }
+}

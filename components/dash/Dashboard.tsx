@@ -3,6 +3,7 @@
 import { FilterProvider } from '@/components/dash/filters'
 import ReportBar from '@/components/dash/ReportBar'
 import PageTabs from '@/components/dash/PageTabs'
+import ViewSwitch from '@/components/dash/ViewSwitch'
 import ProfileCard from '@/components/dash/ProfileCard'
 import KpiGrid from '@/components/dash/KpiGrid'
 import SkillsRadar from '@/components/dash/SkillsRadar'
@@ -18,6 +19,7 @@ export default function Dashboard({ asOf, refreshed }: { asOf: number; refreshed
     <FilterProvider>
       <ReportBar refreshed={refreshed} />
       <main className="mx-auto max-w-[1480px] px-4 pb-[calc(var(--chrome-bottom)+32px)] pt-[calc(var(--chrome-top)+16px)] sm:px-6">
+        <ViewSwitch />
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-12">
           <ProfileCard className="lg:col-span-5 xl:col-span-4" />
           <div className="flex min-w-0 flex-col gap-4 lg:col-span-7 xl:col-span-8">

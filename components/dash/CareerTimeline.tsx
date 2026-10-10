@@ -2,14 +2,18 @@
 
 import Card, { DataTable } from '@/components/dash/Card'
 import { useTooltip, TipTitle } from '@/components/dash/Tooltip'
-import { DOMAIN_COLOR, NEUTRAL } from '@/components/dash/filters'
-import { CAREER, DOMAINS, type Stint } from '@/lib/site'
+import { useFilters, DOMAIN_COLOR, NEUTRAL } from '@/components/dash/filters'
+import { CAREER, DOMAINS, type Stint, type View } from '@/lib/site'
 
-const START = 2009
-const TICKS = [2010, 2014, 2018, 2022, 2026]
+const START = 2018
+const TICKS = [2018, 2020, 2022, 2024, 2026]
+/** Only what overlaps the axis; the degree (2009–16) lives in the profile's education list. */
+const ROWS = CAREER.filter(s => (s.end ?? Infinity) > START)
 
 export default function CareerTimeline({ asOf, className = '' }: { asOf: number; className?: string }) {
   const { box, show, hide, node } = useTooltip()
+  const { view, setView } = useFilters()
+  const viewOf = (s: Stint): View => s.domain === null ? 'Education' : s.domain === 'Side projects' ? 'Grupo Ilunion' : s.domain
   const END = Math.ceil(asOf + 0.25)
   const pct = (y: number) => ((y - START) / (END - START)) * 100
 
@@ -18,7 +22,7 @@ export default function CareerTimeline({ asOf, className = '' }: { asOf: number;
       <TipTitle>{s.org}</TipTitle>
       <div>{s.role}</div>
       <div className="mt-1 text-ink-muted">
-        {s.label}{s.domain ? ` · ${s.domain}` : ' · education'}
+        {s.label}{s.domain ? ` · ${s.domain}` : ' · education'} · click to view
       </div>
     </>
   )
@@ -27,10 +31,10 @@ export default function CareerTimeline({ asOf, className = '' }: { asOf: number;
     <Card
       id="career"
       title="Career timeline"
-      subtitle="Roles by business domain · hover a bar for the role"
+      subtitle="Roles by business domain · click a bar to switch the view"
       className={className}
       table={<DataTable head={['Organisation', 'Role', 'Years', 'Domain']}
-                        rows={CAREER.map(s => [s.org, s.role, s.label, s.domain ?? 'Education'])} />}
+                        rows={ROWS.map(s => [s.org, s.role, s.label, s.domain ?? 'Education'])} />}
     >
       {/* legend */}
       <ul className="mb-4 flex flex-wrap gap-x-4 gap-y-1.5 text-[12px] text-ink-2">
@@ -45,28 +49,29 @@ export default function CareerTimeline({ asOf, className = '' }: { asOf: number;
       <div ref={box} className="relative">
         {/* rows */}
         <div className="space-y-2.5">
-          {CAREER.map(s => {
+          {ROWS.map(s => {
             const end = s.end ?? asOf
             const left = pct(s.start)
             const width = Math.max(pct(end) - left, 1.2)
             const color = s.domain ? DOMAIN_COLOR[s.domain] : NEUTRAL
             return (
               <div key={s.org + s.start} className="grid grid-cols-[104px_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[150px_minmax(0,1fr)]">
-                <div className="truncate text-[12.5px] text-ink-2" title={s.org}>{s.org}</div>
+                <div className={`truncate text-[12.5px] ${view === viewOf(s) ? 'text-ink' : 'text-ink-muted'}`} title={s.org}>{s.org}</div>
                 <div className="relative h-[18px]">
                   {/* gridlines */}
                   {TICKS.map(t => (
                     <span key={t} aria-hidden="true" className="absolute inset-y-0 w-px bg-grid" style={{ left: `${pct(t)}%` }} />
                   ))}
-                  <span
-                    tabIndex={0}
-                    role="img"
-                    aria-label={`${s.org}, ${s.role}, ${s.label}`}
+                  <button
+                    type="button"
+                    aria-label={`${s.org}, ${s.role}, ${s.label}. Show the ${viewOf(s)} view`}
+                    aria-pressed={view === viewOf(s)}
+                    onClick={() => setView(viewOf(s))}
                     onMouseMove={e => show(e, tip(s))}
                     onMouseLeave={hide}
                     onFocus={e => show(e.currentTarget, tip(s))}
                     onBlur={hide}
-                    className={`absolute inset-y-0 rounded-[4px] hover:brightness-110 ${s.end === null ? 'rounded-r-none' : ''}`}
+                    className={`absolute inset-y-0 cursor-pointer rounded-[4px] transition-opacity hover:brightness-110 ${view === viewOf(s) ? 'opacity-100' : 'opacity-40 hover:opacity-80'} ${s.end === null ? 'rounded-r-none' : ''}`}
                     style={{
                       left: `${left}%`,
                       width: `${width}%`,
@@ -77,7 +82,7 @@ export default function CareerTimeline({ asOf, className = '' }: { asOf: number;
                   >
                     {/* extended hit area for thin bars */}
                     <span aria-hidden="true" className="absolute -inset-x-2 -inset-y-1.5" />
-                  </span>
+                  </button>
                 </div>
               </div>
             )

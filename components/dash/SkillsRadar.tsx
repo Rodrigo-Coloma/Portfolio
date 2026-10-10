@@ -3,13 +3,15 @@
 import { useState } from 'react'
 import Card, { DataTable } from '@/components/dash/Card'
 import { useTooltip, TipTitle } from '@/components/dash/Tooltip'
-import { SKILLS } from '@/lib/site'
+import { useFilters } from '@/components/dash/filters'
+import { VIEWS } from '@/lib/site'
 
 /* Compact radar: the shape on the left, the axes as a legend on the right. */
 const S = 230, C = S / 2, R = 92, MAX = 10
 const RINGS = [2.5, 5, 7.5, 10]
 
-const angle = (i: number) => (Math.PI * 2 * i) / SKILLS.length - Math.PI / 2
+const N = 8
+const angle = (i: number) => (Math.PI * 2 * i) / N - Math.PI / 2
 const pt = (i: number, v: number) => {
   const a = angle(i), r = (v / MAX) * R
   return [C + Math.cos(a) * r, C + Math.sin(a) * r] as const
@@ -18,6 +20,8 @@ const pt = (i: number, v: number) => {
 export default function SkillsRadar({ className = '' }: { className?: string }) {
   const { box, show, hide, node } = useTooltip()
   const [hot, setHot] = useState<number | null>(null)
+  const { view } = useFilters()
+  const SKILLS = VIEWS[view].skills
 
   const enter = (i: number, e: React.MouseEvent | Element) => {
     setHot(i)
@@ -30,7 +34,7 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
     <Card
       id="skills"
       title="Skill profile"
-      subtitle="Self-assessed, 0–10 · hover for the evidence"
+      subtitle={<>Self-assessed, 0–10 · <span className="text-ink-2">{view}</span></>}
       className={className}
       table={<DataTable head={['Skill', 'Score', 'Evidence']} rows={SKILLS.map(s => [s.axis, s.score, s.evidence])} />}
     >
@@ -52,7 +56,7 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
             return <text key={i} x={x} y={y + 4} textAnchor="middle" fontSize="12"
                          fill={hot === i ? 'var(--accent)' : 'var(--muted)'} className="tabular">{i + 1}</text>
           })}
-          <polygon points={SKILLS.map((s, i) => pt(i, s.score).join(',')).join(' ')}
+          <polygon key={view} className="animate-[fadein_.35s_ease-out]" points={SKILLS.map((s, i) => pt(i, s.score).join(',')).join(' ')}
                    fill="var(--accent)" fillOpacity={0.16} stroke="var(--accent)" strokeWidth={2.5} strokeLinejoin="round" />
           {SKILLS.map((s, i) => {
             const [x, y] = pt(i, s.score)
@@ -68,7 +72,7 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
         {/* legend: one row per axis, in axis order clockwise from the top */}
         <ul className="min-w-0 flex-1 space-y-1 text-[12px] leading-tight">
           {SKILLS.map((s, i) => (
-            <li key={s.axis}>
+            <li key={view + s.axis}>
               <button type="button"
                       onMouseMove={e => enter(i, e)} onMouseLeave={leave}
                       onFocus={e => enter(i, e.currentTarget)} onBlur={leave}
