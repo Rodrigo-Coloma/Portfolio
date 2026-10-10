@@ -7,13 +7,15 @@ import { useFilters } from '@/components/dash/filters'
 import { VIEWS } from '@/lib/site'
 
 /* Compact radar: the shape on the left, the axes as a legend on the right. */
-const S = 230, C = S / 2, R = 92, MAX = 10
-const RINGS = [2.5, 5, 7.5, 10]
+/* The centre is 5, not 0: every score sits between 7.5 and 9.5, and a
+   zero-based radar would draw eight near-identical octagons. */
+const S = 230, C = S / 2, R = 92, MIN = 5, MAX = 10
+const RINGS = [6, 7, 8, 9, 10]
 
 const N = 8
 const angle = (i: number) => (Math.PI * 2 * i) / N - Math.PI / 2
 const pt = (i: number, v: number) => {
-  const a = angle(i), r = (v / MAX) * R
+  const a = angle(i), r = Math.max(0, (v - MIN) / (MAX - MIN)) * R
   return [C + Math.cos(a) * r, C + Math.sin(a) * r] as const
 }
 
@@ -34,7 +36,7 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
     <Card
       id="skills"
       title="Skill profile"
-      subtitle={<>Self-assessed, 0–10 · <span className="text-ink-2">{view}</span></>}
+      subtitle={<>Self-assessed · scale 5 (centre) to 10 · <span className="text-ink-2">{view}</span></>}
       className={className}
       table={<DataTable head={['Skill', 'Score', 'Evidence']} rows={SKILLS.map(s => [s.axis, s.score, s.evidence])} />}
     >
@@ -52,7 +54,7 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
           })}
           {/* axis numbers, matching the legend */}
           {SKILLS.map((_, i) => {
-            const [x, y] = pt(i, MAX * 1.12)
+            const [x, y] = pt(i, MAX + (MAX - MIN) * 0.12)
             return <text key={i} x={x} y={y + 4} textAnchor="middle" fontSize="12"
                          fill={hot === i ? 'var(--accent)' : 'var(--muted)'} className="tabular">{i + 1}</text>
           })}
