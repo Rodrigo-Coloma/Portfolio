@@ -49,21 +49,21 @@ export default function JokeDonut({ className = '' }: { className?: string }) {
     <Card
       id="joke"
       title="Where the hours on a BI project go"
-      subtitle="n = every BI project ever · the only pie chart in this report"
+      subtitle="The only pie chart in this report"
       className={className}
       table={<DataTable head={['Activity', 'Share', 'Note']} rows={data.map(d => [d.label, `${d.pct}%`, d.note])} />}
     >
-      <div role="group" aria-label="Scenario" className="mb-4 inline-flex rounded-lg border border-hairline p-0.5 text-[12.5px]">
+      <div role="group" aria-label="Scenario" className="mb-3 inline-flex rounded-lg border border-hairline p-0.5 text-[12px]">
         {(['reality', 'plan'] as const).map(m => (
           <button key={m} type="button" onClick={() => { setMode(m); leave() }} aria-pressed={mode === m}
-                  className={`rounded-md px-3 py-1 transition-colors ${mode === m ? 'bg-accent-dim text-accent' : 'text-ink-muted hover:text-ink'}`}>
+                  className={`rounded-md px-2.5 py-0.5 transition-colors ${mode === m ? 'bg-accent-dim text-accent' : 'text-ink-muted hover:text-ink'}`}>
             {m === 'reality' ? 'Reality' : 'Project plan'}
           </button>
         ))}
       </div>
 
-      <div ref={box} className="relative flex flex-col items-center gap-5 sm:flex-row lg:flex-col">
-        <svg viewBox={`0 0 ${C * 2} ${C * 2}`} className="h-auto w-[220px] flex-shrink-0" role="img"
+      <div ref={box} className="relative flex items-center gap-4">
+        <svg viewBox={`0 0 ${C * 2} ${C * 2}`} className="h-auto w-[132px] flex-shrink-0 sm:w-[148px]" role="img"
              aria-label={`Donut chart: ${data.map(d => `${d.label} ${d.pct}%`).join(', ')}`}>
           {slices.map((s, i) => (
             <path key={s.label} d={arc(s.a0, s.a1)} fill={s.color} fillRule="evenodd"
@@ -74,20 +74,20 @@ export default function JokeDonut({ className = '' }: { className?: string }) {
                   onFocus={e => enter(i, e.currentTarget)} onBlur={leave}
                   className="cursor-default outline-none transition-opacity" />
           ))}
-          <text x={C} y={C - 2} textAnchor="middle" fontSize="26" fontWeight="600" fill="var(--ink)" className="tabular">
+          <text x={C} y={C - 2} textAnchor="middle" fontSize="30" fontWeight="600" fill="var(--ink)" className="tabular">
             {hot !== null ? `${slices[hot].pct}%` : mode === 'plan' ? '100%' : '14%'}
           </text>
-          <text x={C} y={C + 17} textAnchor="middle" fontSize="11" fill="var(--muted)">
+          <text x={C} y={C + 17} textAnchor="middle" fontSize="13" fill="var(--muted)">
             {hot !== null ? 'of the hours' : 'building it'}
           </text>
         </svg>
 
-        <ul className="w-full space-y-2 text-[12.5px]">
+        <ul className="min-w-0 flex-1 space-y-1.5 text-[12px] leading-tight">
           {slices.map((s, i) => (
             <li key={s.label}
                 onMouseEnter={() => setHot(i)} onMouseLeave={() => setHot(null)}
                 className={`flex items-center gap-2.5 transition-opacity ${hot === null || hot === i ? '' : 'opacity-45'}`}>
-              <span className="h-2.5 w-2.5 flex-shrink-0 rounded-sm" style={{ background: s.color }} />
+              <span className="h-2 w-2 flex-shrink-0 rounded-sm" style={{ background: s.color }} />
               <span className="flex-1 text-ink-2">{s.label}</span>
               <span className="tabular text-ink">{s.pct}%</span>
             </li>

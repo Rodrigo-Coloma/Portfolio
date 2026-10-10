@@ -21,6 +21,13 @@ export const PROFILE = {
   resume:   '/resume.pdf',
 }
 
+export const FOCUS = ['Data strategy', 'Data governance', 'Semantic layers', 'Data platforms', 'LLM agents', 'GxP reporting']
+
+export const EDUCATION = [
+  { title: 'Data Analytics Bootcamp', org: 'Ironhack',                        years: '2023–24', note: 'Best Final Project' },
+  { title: 'B. Pharmacy',             org: 'Complutense University of Madrid', years: '2009–16' },
+]
+
 /* ─── KPI cards ─────────────────────────────────────────────── */
 
 export type Kpi = { value: string; label: string; context: string }

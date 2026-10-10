@@ -22,13 +22,12 @@ export default function Dashboard({ asOf, refreshed }: { asOf: number; refreshed
           <ProfileCard className="lg:col-span-5 xl:col-span-4" />
           <div className="flex min-w-0 flex-col gap-4 lg:col-span-7 xl:col-span-8">
             <KpiGrid />
-            <div className="grid flex-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2">
               <SkillsRadar />
               <JokeDonut />
             </div>
+            <CareerTimeline asOf={asOf} className="flex-1" />
           </div>
-
-          <CareerTimeline asOf={asOf} className="lg:col-span-12" />
 
           <StackFlow className="lg:col-span-12" />
 
