@@ -4,8 +4,8 @@ export const size = { width: 32, height: 32 }
 export const contentType = 'image/png'
 
 /**
- * Browser tab favicon — split design mirroring the Source / Preview homepage.
- * Left half: source pane (paper). Right half: preview pane (amber accent).
+ * Browser tab favicon — split design: dark plane and mint accent, matching the dashboard.
+ * Left half: dark plane. Right half: mint accent.
  */
 export default function Icon() {
   return new ImageResponse(
@@ -22,11 +22,11 @@ export default function Icon() {
           style={{
             width: '50%',
             height: '100%',
-            background: '#f4f1ea',
+            background: '#0a0f0e',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#2a2723',
+            color: '#3ee6b4',
             fontSize: 22,
             fontWeight: 400,
             fontFamily: 'monospace',
@@ -41,11 +41,11 @@ export default function Icon() {
           style={{
             width: '50%',
             height: '100%',
-            background: '#b45309',
+            background: '#3ee6b4',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#faf8f3',
+            color: '#062a20',
             fontSize: 22,
             fontWeight: 800,
             fontFamily: 'monospace',

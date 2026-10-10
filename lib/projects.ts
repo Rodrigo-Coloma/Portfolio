@@ -1,5 +1,10 @@
+import type { Domain, Layer } from '@/lib/site'
+
 export type Project = {
   slug:      string
+  domain:    Domain
+  layers:    Layer[]
+  metric:    string          // headline result shown in the table
   title:     string
   org:       string          // who it was for
   tags:      string[]        // short stack line shown next to the title
@@ -14,6 +19,9 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     slug:    'data-platform',
+    domain:  'Grupo Ilunion',
+    layers:  ['Ingest','Store','Model','Serve','Converse'],
+    metric:  '5-layer platform, 2 LLM apps live',
     title:   'Internal data product development team',
     org:     'Grupo Ilunion',
     tags:    ['Azure Data Factory', 'Databricks', 'Delta Lake', 'Power BI'],
@@ -32,6 +40,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'people-model',
+    domain:  'Grupo Ilunion',
+    layers:  ['Model','Serve'],
+    metric:  '6 models → 1 · ~50 analysts',
     title:   'Corporate People model',
     org:     'Grupo Ilunion',
     tags:    ['TMDL', 'DAX', 'Fabric', 'RLS'],
@@ -50,6 +61,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'agents',
+    domain:  'Grupo Ilunion',
+    layers:  ['Model','Converse'],
+    metric:  '12k-line TMDL → Genie space',
     title:   'Agents on the governed model',
     org:     'Grupo Ilunion',
     tags:    ['Databricks Genie', 'Copilot Studio', 'Teams'],
@@ -59,6 +73,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'clinical-reporting',
+    domain:  'Life sciences',
+    layers:  ['Ingest','Store','Model','Serve'],
+    metric:  'Status reporting: days → minutes',
     title:   'Clinical Power BI Reporting System',
     org:     'US trial sponsor',
     tags:    ['Power BI', 'Dataverse', 'R', 'GxP'],
@@ -77,6 +94,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'macrogen',
+    domain:  'Life sciences',
+    layers:  ['Ingest','Store','Model','Serve'],
+    metric:  'Data stack from zero',
     title:   'A data function from nothing',
     org:     'Macrogen',
     tags:    ['SQL Server', 'ETL', 'Power BI'],
@@ -91,6 +111,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'forecasting',
+    domain:  'Hotels',
+    layers:  ['Store','Model','Serve'],
+    metric:  '+5% accuracy · 50+ reports',
     title:   'Hotel revenue forecasting',
     org:     'Ilunion Hotels',
     tags:    ['XGBoost', 'MLflow', 'Power BI'],
@@ -105,6 +128,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'rate-calculator',
+    domain:  'Hotels',
+    layers:  ['Model'],
+    metric:  'Piloted on one hotel',
     title:   'Rate identification calculator',
     org:     'Hotels',
     tags:    ['Python', 'pricing'],
@@ -113,6 +139,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'medlit',
+    domain:  'Side projects',
+    layers:  ['Ingest','Store','Converse','Serve'],
+    metric:  'Hybrid retrieval, cited answers',
     title:   'medlit — Medical Literature RAG',
     org:     'Side project',
     tags:    ['Python', 'FastAPI', 'pgvector', 'Claude'],
@@ -135,6 +164,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'edc',
+    domain:  'Side projects',
+    layers:  ['Ingest','Store','Serve','Converse'],
+    metric:  'Live EDC with audit trail',
     title:   'EDC MVP',
     org:     'Side project',
     tags:    ['React', 'FastAPI', 'PostgreSQL', 'Claude'],
@@ -153,6 +185,9 @@ export const PROJECTS: Project[] = [
   },
   {
     slug:    'cvmachine',
+    domain:  'Side projects',
+    layers:  ['Converse','Serve'],
+    metric:  'CV → schema → PDF/DOCX',
     title:   'CVMACHINE',
     org:     'Side project',
     tags:    ['React', 'Express', 'Prisma', 'Claude'],

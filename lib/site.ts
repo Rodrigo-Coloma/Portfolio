@@ -1,103 +1,110 @@
 /**
  * Single source of truth for the portfolio's content.
- * Both panes read from here: the preview renders it as a page,
- * the source pane renders it as Markdown (see lib/source.ts).
+ * Every visual on the dashboard reads from here or from lib/projects.ts.
  */
 
 export const PROFILE = {
   name:     'Rodrigo Coloma Gutiérrez',
   short:    'Rodrigo Coloma',
-  role:     'Data Team Lead · Internal data product development',
-  location: 'Madrid',
-  headline: 'Coherent from source to decision.',
-  /** Headline split for the preview: [before, emphasised, after]. */
-  headlineParts: ['Coherent from source to ', 'decision', '.'] as const,
+  role:     'Data Team Lead',
+  team:     'Internal Data Product Development',
+  org:      'Grupo Ilunion · corporate data office',
+  location: 'Madrid, Spain',
+  photo:    '/rodrigo.jpg',
   intro:
-    'I lead the internal data product development team at Grupo Ilunion, within the corporate data office and reporting to the CDO. The team builds and runs what the group\'s businesses actually use: the governed data platform, the semantic models, the reports and the agents on top. My job is to turn the CDO\'s data strategy into products that hold together across the whole stack — one platform, one set of definitions, one way of working. Before that I built a data function from nothing, put production ML in front of a hotel chain, and delivered validated clinical reporting for a US trial sponsor under GxP.',
+    'I lead the team that builds the group\'s internal data products, reporting to the CDO: the governed platform, the semantic models, the reports and the agents on top. My job is to turn data strategy into products that hold together across the whole stack — one platform, one set of definitions, one way of working.',
+  background:
+    'Pharmacist by training. Moved into data through the statistics behind 10+ peer-reviewed studies, then built a data function from nothing, shipped production ML for a hotel chain and delivered validated clinical reporting under GxP.',
   email:    'rjcolgut@gmail.com',
   linkedin: 'https://www.linkedin.com/in/rcoloma',
   github:   'https://github.com/Rodrigo-Coloma',
   resume:   '/resume.pdf',
 }
 
-export type Principle = { title: string; body: string; source: string[] }
+/* ─── KPI cards ─────────────────────────────────────────────── */
 
-export const PRINCIPLES: Principle[] = [
-  {
-    title: 'One platform, one set of definitions',
-    body:
-      'Scattered reporting is a strategy problem before it is a technical one. Within the CDO\'s strategy, my team replaced six report-specific models (headcount, compensation, training, accidents…) with a single People domain model that corporate owns and every business builds on: around 50 analysts extend it, 2,500–3,000 people consume it, and "headcount" means the same thing in all of them.',
-    source: ['six report models → one governed domain', 'model; ~50 analysts, 2.5–3k consumers.'],
-  },
-  {
-    title: 'Governance that enables, not blocks',
-    body:
-      'Corporate owns the semantic model and the metric definitions; businesses extend it through composite models, add their own tables and manage their own row-level security, which encodes both organisational scope and which KPI families you may see. Everything is versioned in Azure DevOps and promoted through Dev → Test → Prod, so a change upstream reaches every business without a fork.',
-    source: ['corporate owns definitions; businesses', 'extend and own their RLS. Dev → Test → Prod.'],
-  },
-  {
-    title: 'Coherence across the whole stack',
-    body:
-      'Ingestion in Azure Data Factory and Databricks, Delta Lake medallion layers under Unity Catalog, the semantic layer in TMDL, reports in Power BI, and conversational agents (Databricks Genie, Copilot Studio in Teams) that answer from the same model as the reports. One lineage, one vocabulary, from the raw table to the question asked in chat.',
-    source: ['ADF · Databricks · Unity Catalog · TMDL', '· Power BI · agents on the same model.'],
-  },
-  {
-    title: 'Standards the team ships against',
-    body:
-      'Testing, code review and environment separation are the baseline for the data product team, not an aspiration. Progress is shown at demo days rather than in status emails, proposals fit in a five-minute pitch to the CDO, and when something breaks — a Unity Catalog permission, a Power Query firewall, a Dataverse endpoint — the write-up goes in the ticket so it does not break twice.',
-    source: ['CI, review, env separation; demo days,', 'five-minute pitches, write-ups in tickets.'],
-  },
-  {
-    title: 'Regulated when it has to be',
-    body:
-      'In a GxP setting the system description and the requirements specification are part of the deliverable. I write them in the sponsor\'s own templates, cite HIPAA, 21 CFR Part 11 and EU Annex 11 where they apply, and keep endpoint analysis in validated R rather than convenient Python. The same discipline, dialled down, is what makes corporate numbers auditable.',
-    source: ['DES/SRS in the sponsor\'s templates;', 'HIPAA · 21 CFR Part 11 · EU Annex 11.'],
-  },
-  {
-    title: 'Hands-on where it earns trust',
-    body:
-      'I still open the model. A 29-branch SWITCH measure used as a visual filter became 13 precomputed status flags; a family of "subjects with X" measures became SUMs over 1/0 columns; a forecasting pipeline gained five points of accuracy after a feature-engineering pass. Paying at refresh time instead of click time is a design decision, and knowing that first-hand is what lets me set standards the team respects.',
-    source: ['29-branch SWITCH → 13 flags; SUM of 1/0;', '+5% forecast accuracy. Pay at refresh time.'],
-  },
+export type Kpi = { value: string; label: string; context: string }
+
+export const KPIS: Kpi[] = [
+  { value: '6 → 1',   label: 'Semantic models consolidated', context: 'Six report-specific people models replaced by one governed domain model' },
+  { value: '~50',     label: 'Analysts building on it',      context: 'Businesses extend the corporate model through composite models they own' },
+  { value: '2.5–3k',  label: 'Report consumers',             context: 'One definition of headcount, absenteeism and compensation across the group' },
+  { value: '+5%',     label: 'Forecast accuracy',            context: 'Core hotel revenue model, held-out seasonal periods' },
+  { value: '2',       label: 'LLM apps in production',       context: 'Owned from architecture to monitoring on the corporate platform' },
+  { value: '10+',     label: 'Peer-reviewed studies',        context: 'Statistical analysis behind clinical and lab research' },
 ]
 
-export type Job = { org: string; years: string; role: string }
+/* ─── Skills radar (self-assessed, 0–10) ────────────────────── */
 
-export const EXPERIENCE: Job[] = [
-  { org: 'Grupo Ilunion',           years: '2026–now',  role: 'Data Team Lead, internal data product development (corporate data office, reporting to the CDO)' },
-  { org: 'US trial sponsor',        years: '2026',      role: 'Independent Clinical Data Analyst (GxP)' },
-  { org: 'Ilunion Hotels',          years: '2024–2026', role: 'Senior Data Scientist' },
-  { org: 'Macrogen',                years: '2022–2024', role: 'Data Analyst & Lab Director' },
-  { org: 'Hospital 12 de Octubre',  years: '2018–2022', role: 'Clinical Data Specialist' },
+export type Skill = { axis: string; score: number; evidence: string }
+
+export const SKILLS: Skill[] = [
+  { axis: 'Leadership',           score: 8.5, evidence: 'Leads the internal data product team: standards, demo days, five-minute pitches to the CDO.' },
+  { axis: 'Strategic vision',     score: 8.5, evidence: 'Turned scattered reporting into one governed platform and one People domain model.' },
+  { axis: 'Data governance',      score: 9.5, evidence: 'Corporate-owned definitions, RLS by org and KPI family, Dev → Test → Prod, GxP documentation.' },
+  { axis: 'Analytical thinking',  score: 9,   evidence: '10+ peer-reviewed studies, inter-rater reliability (ICC), revenue forecasting.' },
+  { axis: 'Problem solving',      score: 9,   evidence: 'A 29-branch SWITCH became 13 precomputed flags; every incident written up in the ticket.' },
+  { axis: 'Communication',        score: 8,   evidence: 'Proposals that fit in five minutes; system descriptions in the sponsor\'s own templates.' },
+  { axis: 'Technical depth',      score: 9,   evidence: 'ADF, Databricks, TMDL/DAX, Python, R, LLM applications — still opens the model.' },
+  { axis: 'Stakeholder mgmt',     score: 8,   evidence: 'Very different businesses building on one model without forking it.' },
 ]
 
-export type StackGroup = { name: string; key: string; items: string[] }
+/* ─── Career timeline ───────────────────────────────────────── */
 
-export const STACK: StackGroup[] = [
-  { name: 'Modeling & BI',    key: 'modeling',    items: ['Power BI · DAX · TMDL', 'Power Query / M · Fabric', 'Deployment pipelines · RLS'] },
-  { name: 'Data engineering', key: 'engineering', items: ['Databricks · Unity Catalog', 'PySpark · Azure Data Factory', 'Dataverse · Power Automate'] },
-  { name: 'Code & infra',     key: 'code/infra',  items: ['Python · R · SQL · TypeScript', 'PostgreSQL · pgvector · Docker', 'Azure DevOps · nginx · Linux'] },
+export type Domain = 'Grupo Ilunion' | 'Hotels' | 'Life sciences' | 'Side projects'
+export const DOMAINS: Domain[] = ['Grupo Ilunion', 'Hotels', 'Life sciences', 'Side projects']
+
+export type Stint = {
+  org:    string
+  role:   string
+  start:  number   // fractional year
+  end:    number | null
+  kind:   'role' | 'education'
+  domain: Domain | null   // education is not a business domain
+  label:  string   // years as shown
+}
+
+export const CAREER: Stint[] = [
+  { org: 'Grupo Ilunion',          role: 'Data Team Lead · internal data product development', start: 2026,   end: null,   kind: 'role',      domain: 'Grupo Ilunion', label: '2026–now'  },
+  { org: 'US trial sponsor',       role: 'Independent Clinical Data Analyst (GxP)',             start: 2026.4, end: 2026.6, kind: 'role',      domain: 'Life sciences', label: '2026'      },
+  { org: 'Ilunion Hotels',         role: 'Senior Data Scientist',                                start: 2024,   end: 2026,   kind: 'role',      domain: 'Hotels',        label: '2024–2026' },
+  { org: 'Ironhack',               role: 'Data Analytics Bootcamp · Best Final Project',         start: 2023.5, end: 2024,   kind: 'education', domain: null,            label: '2023–24'   },
+  { org: 'Macrogen',               role: 'Data Analyst & Lab Director',                          start: 2022,   end: 2024,   kind: 'role',      domain: 'Life sciences', label: '2022–2024' },
+  { org: 'Hospital 12 de Octubre', role: 'Clinical Data Specialist',                             start: 2018,   end: 2022,   kind: 'role',      domain: 'Life sciences', label: '2018–2022' },
+  { org: 'Complutense Univ.',      role: 'B. Pharmacy',                                          start: 2009,   end: 2016,   kind: 'education', domain: null,            label: '2009–16'   },
 ]
 
-export const EDUCATION = [
-  { years: '2023–24', title: 'Data Analytics Bootcamp', org: 'Ironhack', note: 'Best Final Project Award' },
-  { years: '2009–16', title: 'B. Pharmacy',              org: 'Complutense University of Madrid' },
+/* ─── Stack, as one pipeline ────────────────────────────────── */
+
+export type Layer = 'Ingest' | 'Store' | 'Model' | 'Serve' | 'Converse'
+export const LAYERS: { name: Layer; blurb: string; tools: string[] }[] = [
+  { name: 'Ingest',   blurb: 'Contracts at the edge',          tools: ['Azure Data Factory', 'Power Automate', 'EDC / APIs'] },
+  { name: 'Store',    blurb: 'Medallion, governed',            tools: ['Databricks', 'Delta Lake', 'Unity Catalog', 'Dataverse', 'PostgreSQL'] },
+  { name: 'Model',    blurb: 'One set of definitions',         tools: ['TMDL · DAX', 'PySpark', 'Python · R', 'XGBoost · MLflow'] },
+  { name: 'Serve',    blurb: 'Reports people trust',           tools: ['Power BI · Fabric', 'Deployment pipelines', 'Power Apps', 'FastAPI'] },
+  { name: 'Converse', blurb: 'Agents on the same model',       tools: ['Databricks Genie', 'Copilot Studio', 'Claude API', 'RAG · pgvector'] },
 ]
 
-export const LANGUAGES = [
-  { name: 'Spanish', level: 'native' },
-  { name: 'English', level: 'C2' },
-  { name: 'German',  level: 'A1' },
+/* ─── How I work ────────────────────────────────────────────── */
+
+export const PRINCIPLES: { title: string; body: string }[] = [
+  { title: 'One platform, one set of definitions', body: 'Scattered reporting is a strategy problem before it is a technical one. "Headcount" should mean the same thing in every report, every business and every agent.' },
+  { title: 'Governance that enables',              body: 'Corporate owns the definitions; businesses extend the model and own their RLS. Versioned in Azure DevOps, promoted Dev → Test → Prod, no forks.' },
+  { title: 'Coherence across the stack',           body: 'One lineage and one vocabulary from the raw table to the question asked in Teams. Agents answer from the model the reports use.' },
+  { title: 'Standards the team ships against',     body: 'Testing, review and environment separation are the baseline. Progress shown at demo days; every incident written up so it breaks once.' },
+  { title: 'Regulated when it has to be',          body: 'DES and SRS in the sponsor\'s templates, HIPAA · 21 CFR Part 11 · EU Annex 11, endpoint analysis in validated R.' },
+  { title: 'Hands-on where it earns trust',        body: 'Pay at refresh time, not at click time. Knowing that first-hand is what lets me set standards the team respects.' },
+]
+
+/* ─── The joke ──────────────────────────────────────────────── */
+
+export const BI_HOURS: { label: string; pct: number; note: string }[] = [
+  { label: 'Agreeing what "headcount" means',     pct: 31, note: 'Average of month-end snapshots? Last month? Including interns? Three meetings.' },
+  { label: 'Explaining why it doesn\'t match Excel', pct: 24, note: 'The Excel had a filter on. It always has a filter on.' },
+  { label: 'Waiting for the refresh',             pct: 17, note: 'Gateway timeout at 98%. Retry. Coffee.' },
+  { label: 'Changing the colours back',           pct: 14, note: '"Can it be more corporate?" → "Can it pop more?" → original.' },
+  { label: 'Actually building the report',        pct: 14, note: 'The fun part. Takes an afternoon.' },
 ]
 
 export const CONTACT_BLURB =
-  'Open to data leadership roles, to consulting on data strategy, governance and semantic layers, and to talks on the same. Based in Madrid, working across CET and US hours. Email is the fastest way to reach me.'
-
-/** Files shown in the editor tab bar. Each maps to a section anchor. */
-export const FILES = [
-  { name: 'README.md',     anchor: '#top'      },
-  { name: 'how-i-work.md', anchor: '#work'     },
-  { name: 'projects.md',   anchor: '#projects' },
-  { name: 'stack.md',      anchor: '#stack'    },
-  { name: 'contact.md',    anchor: '#contact'  },
-]
+  'Open to data leadership roles, to consulting on data strategy, governance and semantic layers, and to talks on the same. Based in Madrid, working across CET and US hours.'

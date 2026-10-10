@@ -1,38 +1,26 @@
 import type { Config } from 'tailwindcss'
 
+const v = (name: string) => `var(--${name})`
+/** Channel-based token so opacity modifiers (bg-accent/10) work. */
+const a = (name: string) => `rgb(var(--${name}-rgb) / <alpha-value>)`
+
 const config: Config = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
-        mono:  ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       colors: {
-        // Source / Preview palette — warm paper, ink, amber accent
-        paper: {
-          DEFAULT: '#f4f1ea',  // source pane
-          preview: '#faf8f3',  // preview pane
-          chrome:  '#ebe7de',  // tab bar / status bar
-        },
-        rule: {
-          DEFAULT: '#d9d3c6',  // chrome borders
-          soft:    '#e6e1d6',  // section dividers
-        },
-        ink: {
-          DEFAULT: '#2a2723',  // headings
-          body:    '#4d4840',  // body copy / source text
-          muted:   '#6b665c',  // chrome text
-          faint:   '#8a8478',  // meta, code fences
-          gutter:  '#b3ad9f',  // line numbers
-        },
-        accent: {
-          DEFAULT: '#b45309',  // amber-700
-          deep:    '#92400e',  // amber-800 — hover
-        },
+        plane:    a('plane'),
+        surface:  { DEFAULT: a('surface'), 2: a('surface-2') },
+        hairline: a('hairline'),
+        grid:     v('grid'),
+        axis:     v('axis'),
+        ink:      { DEFAULT: v('ink'), 2: v('ink-2'), muted: v('muted') },
+        accent:   { DEFAULT: a('accent'), dim: v('accent-dim') },
+        s1: v('s1'), s2: v('s2'), s3: v('s3'), s4: v('s4'), s5: v('s5'),
       },
     },
   },
