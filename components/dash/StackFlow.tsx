@@ -3,21 +3,21 @@
 import Card, { DataTable } from '@/components/dash/Card'
 import { useFilters } from '@/components/dash/filters'
 import { LAYERS } from '@/lib/site'
+import { PROJECTS } from '@/lib/projects'
 
 /**
- * The stack as one pipeline. Each layer shows how many of the (domain-filtered)
- * projects touch it; clicking a layer cross-filters the project table.
+ * The stack as one pipeline. Each layer shows how many projects touch it; clicking a layer cross-filters the project table.
  */
 export default function StackFlow({ className = '' }: { className?: string }) {
-  const { layer, setLayer, byDomain, domain } = useFilters()
-  const counts = LAYERS.map(l => byDomain.filter(p => p.layers.includes(l.name)).length)
+  const { layer, setLayer } = useFilters()
+  const counts = LAYERS.map(l => PROJECTS.filter(p => p.layers.includes(l.name)).length)
   const max = Math.max(1, ...counts)
 
   return (
     <Card
       id="stack"
       title="One stack, end to end"
-      subtitle={<>Projects touching each layer{domain ? <> · <span className="text-ink-2">{domain}</span></> : ''} · click a layer to filter projects</>}
+      subtitle="Projects touching each layer · click a layer to filter the project table"
       className={className}
       table={<DataTable head={['Layer', 'Projects', 'Tools']}
                         rows={LAYERS.map((l, i) => [l.name, counts[i], l.tools.join(', ')])} />}

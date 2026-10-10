@@ -54,7 +54,7 @@ function Detail({ p }: { p: Project }) {
 }
 
 export default function ProjectsTable({ className = '' }: { className?: string }) {
-  const { projects, domain, layer } = useFilters()
+  const { projects, layer, setLayer } = useFilters()
   const [open, setOpen] = useState<string | null>(null)
   const [sort, setSort] = useState<SortKey>('default')
 
@@ -75,7 +75,6 @@ export default function ProjectsTable({ className = '' }: { className?: string }
     </th>
   )
 
-  const filtered = !!(domain || layer)
 
   return (
     <Card
@@ -83,7 +82,9 @@ export default function ProjectsTable({ className = '' }: { className?: string }
       title="Projects"
       subtitle={<>
         Showing <span className="tabular text-ink-2">{rows.length}</span> of <span className="tabular">{PROJECTS.length}</span>
-        {filtered ? <> · filtered by {[domain, layer && `layer ${layer}`].filter(Boolean).join(' and ')}</> : ' · click a row for the case study'}
+        {layer
+          ? <> · layer {layer} · <button type="button" onClick={() => setLayer(null)} className="text-accent underline-offset-4 hover:underline">clear filter</button></>
+          : ' · click a row for the case study'}
       </>}
       className={className}
     >

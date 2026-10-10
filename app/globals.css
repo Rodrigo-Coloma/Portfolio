@@ -42,7 +42,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--chrome-top) + 64px);
+  scroll-padding-top: calc(var(--chrome-top) + 16px);
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

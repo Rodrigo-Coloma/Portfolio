@@ -5,8 +5,8 @@ import Card, { DataTable } from '@/components/dash/Card'
 import { useTooltip, TipTitle } from '@/components/dash/Tooltip'
 import { SKILLS } from '@/lib/site'
 
-const W = 560, H = 400
-const CX = W / 2, CY = H / 2 + 4, R = 132
+const W = 520, H = 380
+const CX = W / 2, CY = H / 2 + 2, R = 120
 const MAX = 10
 const RINGS = [2, 4, 6, 8, 10]
 
@@ -42,8 +42,8 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
       className={className}
       table={<DataTable head={['Skill', 'Score', 'Evidence']} rows={SKILLS.map(s => [s.axis, s.score, s.evidence])} />}
     >
-      <div ref={box} className="relative">
-        <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto block h-auto w-full max-w-[560px]" role="img"
+      <div ref={box} className="relative flex h-full items-center">
+        <svg viewBox={`0 0 ${W} ${H}`} className="mx-auto block h-auto w-full max-w-[520px]" role="img"
              aria-label={`Radar chart of eight skills: ${SKILLS.map(s => `${s.axis} ${s.score}`).join(', ')}`}>
           {/* rings */}
           {RINGS.map(v => (
@@ -69,8 +69,8 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
           {SKILLS.map((s, i) => {
             const [x, y] = pt(i, s.score)
             const a = angle(i)
-            const lx = CX + Math.cos(a) * (R + 22)
-            const ly = CY + Math.sin(a) * (R + 22)
+            const lx = CX + Math.cos(a) * (R + 16)
+            const ly = CY + Math.sin(a) * (R + 16)
             const anchor = Math.abs(Math.cos(a)) < 0.2 ? 'middle' : Math.cos(a) > 0 ? 'start' : 'end'
             const dy = Math.sin(a) > 0.5 ? 12 : Math.sin(a) < -0.5 ? -4 : 4
             return (
@@ -83,7 +83,7 @@ export default function SkillsRadar({ className = '' }: { className?: string }) 
                  onFocus={e => enter(i, e.currentTarget)}
                  onBlur={leave}
                  className="cursor-default outline-none">
-                <text x={lx} y={ly + dy} textAnchor={anchor} fontSize="13"
+                <text x={lx} y={ly + dy} textAnchor={anchor} fontSize="14.5"
                       fill={hot === i ? 'var(--ink)' : 'var(--ink-2)'} fontWeight={hot === i ? 600 : 400}>
                   {s.axis}
                 </text>

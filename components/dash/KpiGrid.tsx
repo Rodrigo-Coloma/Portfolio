@@ -3,7 +3,7 @@ import { KPIS } from '@/lib/site'
 /** Stat tiles: a headline figure, what it counts, and the context it came from. */
 export default function KpiGrid({ className = '' }: { className?: string }) {
   return (
-    <section aria-label="Key figures" className={`grid grid-cols-2 gap-3 sm:grid-cols-3 ${className}`}>
+    <section aria-label="Key figures" className={`grid grid-cols-1 gap-3 sm:grid-cols-3 ${className}`}>
       {KPIS.map(k => (
         <div key={k.label} className="relative flex flex-col rounded-xl border border-hairline bg-surface p-4">
           <span aria-hidden="true" className="absolute left-0 top-4 h-6 w-[3px] rounded-r bg-accent" />

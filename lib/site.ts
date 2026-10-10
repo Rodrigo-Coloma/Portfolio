@@ -26,12 +26,9 @@ export const PROFILE = {
 export type Kpi = { value: string; label: string; context: string }
 
 export const KPIS: Kpi[] = [
-  { value: '6 → 1',   label: 'Semantic models consolidated', context: 'Six report-specific people models replaced by one governed domain model' },
   { value: '~50',     label: 'Analysts building on it',      context: 'Businesses extend the corporate model through composite models they own' },
   { value: '2.5–3k',  label: 'Report consumers',             context: 'One definition of headcount, absenteeism and compensation across the group' },
   { value: '+5%',     label: 'Forecast accuracy',            context: 'Core hotel revenue model, held-out seasonal periods' },
-  { value: '2',       label: 'LLM apps in production',       context: 'Owned from architecture to monitoring on the corporate platform' },
-  { value: '10+',     label: 'Peer-reviewed studies',        context: 'Statistical analysis behind clinical and lab research' },
 ]
 
 /* ─── Skills radar (self-assessed, 0–10) ────────────────────── */

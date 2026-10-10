@@ -62,7 +62,7 @@ export default function JokeDonut({ className = '' }: { className?: string }) {
         ))}
       </div>
 
-      <div ref={box} className="relative flex flex-col items-center gap-6 sm:flex-row sm:items-center lg:mt-6">
+      <div ref={box} className="relative flex flex-col items-center gap-5 sm:flex-row lg:flex-col">
         <svg viewBox={`0 0 ${C * 2} ${C * 2}`} className="h-auto w-[220px] flex-shrink-0" role="img"
              aria-label={`Donut chart: ${data.map(d => `${d.label} ${d.pct}%`).join(', ')}`}>
           {slices.map((s, i) => (

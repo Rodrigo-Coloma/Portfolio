@@ -138,6 +138,28 @@ export const PROJECTS: Project[] = [
       'From a price observed on an OTA, infer by probability which tariff, room type and conditions produced it. Piloted on one hotel.',
   },
   {
+    slug:    'calibra',
+    domain:  'Side projects',
+    layers:  ['Ingest', 'Store', 'Model', 'Serve'],
+    metric:  'Live SaaS · daily PLACSP refresh',
+    title:   'Calibra — public tender radar',
+    org:     'Own SaaS',
+    tags:    ['PLACSP', 'PostgreSQL', 'Predictive'],
+    summary:
+      'A subscription analytics product for companies that bid on Spanish public tenders. Open tenders from the PLACSP open-data feed are refreshed daily and compared against similar awarded ones, starting with the paving vertical: price per m², usual winners, timelines, and a calculator for the probability of a low bid and of winning.',
+    problem:
+      'SME bidders and tender consultancies price each bid almost blind: the history of comparable awards is public, but scattered across thousands of notices nobody has time to read.',
+    solution:
+      'Daily ingestion of PLACSP open data into PostgreSQL, a grouping of each open tender with its comparable awarded ones, and a dashboard plus bid calculator on top. Accounts and saved bids live in the same database; the app is self-hosted behind nginx and a Cloudflare tunnel.',
+    impact: [
+      'In production at calibra-licitaciones.es, with a separate development environment',
+      'One vertical first (paving), so the comparables are tight enough to price from',
+      'The bid calculator is the core of the product and keeps being refined',
+    ],
+    stack: ['PLACSP open data', 'PostgreSQL', 'Daily ingestion', 'Predictive models', 'nginx', 'Cloudflare'],
+    links: [{ label: 'calibra-licitaciones.es', href: 'https://calibra-licitaciones.es', external: true }],
+  },
+  {
     slug:    'medlit',
     domain:  'Side projects',
     layers:  ['Ingest','Store','Converse','Serve'],
